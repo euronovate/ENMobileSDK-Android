@@ -1,0 +1,39 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenLocal()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven {
+            url "https://dev.euronovate.com:9802/artifactory/libs-snapshot"
+            credentials {
+                username artifactory_library_consumer_username
+                password artifactory_library_consumer_password
+            }
+        }
+        maven {
+            url "https://dev.euronovate.com:9802/artifactory/libs-release"
+            credentials {
+                username artifactory_library_consumer_username
+                password artifactory_library_consumer_password
+            }
+        }
+        maven {
+            url "https://dev.euronovate.com:9802/artifactory/android-release-local"
+            credentials {
+                username artifactory_library_consumer_username
+                password artifactory_library_consumer_password
+            }
+        }
+        maven {
+            url "https://dev.euronovate.com:9802/artifactory/android-snapshot-local"
+            credentials {
+                username artifactory_library_consumer_username
+                password artifactory_library_consumer_password
+            }
+        }
+    }
+}
+rootProject.name = "DemoViewerSignature"
+include ':app'
