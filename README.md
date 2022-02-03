@@ -49,7 +49,7 @@ dependencies {
 
 #### [Viewer Tutorial and Samples](viewer/readme.md)
 
-![badge_version](Viewer/imgViewer.png)
+![Viewer image](Viewer/imgViewer.png)
  
 The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling with acrofields for example:
 
