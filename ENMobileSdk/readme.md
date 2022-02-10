@@ -12,6 +12,9 @@
 8. [Utilities](#utilities)
 9. [Config](#config)
 10. [Theming](#theming)
+11. [ENEventInternal](#eventInternal)
+12. [Actions] (#actions)
+13. [Exceptions] (#exceptions)
 
 ## Gradle Dependency
 
@@ -89,7 +92,9 @@ The `settings` class is used to change runtime and save in persistance area all 
 This is a simple snippet
 
 ```kotlin
-.with(settings = ENSettings.Builder().with(context = applicationContext).build())
+.with(settings = ENSettings.Builder()
+	 .with(context = applicationContext)
+	 .build())
 
 ```
 Only `context` is required. After inizialization you can use
@@ -210,18 +215,20 @@ You can configure ENAuth in two ways:
 ***with jwt*** for example to use in offline mode
 
 ```kotlin
-.with(authConfig = ENAuthConfig(licenseKey = "licenseKey",
-                serverUrl = "url",
-                jwt = "jwt"))
+.with(authConfig = ENAuthConfig(licenseKey = "yourLicenseKey",
+                serverUrl = "yourUrl",
+                jwt = "yourJwt"))
 ```
 
 or online mode with licenseKey and serverUrl:
 
 ```kotlin
-.with(authConfig = ENAuthConfig(licenseKey = "licenseKey", serverUrl = "url"))
+.with(authConfig = ENAuthConfig(licenseKey = "yourLicenseKey", serverUrl = "yourUrl"))
 ```
 
-there is other parameter that you can pass via constructor of ENAuthConfig:
+If you haven't serverUrl and licenseKey or Jwt you can contact [info@euronovate.com ]() to request a trial. **Without their sdk won't initialized** so if you try to call an instance of a modules you will get a **crash**
+
+There is other parameter that you can pass via constructor of ENAuthConfig:
 
 ```kotlin
 ENAuthConfig(
@@ -237,6 +244,15 @@ ENAuthConfig(
 for example you can request an activation for onyl a specific product, or you can pass username e password.
 
 Exist a class to handle ENAuth Exception. It is called `ENAuthException`
+
+###ENAuthException
+
+We have default exception core, but there are other type specific to ENAuthException:
+
+* **licenseVerificationWrongDeviceId** is returned when your jwt contains a wrong device uuid different of your current device.
+* **someProductsHaveProblems**  your jwt contains a different list of product(module) that you are trying to activate.
+* **noProductToActivate** is returned when there isn't product(module) available to be activate.
+* **licenseJwtEmpty** your jwt is empty or not valid.
 
 ## ENDialog
 
@@ -412,6 +428,9 @@ class ENOAuth2Response(
     var expiresIn: Long?
 )
 ```
+
+If OAuth2 is configured in each request will be an `Authorization Bearer` with `accessToken` that you have provided to us
+
 ## Theming (ENTheme)
 
 Each client can customize some ui parts of sdk at this moment:
@@ -512,3 +531,78 @@ class ENDefaultFont: ENFont(){
     }
 }
 ```
+
+## Event Driven Internal
+
+There is an EventDriven inside a mobileSdk, at this moment we have these events:
+
+enum class ENEventType {
+    appForegrounded, -> when app is put in foreground (is vibile)
+    appBackgrounded, -> when app is put in bg (not visible)
+    coreInitialized, -> when ENMobileSdk finished initialization
+    signDocument -> when receive an event to sign a document
+}
+
+You can `subscribe / unsubscribe` or `emit` to their.
+
+**Subscription**
+
+```kotlin
+ENMobileSDK.subscribeEvent(ENEventCallback(event ...) { it (is Any)
+	...your code when you receive message
+})
+```
+**Unsubscription**
+
+```kotlin
+ENMobileSDK.unSubscribeEvent(ENEventCallback..)
+```
+**Emit Event**
+
+You can emite event to a specific event and pass your custom data, for example:
+
+
+```kotlin
+ENMobileSDK.emitEvent(ENEventType.signDocument,StartSignDTO("guid"))
+```
+
+##ENMobileSdk Actions
+
+There is a list of public method that aren't included in (settings,event driven ecc..)
+
+**getLanguage**
+
+```kotlin
+ENMobileSDK.getInstance().getLanguage()
+```
+This method return current `Locale` selected in application (not based on system language). 
+
+
+**setLanguage**
+
+```kotlin
+ENMobileSDK.getInstance().setLanguage(resources!!.configuration!!.locales.get(0))
+```
+With this method you can overwrite current language in app. After this you have to restart current activity at this moment we don't use automatic reaction of changing programmatically.
+
+**getResourcesLocalized**
+
+If you want to get context already localized you will cal this method and your work will simple.
+
+```kotlin
+ENMobileSDK.getInstance().getResourcesLocalized()
+```
+
+For example: if you need to update label with correct language you can use this.
+
+
+##ENMobileSdkException
+
+There is a set of exception specific used in core and submodules:
+
+* **sdkNotInitialized** this is error is returned when there is an error with initialization.
+* **missingParameterOfInitMobileSdk** is returned when you didn't follow .with order or you didn't pass parameter. Together with the error we will return the missing field type.
+* **genericError** is returned when we didn't recognize error, in certain case we use it but we specify reason.
+* **serverException** is returned when server of your baseurl isn't unreachable
+* **noInternetConnection** is returned when you have disabled wifi or mobile. You will receive this error after api request.
+* **errorObtainOAuth2Token** if you activated OAuth2, it is return when we receive an error from OAuth2 provider.
