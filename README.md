@@ -26,10 +26,6 @@ Add this:
 ```gradle
 maven {
 	url "https://dev.euronovate.com:9802/artifactory/android-release-local"
-    credentials {
-         username replacewithyourusername
-         password replacewithyourpassword
-    }
 }
 ```
 

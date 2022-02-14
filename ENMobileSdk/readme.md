@@ -356,6 +356,7 @@ You can call all static method from your, we use their inside the core.
 * `ENStringUtils`
 * `ENTypefaceUtils`
 * `ENViewUtils`
+* `ENWebViewUtils`
 
 It also contain an `ENApplication` and `ENActivitityLifecycleCallback` they are necessary with **ENPubSub** modules
 
