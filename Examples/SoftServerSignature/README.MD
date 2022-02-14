@@ -13,7 +13,11 @@ Pull all project in your Android studio workspace, after open folder with androi
 
 You must have an internet connection valid.
 
-After you have to replace licenseKey & baseUrl ENAuth in MainActivity
+After you have to replace:
+
+*licenseKey & baseUrl ENAuth in MainActivity
+*licenseKey & baseUrl ENSoftServer in MainActivity
+*access token,url, type ENPubSub in MainActivity
 
 # Features
 

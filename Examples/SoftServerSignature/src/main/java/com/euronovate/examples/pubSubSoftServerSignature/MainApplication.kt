@@ -1,4 +1,4 @@
-package com.euronovate.examples.softServerSignature
+package com.euronovate.examples.pubSubSoftServerSignature
 
 import android.app.Application
 

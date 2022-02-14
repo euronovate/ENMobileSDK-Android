@@ -6,9 +6,14 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
         maven {
             url "https://dev.euronovate.com:9802/artifactory/android-release-local"
+            credentials {
+                username artifactory_library_consumer_username
+                password artifactory_library_consumer_password
+            }
         }
     }
 }
 rootProject.name = "Examples"
 include ':LocalSignature'
 include ':SoftServerSignature'
+include ':PubSubSoftServerSignature'

@@ -29,6 +29,9 @@ core and:
 * endialog
 * ensettings
 
+
+This is a list of dependecies that you have to add:
+
 ```gradle
 dependencies {
   implementation 'com.euronovate.mobilesdk:core:1.0.0'
@@ -37,6 +40,11 @@ dependencies {
   implementation 'com.google.code.gson:gson:2.8.7'
   implementation 'androidx.preference:preference-ktx:1.1.1'
   implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+  
+  //Database room
+  implementation("androidx.room:room-runtime:$roomVersion")
+  kapt("androidx.room:room-compiler:$roomVersion")
+  implementation("androidx.room:room-ktx:$roomVersion")
   
   //lifecycle
   implementation "android.arch.lifecycle:extensions:1.1.1"
@@ -63,6 +71,20 @@ dependencies {
   runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.7') {
      exclude group: 'org.json', module: 'json' //provided by Android natively
   }
+}
+```
+
+To use plugins kapt for **database room** is necessary add this plugin on top build.gradle
+
+    id 'kotlin-kapt'
+
+Like this:
+
+```gradle
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 ```
 
