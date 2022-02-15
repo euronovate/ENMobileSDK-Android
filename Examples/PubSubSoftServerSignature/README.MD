@@ -23,10 +23,11 @@ After you have to replace:
 
 In this demo project we use these modules:
 
--Viewer
--SignatureBox
--BioLibrary
--SoftServer
+-ENViewer
+-ENSignatureBox
+-ENBioLibrary
+-ENSoftServer
+-ENPubSub
 
 To start signature, you have to tap on button "open", after confirm or abort pdf you can share pdf with specific button
 

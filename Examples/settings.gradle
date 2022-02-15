@@ -17,3 +17,4 @@ rootProject.name = "Examples"
 include ':LocalSignature'
 include ':SoftServerSignature'
 include ':PubSubSoftServerSignature'
+include ':DigitalSignage'
