@@ -35,7 +35,10 @@ This is a list of dependecies that you have to add:
 ```gradle
 dependencies {
   implementation 'com.euronovate.mobilesdk:core:1.0.0'
-  
+}
+```
+
+```gradle
   //OTHER NECESSARY
   implementation 'com.google.code.gson:gson:2.8.7'
   implementation 'androidx.preference:preference-ktx:1.1.1'
@@ -60,6 +63,10 @@ dependencies {
   implementation "com.squareup.okhttp3:okhttp:4.7.2"
   implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
   implementation 'org.conscrypt:conscrypt-android:2.2.1'
+  
+  //GLIDE
+  api 'com.github.bumptech.glide:glide:4.12.0'
+  annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
   
   //LOGGING
   implementation "org.slf4j:slf4j-simple:1.6.1"
