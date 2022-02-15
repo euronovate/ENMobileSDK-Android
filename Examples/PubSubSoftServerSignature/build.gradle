@@ -8,7 +8,7 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.euronovate.examples.pubSubSoftServerSignature"
+        applicationId "com.euronovate.examples.pubsubsoftserversignature"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
