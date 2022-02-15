@@ -1,4 +1,4 @@
-# PubSubSoftServerSignature
+# DsPubSubSoftServerSignature
 
 #### [View Releases and Changelogs](https://github.com/euronovate/ENMobileSDK-Android)
 
@@ -18,6 +18,7 @@ After you have to replace:
 *licenseKey & baseUrl ENAuth in MainActivity
 *licenseKey & baseUrl ENSoftServer in MainActivity
 *access token,url, type ENPubSub in MainActivity
+*licenseKey & baseUrl ENDigitalSignage in MainActivity
 
 # Features
 
@@ -28,6 +29,7 @@ In this demo project we use these modules:
 -ENBioLibrary
 -ENSoftServer
 -ENPubSub
+-ENDigitalSignage
 
 To start signature, you have to tap on button "open", after confirm or abort pdf you can share pdf with specific button
 

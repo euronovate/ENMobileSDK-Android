@@ -118,12 +118,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnShareLastPdf.setOnClickListener(this)
         btnShareLastPdf.isEnabled = true
     }
-    private fun showProgressDialog(title: String? = getString(R.string.info), content: String? = getString(R.string.please_wait)): Dialog {
-        val dialogProgress = ENDialog.getInstance().dialog(activity = this, dialogType = ENDialogType.progress,
-            dialogTextConfig = ENDialogTextConfig(title = title, content = content))
-        dialogProgress.show()
-        return dialogProgress
-    }
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.btnStart ->{

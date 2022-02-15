@@ -1,4 +1,4 @@
-package com.euronovate.examples.digitalSignage
+package com.euronovate.examples.dspubsubsoftserversignature
 
 import com.euronovate.utils.applicationcontext.ENApplication
 

@@ -43,7 +43,8 @@ dependencies {
   implementation 'com.google.code.gson:gson:2.8.7'
   implementation 'androidx.preference:preference-ktx:1.1.1'
   implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
-  
+  implementation 'androidx.exifinterface:exifinterface:1.3.2'
+
   //Database room
   implementation("androidx.room:room-runtime:$roomVersion")
   kapt("androidx.room:room-compiler:$roomVersion")
@@ -70,13 +71,12 @@ dependencies {
   
   //LOGGING
   implementation "org.slf4j:slf4j-simple:1.6.1"
-    //IO
+  //IO
   implementation 'org.simpleframework:simple-xml:2.7.1'
   api 'io.jsonwebtoken:jjwt-api:0.10.7'
-  implementation 'androidx.exifinterface:exifinterface:1.3.2'
   runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.7'
   runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.7') {
-     exclude group: 'org.json', module: 'json' //provided by Android natively
+       exclude group: 'org.json', module: 'json'
   }
 }
 ```

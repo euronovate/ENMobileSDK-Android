@@ -8,7 +8,7 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.euronovate.examples.DspubSubSoftServerSignature"
+        applicationId "com.euronovate.examples.dspubsubsoftserversignature"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
@@ -62,6 +62,11 @@ dependencies {
     implementation "com.euronovate.softserver:softserver:1.0.0"
     implementation "com.euronovate.presenter:presenter:1.0.0"
     implementation "com.euronovate.pubsub:pubsub:1.0.0"
+    implementation "com.euronovate.digitalsignage:digitalsignage:1.0.0"
+
+    //GLIDE
+    api 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     //Lifecycle UI
     implementation "android.arch.lifecycle:extensions:1.1.1"

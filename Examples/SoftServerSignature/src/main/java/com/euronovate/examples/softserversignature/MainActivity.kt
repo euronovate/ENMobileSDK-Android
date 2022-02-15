@@ -12,7 +12,6 @@ import com.euronovate.auth.model.ENAuthConfig
 import com.euronovate.bio.ENBio
 import com.euronovate.bio.extension.with
 import com.euronovate.bio.model.enum.ENSignatureSourceType
-import com.euronovate.examples.softserversignature.R
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
 import com.euronovate.logger.model.ENLoggerConfig

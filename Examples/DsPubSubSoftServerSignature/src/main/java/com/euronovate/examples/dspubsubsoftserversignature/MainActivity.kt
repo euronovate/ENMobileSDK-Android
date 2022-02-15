@@ -1,4 +1,4 @@
-package com.euronovate.examples.digitalSignage
+package com.euronovate.examples.dspubsubsoftserversignature
 
 import android.app.Dialog
 import android.content.Intent
@@ -11,9 +11,14 @@ import com.euronovate.auth.model.ENAuthConfig
 import com.euronovate.bio.ENBio
 import com.euronovate.bio.extension.with
 import com.euronovate.bio.model.enum.ENSignatureSourceType
-import com.euronovate.examples.digitalSignage.R
+import com.euronovate.digitalsignage.ENDigitalSignage
+import com.euronovate.digitalsignage.extension.with
+import com.euronovate.digitalsignage.model.ENDigitalSignageConfig
+import com.euronovate.examples.dspubsubsoftserversignature.R
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
+import com.euronovate.logger.model.ENLanguageConfig
+import com.euronovate.logger.model.ENLanguageType
 import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
@@ -23,6 +28,8 @@ import com.euronovate.mobilesdk.model.ENEventType
 import com.euronovate.mobilesdk.model.ENMobileSDKResponse
 import com.euronovate.mobilesdk.model.ENMobileSdkConfig
 import com.euronovate.mobilesdk.model.responses.business.document.StartSignDTO
+import com.euronovate.mobilesdk.theme.ENDefaultTheme
+import com.euronovate.mobilesdk.theme.with
 import com.euronovate.mobilesdk.ui.dialog.ENDialog
 import com.euronovate.mobilesdk.ui.dialog.ENDialog.Companion.showGenericErrorDialog
 import com.euronovate.mobilesdk.ui.dialog.ENDialogTextConfig
@@ -106,6 +113,14 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .with(applicationContext)
                 .with(ENSoftServerConfig(baseUrl = "http://dev.euronovate.com:59082/SoftServer", "2Zq4AcbHtJ6abXZCx58+jT5ekMML8OEK7Ui+hK/bsjH4zYSorRvrpj2V6ivc+SJrIvhXedm92a74d92f/AqVfQ=="))
                 .build())
+            .with(theme = ENDefaultTheme())
+            .with(mobileSdkConfig = ENMobileSdkConfig(languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(
+                ENLanguageType.en, ENLanguageType.el))
+            )).with(ENDigitalSignage.Builder()
+                    .with(applicationContext = applicationContext)
+                    .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "serverUrl",
+                        licenseCode = "licenseKey"))
+                    .build())
             .build()
     }
 
@@ -118,16 +133,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnShareLastPdf.setOnClickListener(this)
         btnShareLastPdf.isEnabled = true
     }
-    private fun showProgressDialog(title: String? = getString(R.string.info), content: String? = getString(R.string.please_wait)): Dialog {
-        val dialogProgress = ENDialog.getInstance().dialog(activity = this, dialogType = ENDialogType.progress,
-            dialogTextConfig = ENDialogTextConfig(title = title, content = content))
-        dialogProgress.show()
-        return dialogProgress
-    }
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.btnStart ->{
                 if(initialized){
+                    ENDigitalSignage.getInstance().start()
                     ENPubSub.getInstance().init()
                     ENPubSub.getInstance().subscribe(ENPubSubChannel.startSign){
                         try{
