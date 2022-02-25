@@ -6,22 +6,18 @@
 
 ---
 
-
-
 # Modules
 
 The core module is the fundamental module that you need in order to use this library.
 
 Please note that ENMobileSDK, this library only supports Kotlin.
 
-
-#Maven Gradle Dependecy Setup
+### Maven Gradle Dependecy Setup
 Before start you need to setup maven repositories:
 
 You have to in your external file `build.gradle`
 
 Add this: 
-
 
 ```gradle
 maven {
@@ -30,6 +26,67 @@ maven {
 ```
 
 In the most recent project of gradle / android-studio, you have to set this in `settings.gradle`
+
+### Gradle Dependecies required
+
+Our sdk use a set of dependecies that they are required, this is a list:
+
+```gradle
+  implementation 'com.google.code.gson:gson:2.8.7'
+  implementation 'androidx.preference:preference-ktx:1.1.1'
+  implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+  implementation 'androidx.exifinterface:exifinterface:1.3.2'
+
+  //Database room
+  implementation("androidx.room:room-runtime:$roomVersion")
+  kapt("androidx.room:room-compiler:$roomVersion")
+  implementation("androidx.room:room-ktx:$roomVersion")
+  
+  //lifecycle
+  implementation "android.arch.lifecycle:extensions:1.1.1"
+  implementation "androidx.lifecycle:lifecycle-runtime:2.0.0"
+  implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+  annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
+  
+   // crypto
+  implementation "org.bouncycastle:bcprov-jdk15on:1.61"
+  implementation "org.bouncycastle:bcpkix-jdk15on:1.61"
+  
+  //API okhttp
+  implementation "com.squareup.okhttp3:okhttp:4.7.2"
+  implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+  implementation 'org.conscrypt:conscrypt-android:2.2.1'
+  
+  //GLIDE
+  api 'com.github.bumptech.glide:glide:4.12.0'
+  annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+  
+  //LOGGING
+  implementation "org.slf4j:slf4j-simple:1.6.1"
+  //IO
+  implementation 'org.simpleframework:simple-xml:2.7.1'
+  api 'io.jsonwebtoken:jjwt-api:0.10.7'
+  runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.7'
+  runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.7') {
+       exclude group: 'org.json', module: 'json'
+  }
+  ```
+
+You have to put this list in your `app/build.gradle` 
+
+To use plugins kapt for **database room** is necessary add this plugin on top build.gradle
+
+ id 'kotlin-kapt'
+
+Like this:
+
+```gradle
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+```
 
 ## ENMobileSDK (conventionally ENCore)
 

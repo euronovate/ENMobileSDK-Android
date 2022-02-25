@@ -6,15 +6,15 @@
 2. [Basics](#basics)
 3. [ENSettings](#ensettings)
 4. [ENLogger](#enlogger)
-5. [Initialization Callback] (#initialization-callback)
+5. [Initialization Callback](#initialization-callback)
 6. [ENAuth](#enauth)
 7. [ENDialog](#endialog)
 8. [Utilities](#utilities)
 9. [Config](#config)
 10. [Theming](#theming)
 11. [ENEventInternal](#eventInternal)
-12. [Actions] (#actions)
-13. [Exceptions] (#exceptions)
+12. [Actions](#actions)
+13. [Exceptions](#exceptions)
 
 ## Gradle Dependency
 
@@ -35,63 +35,6 @@ This is a list of dependecies that you have to add:
 ```gradle
 dependencies {
   implementation 'com.euronovate.mobilesdk:core:1.0.0'
-}
-```
-
-```gradle
-  //OTHER NECESSARY
-  implementation 'com.google.code.gson:gson:2.8.7'
-  implementation 'androidx.preference:preference-ktx:1.1.1'
-  implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
-  implementation 'androidx.exifinterface:exifinterface:1.3.2'
-
-  //Database room
-  implementation("androidx.room:room-runtime:$roomVersion")
-  kapt("androidx.room:room-compiler:$roomVersion")
-  implementation("androidx.room:room-ktx:$roomVersion")
-  
-  //lifecycle
-  implementation "android.arch.lifecycle:extensions:1.1.1"
-  implementation "androidx.lifecycle:lifecycle-runtime:2.0.0"
-  implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
-  annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
-  
-   // crypto
-  implementation "org.bouncycastle:bcprov-jdk15on:1.61"
-  implementation "org.bouncycastle:bcpkix-jdk15on:1.61"
-  
-  //API okhttp
-  implementation "com.squareup.okhttp3:okhttp:4.7.2"
-  implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
-  implementation 'org.conscrypt:conscrypt-android:2.2.1'
-  
-  //GLIDE
-  api 'com.github.bumptech.glide:glide:4.12.0'
-  annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-  
-  //LOGGING
-  implementation "org.slf4j:slf4j-simple:1.6.1"
-  //IO
-  implementation 'org.simpleframework:simple-xml:2.7.1'
-  api 'io.jsonwebtoken:jjwt-api:0.10.7'
-  runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.7'
-  runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.7') {
-       exclude group: 'org.json', module: 'json'
-  }
-}
-```
-
-To use plugins kapt for **database room** is necessary add this plugin on top build.gradle
-
-    id 'kotlin-kapt'
-
-Like this:
-
-```gradle
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 ```
 
@@ -130,30 +73,47 @@ Only `context` is required. After inizialization you can use
 
 ### ENSettings Actions
 
+**Open Settings programmatically**
+
 ```kotlin
 ENSettings.getInstance().start()
 
 ```
-to open settings activity like this:
-
 ![settings](settings.png)
 
-You can also getValue saved in settings (String, Boolean at this moment):
+
+**GetValue** 
+saved in settings (String, Boolean at this moment):
 
 ```kotlin
 ENSettings.getInstance().getValue("key", defaultValue)
 
 ```
-Or you can add custom settings editable in activity after:
+**Add custom settings editable**:
 
 ```kotlin
 ENSettings.getInstance().addSettings("section name", ENSettingsConf("key","label name", ENSettingsConfType.input, valueFinal))
 ```
-**ENSettingsConfType** is an enum with these options:
+
+`ENSettingsConfType` is an enum with these options:
 
 * *input*
 * *switch*
 * *label*
+
+**Clear settings / Reset**
+
+We have added a menu item on top with lavel "Reset" if it is tapped sdk will reset to default value all. You can al so reset with this instruction:
+
+```kotlin
+ENSettings.getInstance().clearSettings()
+```
+
+After that you have to restartApp, if you want you can use this method:
+
+```kotlin
+ENGenericUtils.restartApp(your activity)
+```
 
 ## ENLogger
 
@@ -471,12 +431,15 @@ abstract class ENTheme {
     abstract fun signatureBoxTheme(): ENSignatureBoxTheme
     abstract fun dialogsTheme(): ENDialogsTheme
     abstract fun digitalSignageTheme(): ENDigitalSignageTheme
+	abstract fun presenterTheme(): ENPresenterTheme
 }
 ```
 
-In `ENSignatureBox` we have explained how to customized it theme.
-
-Idem with `ENDigitalSignageTheme`.
+In the specific sub modules (libraries) we explained how to customize these themes:
+  - `ENSignatureBox`
+  - `ENDigitalSignage`
+  - `ENPresenterTheme
+  
 
 Instead `ENDialogsTheme` if you want customize follow these examples:
 

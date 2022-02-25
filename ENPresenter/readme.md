@@ -5,7 +5,7 @@
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
 3. [ENPresenter Actions](#presenterActions)
-
+4. [Theme](#theme)
 ## Gradle Dependency
 
 ![badge_version](badge_version.svg)
@@ -29,3 +29,36 @@ Layout color,theme are automatically set based on clientName returned from `ENAu
 ENPresenter.getInstance().pathPdfJs : String
 ```
 By this method you can obtain a path of layout/theme of viewer
+
+## ENSignatureBox Theme
+
+You can customize your ENSignatureBox with this code:
+
+```kotlin
+class ENDefaultPresenterTheme: ENPresenterTheme(){  
+    override fun checkBoxViewStyle(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+ return ENUIViewStyle(textColor = context.getColor(R.color.yellow),  
+ bgColor = context.getColor(R.color.bguserinfosignaturebox))  
+    }  
+  
+    override fun textBoxViewStyle(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+ return ENUIViewStyle(textColor = context.getColor(R.color.yellow),  
+ bgColor = context.getColor(R.color.bguserinfosignaturebox))  
+    }  
+  
+    override fun signatureViewStyle(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+ return ENUIViewStyle(textColor = context.getColor(R.color.yellow),   
+bgColor = context.getColor(R.color.bguserinfosignaturebox))  
+    }  
+}
+```
+
+You can customize in signatureboxDialog:
+
+-checkbox style `checkBoxViewStyle`
+-textbox style: `textBoxViewStyle`
+-signature style: `signatureViewStyle`
+

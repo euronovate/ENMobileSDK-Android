@@ -58,10 +58,10 @@ dependencies {
     annotationProcessor deps.glide.annotationGlideProcessor
 
     //Lifecycle UI
-   // implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation deps.androidx.lifecycle.extensions
     implementation deps.androidx.lifecycle.runtime
-    implementation deps.androidx.lifecycle.compiler
+    annotationProcessor deps.androidx.lifecycle.compiler
+
     // crypto
     implementation deps.bouncycastle.bcprov
     implementation deps.bouncycastle.bcpkix

@@ -69,6 +69,7 @@ dependencies {
     implementation deps.androidx.lifecycle.extensions
     implementation deps.androidx.lifecycle.runtime
     annotationProcessor deps.androidx.lifecycle.compiler
+
     // crypto
     implementation deps.bouncycastle.bcprov
     implementation deps.bouncycastle.bcpkix

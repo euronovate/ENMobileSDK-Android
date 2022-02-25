@@ -1,0 +1,101 @@
+{
+  "main": {
+    "id": "93e842c95378f7a8",
+    "type": "split",
+    "children": [
+      {
+        "id": "ab7aa0f4ab3e2e59",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "ENPresenter/readme.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "118c7a8d62aa6a9a",
+    "type": "split",
+    "children": [
+      {
+        "id": "4aa6842e3c726707",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c716885462c562da",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "6f19ab92c0983783",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9c812d1961e36528",
+    "type": "split",
+    "children": [
+      {
+        "id": "d1ea0c37f19d8606",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "81beb8b69f7a18e2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "ENPresenter/readme.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "ab7aa0f4ab3e2e59",
+  "lastOpenFiles": [
+    "ENPresenter/readme.md",
+    "ENMobileSdk/readme.md",
+    "ENSignatureBox/readme.md",
+    "ENSignatureBox/imgSignatureBox.png",
+    "README.md",
+    "ENMobileSdk/positivedialog.png",
+    "ENMobileSdk/badge_version.svg",
+    "ENMobileSdk/settings.png"
+  ]
+}

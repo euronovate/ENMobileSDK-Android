@@ -179,13 +179,32 @@ class ENDefaultSignatureBoxTheme: ENSignatureBoxTheme(){
         val context = ENMobileSDK.getInstance().applicationContext
         return ENUIViewStyle(bgColor = context.getColor(R.color.titletextprogressdialog))
     }
+
+
+	override fun watermarkSigner(): ENUIViewStyle {  
+	    val context = ENMobileSDK.getInstance().applicationContext  
+		return ENUIViewStyle( textColor = context.getColor(R.color.waterMarkTextColor), textTypeface = font().medium())  
+	}  
+  
+	override fun watermarkTimeStamp(): ENUIViewStyle {  
+	     val context = ENMobileSDK.getInstance().applicationContext  
+		 return ENUIViewStyle( textColor = context.getColor(R.color.waterMarkTextColor), textTypeface = font().regular())  
+	}
 }
 ```
 
-You can customize:
+You can customize in signatureboxDialog:
 
 -label style `signerName`
 -label/layout button: `confirm`, `cancel`, `repeat`
 -label: `timestamp`
 -background: `signatureArea`
+
+And in final signatureImage it is possibile personalize: 
+
+-`watermarkSigner` -> textColor, textTypeface(font)
+-`watermarkTimestamp` -> textColor and textTypeface
+
+Watermark is text below  `signature image`  after acquiring the signature from the user, in the `ENSignatureBoxConfig.signatureImageConfig`  you can change which text you would show
+
 
