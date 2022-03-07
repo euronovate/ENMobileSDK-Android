@@ -6,6 +6,7 @@
 2. [Basics](#basics)
 3. [ENPresenter Actions](#presenterActions)
 4. [Theme](#theme)
+
 ## Gradle Dependency
 
 ![badge_version](badge_version.svg)
@@ -32,7 +33,7 @@ By this method you can obtain a path of layout/theme of viewer
 
 ## ENSignatureBox Theme
 
-You can customize your ENSignatureBox with this code:
+You can initialize your ENSignatureBox with this code:
 
 ```kotlin
 class ENDefaultPresenterTheme: ENPresenterTheme(){  
@@ -56,7 +57,7 @@ bgColor = context.getColor(R.color.bguserinfosignaturebox))
 }
 ```
 
-You can customize in signatureboxDialog:
+At this moment we left possibility to customize these acrofields type:
 
 -checkbox style `checkBoxViewStyle`
 -textbox style: `textBoxViewStyle`
