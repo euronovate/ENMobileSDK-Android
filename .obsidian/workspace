@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "ENViewer/readme.md",
+            "file": "ENMobileSdk/readme.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ENViewer/readme.md",
+                "file": "ENMobileSdk/readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,13 +89,13 @@
   },
   "active": "ab7aa0f4ab3e2e59",
   "lastOpenFiles": [
+    "ENMobileSdk/readme.md",
+    "README.md",
     "ENViewer/readme.md",
     "ENPresenter/readme.md",
     "ENViewer/imgViewer.png",
-    "ENMobileSdk/readme.md",
     "ENSignatureBox/readme.md",
     "ENSignatureBox/imgSignatureBox.png",
-    "README.md",
     "ENMobileSdk/positivedialog.png",
     "ENMobileSdk/badge_version.svg",
     "ENMobileSdk/settings.png"
