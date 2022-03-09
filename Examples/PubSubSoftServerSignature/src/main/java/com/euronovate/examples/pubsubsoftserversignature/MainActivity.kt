@@ -18,10 +18,7 @@ import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
 import com.euronovate.mobilesdk.extensions.emitEvent
-import com.euronovate.mobilesdk.model.ENCertificateOwnerInfo
-import com.euronovate.mobilesdk.model.ENEventType
-import com.euronovate.mobilesdk.model.ENMobileSDKResponse
-import com.euronovate.mobilesdk.model.ENMobileSdkConfig
+import com.euronovate.mobilesdk.model.*
 import com.euronovate.mobilesdk.model.responses.business.document.StartSignDTO
 import com.euronovate.mobilesdk.ui.dialog.ENDialog
 import com.euronovate.mobilesdk.ui.dialog.ENDialog.Companion.showGenericErrorDialog
@@ -78,7 +75,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(applicationContext)
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",))
-            .with(ENMobileSdkConfig(skipSSL = false,certificateOwnerInfo = ENCertificateOwnerInfo()))
+            .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
+                networkConfig = ENNetworkConfig(skipSSL = false)
+            ))
             .with(ENViewer.Builder()
                 .with(applicationContext = applicationContext)
                 .build())

@@ -18,6 +18,7 @@ import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
 import com.euronovate.mobilesdk.model.ENCertificateOwnerInfo
 import com.euronovate.mobilesdk.model.ENMobileSDKResponse
 import com.euronovate.mobilesdk.model.ENMobileSdkConfig
+import com.euronovate.mobilesdk.model.ENNetworkConfig
 import com.euronovate.mobilesdk.theme.ENDefaultTheme
 import com.euronovate.mobilesdk.theme.with
 import com.euronovate.utils.preferences.ENSettings
@@ -50,8 +51,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .build())
             .with(context = applicationContext)
                 //TODO QUI
-            .with(mobileSdkConfig = ENMobileSdkConfig(languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(
-                    ENLanguageType.en, ENLanguageType.el))))
+            .with(mobileSdkConfig = ENMobileSdkConfig(languageConfig = ENLanguageConfig(selectorVisible = true,
+                languageEnabled = arrayListOf(ENLanguageType.en, ENLanguageType.el)),
+                networkConfig = ENNetworkConfig(skipSSL = true)
+            ))
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
             ))

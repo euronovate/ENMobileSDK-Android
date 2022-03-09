@@ -20,6 +20,7 @@ import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
 import com.euronovate.mobilesdk.model.ENCertificateOwnerInfo
 import com.euronovate.mobilesdk.model.ENMobileSDKResponse
 import com.euronovate.mobilesdk.model.ENMobileSdkConfig
+import com.euronovate.mobilesdk.model.ENNetworkConfig
 import com.euronovate.mobilesdk.ui.dialog.ENDialog
 import com.euronovate.mobilesdk.ui.dialog.ENDialogTextConfig
 import com.euronovate.mobilesdk.ui.dialog.ENDialogType
@@ -68,7 +69,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
              ))
-            .with(ENMobileSdkConfig(skipSSL = false,certificateOwnerInfo = ENCertificateOwnerInfo()))
+            .with(ENMobileSdkConfig(
+                networkConfig = ENNetworkConfig(skipSSL = false),
+                certificateOwnerInfo = ENCertificateOwnerInfo()))
             .with(ENViewer.Builder()
                 .with(applicationContext = applicationContext)
                 .build())
