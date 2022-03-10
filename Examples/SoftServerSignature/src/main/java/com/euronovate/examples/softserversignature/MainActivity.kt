@@ -67,8 +67,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .build())
             .with(applicationContext)
             .with(initializationCallback = this@MainActivity)
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
-             ))
+            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",))
             .with(ENMobileSdkConfig(
                 networkConfig = ENNetworkConfig(skipSSL = false),
                 certificateOwnerInfo = ENCertificateOwnerInfo()))
