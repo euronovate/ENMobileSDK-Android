@@ -14,6 +14,8 @@ import com.euronovate.bio.model.enum.ENSignatureSourceType
 import com.euronovate.examples.localsignature.R
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
+import com.euronovate.logger.model.ENLanguageConfig
+import com.euronovate.logger.model.ENLanguageType
 import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
@@ -70,6 +72,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url"))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
+                languageConfig = ENLanguageConfig(selectorVisible = true,
+                    languageEnabled = arrayListOf(ENLanguageType.en)),
                 networkConfig = ENNetworkConfig()
             ))
             .with(ENViewer.Builder()

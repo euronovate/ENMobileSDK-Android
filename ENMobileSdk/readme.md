@@ -374,10 +374,15 @@ This is an example:
 
 ```kotlin
 .with(mobileSdkConfig = ENMobileSdkConfig(
-		    networkConfig = ENNetworkConfig(skipSSL = true,  OAuth2Config = null, customHeaders = hashMapOf("key1" to "val11")),
-                certificateOwnerInfo = ENCertificateOwnerInfo(),
-                certificateIntegrity = "base64ofpemwithprivatekey",
-                languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(ENLanguageType.en, ENLanguageType.el))
+		    networkConfig = ENNetworkConfig(skipSSL = true,  
+			    OAuth2Config = null,
+			    customHeaders = hashMapOf("key1" to "val11")
+			    customBody = CustomBody(),  
+				customHeader = CustomHeader()
+		    ),
+            certificateOwnerInfo = ENCertificateOwnerInfo(),
+            certificateIntegrity = "base64ofpemwithprivatekey",
+            languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(ENLanguageType.en, ENLanguageType.el))
 ))
 ```
 
@@ -387,11 +392,36 @@ This is an example:
 class ENNetworkConfig(  
     var skipSSL: Boolean = false,  
     var OAuth2Config: ENOAuth2Config?= null,  
-    var customHeaders: HashMap<String, String>? = null)
+    var customHeader: ENCustomHeader? = null,  
+	var customBody: ENCustomBody? = null
+)
 ```
 Inside the NetworkConfig you can configure:
 * `skipSSL` allow to ignore https not valid or expired if a true
-* `customHeaders` is optional, if it is present it will allow to add custom parameter in each request Headers.
+* `customerHeader` is optional, if it is present it will allow to add custom parameter in each request Headers. You have to create a class that extend:  `ENCustomHeader` like this:
+```kotlin
+class MyCustomHeader (  
+    @SerializedName("header")  
+    var header: String = "value"  
+) : ENCustomHeader()
+```
+**All parameters must be only string.**
+
+Exist a method called `toJSON` you can override it and handle trasformation, idem with method `toHashMap`
+
+* `customBody` is optional, if it is present it will allow to add custom json/parameter in each request. You have to create a class that extend:  `ENCustomBody` like this:
+
+```kotlin
+class MyCustomBody : ENCustomBody()(    
+ @SerializedName("name")  
+    var name: String = "Euronovate",  
+ @SerializedName("id")  
+    var id: String = UUID.randomUUID().toString()  
+)
+```
+
+Exist a method called `toJSON` you can override it and handle trasformation.
+
 * `OAuth2Config` if you need to enable OAuth2 for each api request you can configure it with this class.
 
 ```kotlin
