@@ -1,13 +1,10 @@
 # ENViewer
 
 ## Table of Contents
-
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [Exception](#ensettings)
-4. [ENMobileSdk Extension](#enlogger)
-5. [Theme](#theme)
-
+3. [ENViewerActions](#ENViewerActions)
+4. [ENViewerTheme](#ENViewerTheme)
 
 ## Gradle Dependency
 
@@ -40,7 +37,7 @@ You have to **respect** *.with* order like in above example.
 ![Viewer image](imgViewer.png)
 
 
-### ENViewer Actions
+## ENViewerActions
 
 ```kotlin
 ENViewer.getInstance().start(pdfContainer: PdfContainer)
@@ -83,7 +80,7 @@ As you can see from code this request is suspend, so you need to call in courout
 
 If you want handle `ENSoftServerException` or other type you have to use `try / catch `
 
-## ENViewer Theme
+## ENViewerTheme
 
 This is an example of initialization of ENViewerTheme:
 

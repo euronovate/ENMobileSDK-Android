@@ -2,10 +2,11 @@
 
 ## Table of Contents
 
-1. [Gradle Dependency](#gradle-dependency)
+1. [Gradle Dependency](#Gradle-Dependency)
 2. [Basics](#basics)
-3. [ENDigitalSignageConfig](#digitalsignageConfig)
-4. [Theme](#theme)
+3. [ENDigitalSignageConfig](#ENDigitalSignageConfig)
+4. [ENDigitalSignageActions](#ENDigitalSignageActions)
+5. [ENDigitalSignageTheme](#ENDigitalSignageTheme)
 
 ## Gradle Dependency
 
@@ -45,7 +46,7 @@ ENDigitalSignageConfig(var baseUrl: String,
 ```
 `baseUrl` and `licenseCode` are mandatory, instead `landPlaceholderAssetName` and `portPlaceholderAssetName` are optional and they allow to customize images default: portrait, landscape 
 
-## ENDigitalSignage Actions
+## ENDigitalSignageActions
 
 ```kotlin
 ENDigitalSignage.getInstance().start()

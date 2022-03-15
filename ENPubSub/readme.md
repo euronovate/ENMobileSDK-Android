@@ -1,10 +1,10 @@
 # ENPubSub
 
 ## Table of Contents
-
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [ENPubSub Actions](#pubsubActions)
+3. [ENPubSubConfig](#ENPubSubConfig)
+4. [ENPubSubActions](#ENPubSubActions)
 
 ## Gradle Dependency
 
@@ -53,7 +53,7 @@ This is a class that allow to config this module.
 
 `type` is a function that user can implement that must be return a Pair with `URL` and `accessToken` if available. They are mandatory to estabilish connection.
 
-### ENPubSub Actions
+## ENPubSubActions
 
 **Init connection**
 

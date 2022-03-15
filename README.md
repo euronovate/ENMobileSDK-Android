@@ -204,7 +204,6 @@ The `PubSub ` module allow to estabilish a connection with websocket in particua
 * WebSocket
 
 
-
 ```gradle
 dependencies {
     implementation "com.euronovate.pubsub:pubsub:1.0.0"

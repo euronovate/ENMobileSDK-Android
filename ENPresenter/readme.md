@@ -4,8 +4,8 @@
 
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [ENPresenter Actions](#presenterActions)
-4. [Theme](#theme)
+3. [ENPresenterActions](#ENPresenterActions)
+4. [ENPresenterTheme](#ENPresenterTheme)
 
 ## Gradle Dependency
 
@@ -24,14 +24,14 @@ You shouldn't do anything because presenter is automatically built on `ENViewer`
 
 Layout color,theme are automatically set based on clientName returned from `ENAuth`after **licenseKey** or **Jwt** check
 
-### ENPresenter Actions
+## ENPresenterActions
 
 ```kotlin
 ENPresenter.getInstance().pathPdfJs : String
 ```
 By this method you can obtain a path of layout/theme of viewer
 
-## ENSignatureBox Theme
+## ENPresenterTheme
 
 You can initialize your ENSignatureBox with this code:
 

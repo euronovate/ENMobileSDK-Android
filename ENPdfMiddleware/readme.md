@@ -4,8 +4,8 @@
 
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [ENPdfMiddleware Config](#pdfMiddlewareConfig)
-4. [ENPdfMiddlewareException] (#pdfMiddlewareException)
+3. [ENPdfMiddlewareException](#ENPdfMiddlewareException)
+
 
 ## Gradle Dependency
 

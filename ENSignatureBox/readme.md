@@ -1,11 +1,11 @@
 # ENSignatureBox
 
 ## Table of Contents
-
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [ENSignatureBox Sub Actions](#signatureboxActions)
-4. [Theme](#theme)
+3. [ENSignatureBoxConfig](#ENSignatureBoxConfig)
+4. [ENSignatureBoxActions](#ENSignatureBoxActions)
+5. [ENSignatureBoxTheme](#ENSignatureBoxTheme)
 
 ## Gradle Dependency
 
@@ -74,7 +74,7 @@ another customization about signature image with this config: `signatureContentM
 * `ignoreFieldRatio`,
 * `keepFieldRatio`
 
-## ENSignatureBox Actions
+## ENSignatureBoxActions
 
 **Show**
 
@@ -117,7 +117,7 @@ ENSignatureBox.getInstance().isAlreadyVisible()
 
 ```
 
-## ENSignatureBox Theme
+## ENSignatureBoxTheme
 
 You can customize your ENSignatureBox with this code:
 

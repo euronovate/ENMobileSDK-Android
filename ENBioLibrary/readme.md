@@ -4,7 +4,7 @@
 
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [ENBioLibrary Actions](#bioLibraryActions)
+3. [ENBioLibraryActions](#ENBioLibraryActions)
 
 ## Gradle Dependency
 
@@ -32,7 +32,7 @@ Here's a very basic example of inizialization of ENBioLibrary in ENMobileSdk bui
 
 You have to **respect** *.with* order like in above example.
 
-### ENBioLibrary Actions
+## ENBioLibraryActions
 
 **addSignatureTouchedPoint**
 

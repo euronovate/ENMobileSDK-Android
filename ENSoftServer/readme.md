@@ -1,10 +1,10 @@
 # ENSoftServer
 
 ## Table of Contents
-
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [ENSoftServer Actions](#softServerActions)
+3. [ENSoftServerConfig](#ENSoftServerConfig)
+4. [ENSoftServerRepositories](#ENSoftServerRepositories)
 
 ## Gradle Dependency
 
@@ -39,7 +39,7 @@ Here's a very basic example of inizialization of ENSoftServer in ENMobileSdk bui
 
 You have to **respect** *.with* order like in above example.
 
-### ENSoftServerConfig
+## ENSoftServerConfig
 
 The constructor is: 
 
@@ -52,7 +52,7 @@ class ENSoftServerConfig(
 
 `baseUrl` and `licenseCode` are mandatory
 
-### ENSoftServer Repositories
+## ENSoftServerRepositories
 
 All method are `suspend` so you need to call this in coroutine or async context.
 
