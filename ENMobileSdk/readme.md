@@ -10,11 +10,11 @@
 6. [ENAuth](#enauth)
 7. [ENDialog](#endialog)
 8. [Utilities](#utilities)
-9. [Config](#config)
-10. [Theming](#theming)
-11. [ENEventInternal](#eventInternal)
-12. [Actions](#actions)
-13. [Exceptions](#exceptions)
+9. [ENMobileSDKConfig](#ENMobileSDKConfig)
+10. [Theming](#Theming)
+12. [InternalEventDriven](#InternalEventDriven)
+13. [ENMobileSdkActions](#enmobilesdkactions)
+14. [ENMobileSdkException](#ENMobileSdkException)
 
 ## Gradle Dependency
 
@@ -366,7 +366,7 @@ class MainApplication : ENApplication(){
 }
 ```
 
-##ENMobileSDKConfig
+## ENMobileSDKConfig
 
 As you can guess from the builder source code, you have the possibility to configure some parameters of the "core"
 
@@ -463,7 +463,7 @@ ENCertificateOwnerInfo (
 * `languageConfig` allow user to set a list of avaiable language in app based on our enum `ENLanguageType` in the specific config you can also decided if enable or not languagePicker `ENViewer` and/or `ENDigitalSignage`
 * `enableSignatureOverwrite` is a flag that allow to overwrite a signature in a document if set a true, but if you set a false you won't able to overwrite a signature after the first
 
-## Theming (ENTheme)
+## Theming
 
 Each client can customize some ui parts of sdk at this moment:
 
@@ -567,16 +567,17 @@ class ENDefaultFont: ENFont(){
 }
 ```
 
-## Event Driven Internal
+## InternalEventDriven
 
 There is an EventDriven inside a mobileSdk, at this moment we have these events:
-
+```kotlin
 enum class ENEventType {
     appForegrounded, -> when app is put in foreground (is vibile)
     appBackgrounded, -> when app is put in bg (not visible)
     coreInitialized, -> when ENMobileSdk finished initialization
     signDocument -> when receive an event to sign a document
 }
+```
 
 You can `subscribe / unsubscribe` or `emit` to their.
 
@@ -601,7 +602,7 @@ You can emite event to a specific event and pass your custom data, for example:
 ENMobileSDK.emitEvent(ENEventType.signDocument,StartSignDTO("guid"))
 ```
 
-##ENMobileSdk Actions
+## ENMobileSdkActions
 
 There is a list of public method that aren't included in (settings,event driven ecc..)
 
@@ -631,7 +632,7 @@ ENMobileSDK.getInstance().getResourcesLocalized()
 For example: if you need to update label with correct language you can use this.
 
 
-##ENMobileSdkException
+## ENMobileSdkException
 
 There is a set of exception specific used in core and submodules:
 
