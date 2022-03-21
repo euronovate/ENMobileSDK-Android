@@ -22,7 +22,7 @@ dependencies {
 
 You shouldn't do anything because presenter is automatically built on `ENViewer` builder.
 
-Layout color,theme are automatically set based on clientName returned from `ENAuth`after **licenseKey** or **Jwt** check
+Layout color,theme are automatically based on clientName, returned from `ENAuth`after **licenseKey** or **Jwt** check
 
 ## ENPresenterActions
 
@@ -33,7 +33,7 @@ By this method you can obtain a path of layout/theme of viewer
 
 ## ENPresenterTheme
 
-You can initialize your ENSignatureBox with this code:
+You can initialize your ENDefaultPresenterTheme with this code:
 
 ```kotlin
 class ENDefaultPresenterTheme: ENPresenterTheme(){  

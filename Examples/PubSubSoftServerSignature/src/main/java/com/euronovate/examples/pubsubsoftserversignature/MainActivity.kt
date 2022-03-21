@@ -93,7 +93,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(pubSub = ENPubSub.Builder()
                 .with(
                     ENPubSubConfig(type = ENPubSubType.webSocket,
-                    connectionParams = { return@ENPubSubConfig Pair("wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm&notify_self","") }))
+                        //wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm&notify_self
+                    connectionParams = { return@ENPubSubConfig Pair("your url signalR","your token") }))
                 .with(applicationContext)
                 .build())
             .with(ENBio.Builder()
@@ -101,7 +102,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .build())
             .with(ENSoftServer.Builder()
                 .with(applicationContext)
-                .with(ENSoftServerConfig(baseUrl = "http://dev.euronovate.com:59082/SoftServer", "2Zq4AcbHtJ6abXZCx58+jT5ekMML8OEK7Ui+hK/bsjH4zYSorRvrpj2V6ivc+SJrIvhXedm92a74d92f/AqVfQ=="))
+                .with(ENSoftServerConfig(baseUrl = "your softserver url", "your license key"))
                 .build())
             .build()
     }

@@ -39,8 +39,7 @@ You have to **respect** *.with* order like in above example.
 this method allow to collect all info about one point (x,y,pressure,timestamp ecc...)  
 
 ```kotlin
-ENBio.getInstance().addSignatureTouchedPoint(SignatureTouchedPoint(eventX = eventX,
-                    eventY = eventY, eventPressure = event.pressure, isUpEvent = false, eventTime = event.eventTime,signatureSourceType = touchEventInputMethod))
+ENBio.getInstance().addSignatureTouchedPoint(SignatureTouchedPoint(eventX = eventX, eventY = eventY, eventPressure = event.pressure, isUpEvent = false, eventTime = event.eventTime,signatureSourceType = touchEventInputMethod))
 ```
 you need to pass `SignatureTouchedPoint`
 
@@ -57,7 +56,7 @@ ENBio.getInstance().isSourceTypeConsistent(touchEventInputMethod)
 
 **clearBioPackets**
 
-It allow to clear all biometricPacket in memory and restart with array empty
+It allow to clear all biometricPacket in memory
 
 ```kotlin
 ENBio.getInstance().clearBioPackets()
@@ -65,7 +64,7 @@ ENBio.getInstance().clearBioPackets()
 
 **getBioContent**
 
-With this method user can obtain base64 based on xml of biometricData array.
+With this method user can obtain base64 based on xml of biometricData array collected.
 
 ```kotlin
 ENBio.getInstance().getBioContent(

@@ -8,16 +8,16 @@
 
 # Modules
 
-The core module is the fundamental module that you need in order to use this library.
+The core module is the fundamental module that you need in order to use this sdk.
 
-Please note that ENMobileSDK, this library only supports Kotlin.
+Please note that ENMobileSDK, this library only full supports Kotlin, buy maybe work with Java
 
 ### Maven Gradle Dependecy Setup
 Before start you need to setup maven repositories:
 
-You have to in your external file `build.gradle`
+You have to put in your external file `build.gradle`
 
-Add this: 
+this: 
 
 ```gradle
 maven {
@@ -74,11 +74,13 @@ Our sdk use a set of dependecies that they are required, this is a list:
 
 You have to put this list in your `app/build.gradle` 
 
-To use plugins kapt for **database room** is necessary add this plugin on top build.gradle
+To use plugins kapt for **database room** is necessary add this plugin on top of `app/build.gradle` 
 
- id 'kotlin-kapt'
+```gradle
+id 'kotlin-kapt'
+```
 
-Like this:
+Full example like this:
 
 ```gradle
 plugins {
@@ -93,16 +95,14 @@ plugins {
 ![badge_version](ENMobileSdk/badge_version.svg)
 
 
-The `core` module contains everything you need to get started with the library. It contains all
-core and:
-
+The `core` module includes everything you need to get started with the library. It contains all core and:
 * utilities
 * logger
 * enauth
 * endialog
 * ensettings
 
-The `ENAuth` is liable to check license and active all modules `built` with ENMobileSdk
+The `ENAuth` is liable to check license and to activate all modules `built` with ENMobileSdk
 
 The `ENDialog` contains a set of dialog type that you can use in your app and it is already used in sdk
 
@@ -147,7 +147,7 @@ dependencies {
 
 ![badge_version](ENDigitalSignage/slideshow.png)
 
-The `digitalsignage` module contains a module with a main actity called `ENDigitalSignageActivity` that allow to have a slideshow with video/image in loop in waiting for a new document to sign/edit
+The `digitalsignage` module contains a main activity `ENDigitalSignageActivity` that allow to have a slideshow with video/image in loop in waiting for a new document to sign/edit
 
 ```gradle
 dependencies {
@@ -162,7 +162,7 @@ dependencies {
 
 #### [ENPdfMiddleware Tutorial and Samples](ENPdfMiddleware/readme.md)
 
-The `pdfMiddleware` module contains an extension of core and it is a brain of the processing about pdf Document for example:
+The `pdfMiddleware` is an extension of the core and it is a brain of the processing about pdf Document, for example:
 
 * elaborate bookmarks
 * signPdf
@@ -183,7 +183,7 @@ dependencies {
 
 #### [ENPresenter Tutorial and Samples](ENPresenter/readme.md)
 
-The `presenter` module contains only a template used by `viewer` to render document. It is customized based on client.
+The `presenter` module contains only a templates used by `viewer` to render document. It is customized based on client.
 
 ```gradle
 dependencies {
@@ -219,7 +219,8 @@ dependencies {
 
 ![badge_version](ENSignatureBox/imgSignatureBox.png)
 
-The `SignatureBox` module allow to capture finger digital signature or stylus digital signature in specific popup/dialog called `ENSignatureActivity `. The signature can be with or not biometricdata with `ENBio`
+The `SignatureBox` module allow to capture finger or stylus digital signature, in specific popup/dialog called `ENSignatureActivity `. 
+The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {

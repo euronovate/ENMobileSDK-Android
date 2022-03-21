@@ -10,12 +10,7 @@
 
 ![badge_version](badge_version.svg)
 
-The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling with acrofields for example:
-
-* textfield
-* checkbox
-* radiobutton
-* signature
+The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling on acrofields
 
 ```gradle
 dependencies {
@@ -32,7 +27,7 @@ Here's a very basic example of inizialization of ENViewer in ENMobileSdk builder
      .with(applicationContext = applicationContext)
      .build())
 ```
-You have to **respect** *.with* order like in above example.
+Must **respect** *.with* order like in above example.
 
 ![Viewer image](imgViewer.png)
 
@@ -45,10 +40,8 @@ ENViewer.getInstance().start(pdfContainer: PdfContainer)
 ```
 to open viewer with `pdfContainer`. 
 
-
 ```kotlin
 ENViewer.getInstance().isAlreadyVisible() 
-
 ```
 If you want to check if viewer is alreadyVisible. (it also consider signaturebox over viewer). `return Bool`
 
@@ -56,7 +49,7 @@ If you want to check if viewer is alreadyVisible. (it also consider signaturebox
 
 When user adds in your app this module, automatically he will find himself in `ENMobileSdk.getInstance()` this methods:
 
-**OPEN DOCUMENT LOCAL**
+**OPEN LOCAL DOCUMENT **
 
 ```kotlin
 ENMobileSDK.openDocument(documentBase64: String, certPemBase64: String?=null): Boolean
@@ -69,7 +62,7 @@ Exist another similar method to open document with byte array.
 ENMobileSDK.openDocument(data : ByteArray,certPemBase64: String?=null): Boolean
 ```
 
-**OPEN DOCUMENT REMOTE**
+**OPEN  REMOTE DOCUMENT**
 
 ```kotlin
 suspend fun ENMobileSDK.openRemoteDocument(documentGuid: String): Boolean
@@ -170,10 +163,4 @@ class ENDefaultBottomBarTheme: ENBottomBarTheme(){
     }
 }
 ```
-
-- `leftLayout`: is used to customize layout in left side(background color, corner radius etc....)
-- `rightLayout`: is used to customize layout in right side(background color, corner radius etc....)
-- `flagCountry`: is used to customize flag selector.
-
-All other abstract fun allow to customize icon/label, with font for example.
 

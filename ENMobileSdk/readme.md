@@ -20,17 +20,13 @@
 
 ![badge_version](badge_version.svg)
 
-The `core` module contains everything you need to get started with the library. It contains all
-core and:
+The `core` module contains everything you need to get started with the library. It contains all core and:
 
 * utilities
 * logger
 * enauth
 * endialog
 * ensettings
-
-
-This is a list of dependecies that you have to add:
 
 ```gradle
 dependencies {
@@ -51,8 +47,7 @@ ENMobileSDK.Builder()
      .with(applicationContext)
      .with(initializationCallback = this@MainActivity)
      .with(authConfig = ENAuthConfig(licenseKey = "your license key of enauth", serverUrl= "enauth server url"))
-     .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
-							 networkConfig = ENNetworkConfig(skipSSL = true))
+     .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),networkConfig = ENNetworkConfig(skipSSL = true))
      .with(theme = ENDefaultTheme())
      .build()
 ```
@@ -60,7 +55,7 @@ You have to **respect** *.with* order like in above example.
 
 ## ENSettings
 
-The `settings` class is used to change runtime and save in persistance area all parameters in enmobilesdk and each submodules config.
+The `settings` class is used to change runtime and save in persistance area all network parameters in enmobilesdk and each submodules config.
 
 This is a simple snippet
 
@@ -104,7 +99,7 @@ ENSettings.getInstance().addSettings("section name", ENSettingsConf("key","label
 
 **Clear settings / Reset**
 
-We have added a menu item on top with lavel "Reset" if it is tapped sdk will reset to default value all. You can al so reset with this instruction:
+We have added a menu item on top , with a label "Reset" if it is tapped sdk will reset all settings to default value. You can also reset programmatically with this:
 
 ```kotlin
 ENSettings.getInstance().clearSettings()
@@ -120,7 +115,7 @@ ENGenericUtils.restartApp(your activity)
 
 The `logger`class is used to trace exception,debug info, api or anything. All logs are written in different file *.txt* with name based on current day with this format: *dd/MM/yyyy*
 
-This is a simple snippet
+Snippet example:
 
 ```kotlin
 .with(logger = ENLogger.Builder()
@@ -132,8 +127,7 @@ This is a simple snippet
 You have to **respect** *.with* order like in above example.
 
 *applicationContext* is required
-
-*loggerConfig* is required and with ENLoggerConfig class you can enable,disable logging, configurate logserver or level of logging.
+*loggerConfig* is required is based on ENLoggerConfig class
 
 ```kotlin
 ENLoggerConfig(var debuggable: Boolean, @LogLevel var logLevel: Int,
@@ -147,7 +141,6 @@ This is the constructor:
 ```kotlin
 ENLogServerConfig(baseUrl: String? = null, licenseCode: String? = null)
 ```
-Exist a class to handle ENAuth Exception. It is called `ENLoggerException`
 
 ### ENLogger Actions
 
@@ -165,11 +158,11 @@ ENLogger.getInstance().i(TAG, "[${javaClass.simpleName}]: " + "${Exception().sta
 
 Send log files after compression in .zip
 
-
 ```kotlin
 ENLogger.getInstance().sendLogEmailIntent("app name",context)
 ```
-Return only zip path file with logs inside:
+
+Return only path of zip including logs:
 
 ```kotlin
 ENLogger.getInstance().zipLogFile()
@@ -177,7 +170,7 @@ ENLogger.getInstance().zipLogFile()
 
 ## Initialization Callback
 
-This callback is required and it allow to notify user when all'sdks are initialized and ENAuth activated all product or not.
+This callback is required and it allow to notify user when all'sdks are initialized and ENAuth activated all product.
 
 ```kotlin
 .with(initializationCallback: ENMobileInitializationCallback<String>)
@@ -235,9 +228,9 @@ for example you can request an activation for onyl a specific product, or you ca
 
 Exist a class to handle ENAuth Exception. It is called `ENAuthException`
 
-###ENAuthException
+### ENAuthException
 
-We have default exception core, but there are other type specific to ENAuthException:
+We have default exception in core, but there are other type specific to ENAuthException:
 
 * **licenseVerificationWrongDeviceId** is returned when your jwt contains a wrong device uuid different of your current device.
 * **someProductsHaveProblems**  your jwt contains a different list of product(module) that you are trying to activate.
@@ -432,7 +425,8 @@ Exist a method called `toJSON` you can override it and handle trasformation.
     var headerParameters: HashMap<String, String>? = null,
 )
 ```
-You have to pass `url` compulsory. `bodyParameters` or `bodyJson` or `headerParameters` is optionally and you can configure if you need.
+You have to pass `url` compulsory. 
+`bodyParameters` or `bodyJson` or `headerParameters` are optionally and you can configure if you need.
 
 Response must be like this:
 
@@ -445,10 +439,9 @@ class ENOAuth2Response(
 )
 ```
 
-If OAuth2 is configured in each request will be an `Authorization Bearer` with `accessToken` that you have provided to us
+If OAuth2 is configured, in each request will be an `Authorization Bearer` with `accessToken` that you have provided to us.
 
-* `certificateOwner`allow user to customize entity of certificate autogenerated during applying signature in field. If `certificateIntegrity` was set this parameter won't used.
-The constructor is:
+* `certificateOwner` allow user to customize entity of certificate autogenerated during applying signature in field. If `certificateIntegrity` was set this parameter won't used. The constructor is:
 
 ```kotlin
 ENCertificateOwnerInfo (
@@ -459,13 +452,14 @@ ENCertificateOwnerInfo (
 )
 ```
 
-* `certificateIntegrity` must contains base64 of pem with privateKey and certificate. If it is set, the certificate generation operation will be skipped during the application of the first signature in the document
-* `languageConfig` allow user to set a list of avaiable language in app based on our enum `ENLanguageType` in the specific config you can also decided if enable or not languagePicker `ENViewer` and/or `ENDigitalSignage`
-* `enableSignatureOverwrite` is a flag that allow to overwrite a signature in a document if set a true, but if you set a false you won't able to overwrite a signature after the first
+* `certificateIntegrity` must contains base64 of pem with privateKey and certificate. If it is set, the certificate generation operation will be skipped during the applying of the first signature in the document
+* `languageConfig` allow user to set a list of avaiable language in app, based on our enum `ENLanguageType` 
+   In the specific config you can also decide if enable or not languagePicker in`ENViewer` and/or `ENDigitalSignage`
+* `enableSignatureOverwrite` is a flag that allow to overwrite a signature in a document
 
 ## Theming
 
-Each client can customize some ui parts of sdk at this moment:
+Each user can customize some ui parts of sdk at this moment:
 
 
 ```kotlin
@@ -483,7 +477,7 @@ In the specific sub modules (libraries) we explained how to customize these them
   - `ENPresenterTheme
   
 
-Instead `ENDialogsTheme` if you want customize follow these examples:
+Instead  if you want customize `ENDialogsTheme` you will follow these examples:
 
 ```kotlin
 class ENDefaultDialogsTheme: ENDialogsTheme(){
@@ -548,7 +542,7 @@ class ENDefaultDialogsTheme: ENDialogsTheme(){
 
 ```
 
-You can also customize font with `font` function, you have to override it like this:
+You can also personalize Typeface with `font` function, you have to override it like this:
 
 ```kotlin
 class ENDefaultFont: ENFont(){
@@ -572,8 +566,8 @@ class ENDefaultFont: ENFont(){
 There is an EventDriven inside a mobileSdk, at this moment we have these events:
 ```kotlin
 enum class ENEventType {
-    appForegrounded, -> when app is put in foreground (is vibile)
-    appBackgrounded, -> when app is put in bg (not visible)
+    appForegrounded, -> when app is put in foreground
+    appBackgrounded, -> when app is put in bg 
     coreInitialized, -> when ENMobileSdk finished initialization
     signDocument -> when receive an event to sign a document
 }
@@ -596,7 +590,6 @@ ENMobileSDK.unSubscribeEvent(ENEventCallback..)
 **Emit Event**
 
 You can emite event to a specific event and pass your custom data, for example:
-
 
 ```kotlin
 ENMobileSDK.emitEvent(ENEventType.signDocument,StartSignDTO("guid"))

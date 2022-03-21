@@ -11,13 +11,7 @@
 
 ![badge_version](badge_version.svg)
 
-The `pdfMiddleware` module contains an extension of core and it is a brain of the processing about pdf Document for example:
-
-* elaborate bookmarks
-* signPdf
-* apposeCheckbox
-* apposeRadioButton
-* apposeTextField
+The `pdfMiddleware` module is the brain of the processing about pdf Document.
 
 ```gradle
 dependencies {
@@ -38,7 +32,6 @@ You have to **respect** *.with* order like in above example.
 
 
 ### ENPdfMiddleware Actions
-
 ```kotlin
 ENPdfMiddleware.getInstance().extractPdfStructureModel(document: ByteArray): PdfContainer
 ```

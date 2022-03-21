@@ -14,7 +14,7 @@
 
 ![badge_version](slideshow.png)
 
-The `digitalsignage` module contains a module with a main actity called `ENDigitalSignageActivity` that allow to have a slideshow with video/image in loop in waiting for a new document to sign/edit
+The `digitalsignage` module contains a main activity `ENDigitalSignageActivity` that allow to have a slideshow with video/image in loop in waiting for a new document to sign/edit
 
 ```gradle
 dependencies {
@@ -28,7 +28,7 @@ Here's a very basic example of inizialization of ENDigitalSignage.
 ```kotlin
 ENDigitalSignage.Builder()
      .with(applicationContext = applicationContext)
-     .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = BuildConfig.ENDIGITALSIGNAGE_SERVER_URL, licenseCode = BuildConfig.ENDIGITALSIGNAGE_LICENSE_KEY, landPlaceholderAssetName = "landscape_placeholder.png", portPlaceholderAssetName = "portrait_placeholder.png"))
+     .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = yourServerUrl, licenseCode = yourLicenseCode, landPlaceholderAssetName = "landscape_placeholder.png", portPlaceholderAssetName = "portrait_placeholder.png"))
 .build()
 ```
 You have to **respect** *.with* order like in above example.
@@ -48,14 +48,16 @@ ENDigitalSignageConfig(var baseUrl: String,
 
 ## ENDigitalSignageActions
 
+To start digitalSignage. 
+
 ```kotlin
 ENDigitalSignage.getInstance().start()
 ```
-to start digitalSignage. 
+
 
 ## ENDigitalSignageTheme
 
-You can customize ENDigitalSignageTheme with this code:
+You can customize ENDigitalSignageTheme like this:
 
 ```kotlin
 class ENDefaultDigitalSignageTheme: ENDigitalSignageTheme() {
@@ -77,4 +79,5 @@ class ENDefaultDigitalSignageTheme: ENDigitalSignageTheme() {
     }
 }
 ```
-With this code you can only customize layout and color of **DEVICE NAME** on bottom right of digital signage. You can see screenshoot on top of Readme. (PAD001)
+With this code you can only edit layout and color of **DEVICE NAME**, on bottom right of digital signage. 
+You can see screenshoot on top of the Readme. (PAD001)

@@ -10,7 +10,7 @@
 
 ![badge_version](badge_version.svg)
 
-The `PubSub ` module allow to estabilish a connection with websocket in particual with these types of ws:
+The `PubSub `module help you to estabilish a connection with websocket. At this moment we support these types:
 
 * signalR
 * WebSocket
@@ -46,12 +46,9 @@ This is a class that allow to config this module.
                 var connectionParams: (suspend () -> Pair<String, String>?)? = null)
 ```
 
-`type` is an enum of `ENPubSubType` it contains a list of connectionType available at this moment we support:
+`type` is an enum of `ENPubSubType` it contains a list of connectionType
 
-* websocket
-* signalR
-
-`type` is a function that user can implement that must be return a Pair with `URL` and `accessToken` if available. They are mandatory to estabilish connection.
+`connectionParams` is a function that user can implement that must be return a Pair with `URL` and `accessToken` if available. They are mandatory to estabilish connection.
 
 ## ENPubSubActions
 
@@ -60,11 +57,11 @@ This is a class that allow to config this module.
 ```kotlin
 ENPubSub.getInstance().init()
 ```
-By this method you can init connection and start. If you set connectionParam will be called with this method.
+By this method you can init connection and start. If you set connectionParam will be called by this method.
 
 **Connection Params**
 
-As we said before is necessary provide at module two value accessToken and Url, in certain case user must request these to another api, so we have made it available to you a function suspend where you can pass this class:
+As we said before is necessary provide at module two value **accessToken** and **Url**, in certain case user must request these to another api, so we have made it available to you a function suspended where you can pass this class:
 
 ```kotlin
 class ENPubSubConnectionParamConfig(
@@ -84,9 +81,10 @@ This maybe return you url and access token or other that you can pass in `config
 **Comunication between client/server**
 
 Comunication between client and server must be with a message with format JSONObject.
+
 **Subscribe to Event**
 
-We have a set of specific event that you can subcribe to them. They is included in `ENPubSubChannel` at this moment we have:
+We have a set of specific event that you can subcribe to them. They are included in `ENPubSubChannel` , at this moment we have:
 * startSign
 * all
 

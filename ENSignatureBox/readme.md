@@ -16,7 +16,8 @@
 
 ![badge_version](imgSignatureBox.png)
 
-The `SignatureBox` module allow to capture finger digital signature or stylus digital signature in specific popup/dialog called `ENSignatureActivity `. The signature can be with or not biometricdata with `ENBio`
+The `SignatureBox` module allow to capture finger or stylus digital signature in specific popup/dialog called `ENSignatureActivity `. 
+The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
@@ -43,7 +44,7 @@ You have to **respect** *.with* order like in above example.
 
 ## ENSignatureBoxConfig
 
-This is a class that allow to config this module.
+This is a class used to configure ENSignatureBox Module.
 
 ```kotlin
  ENSignatureBoxConfig(
@@ -53,14 +54,14 @@ This is a class that allow to config this module.
     var signatureContentMode: ENSignatureContentMode = ENSignatureContentMode.keepFieldRatio
 )
 ```
-`signatureSourceType` you can choice with sourceType you will draw signature, you have this options:
+`signatureSourceType` you can choose the enabled mode to sign, you have this options:
 
 *  `Pen` 
 *  `Finger`
 *  `Any` --> in this case we select first method when you draw first line/dot
 
 
-`useAlpha` if this parameter is set to true, the image return in signaturebox on confirm will be with background **trasparent** (like a png) if set a false bg will be **white** (like a jpg)
+`useAlpha` if this parameter is set to true, the image return in signaturebox on confirm will be with background **trasparent** (like a png) if false bg will be **white** (like a jpg)
 
 `signatureImageConfig` you can customize label over signature (SignerName + timestamp), if you want can be without this info. Options are:
 
@@ -89,7 +90,7 @@ to open signatureBox you need to pass:
 
 `pdfContainer` -> structure obtained after **processing** of document in `ENPdfMiddleware`
 
-`signatureFieldName` -> this is unique identify of signatureField in a document.
+`signatureFieldName` -> this is unique string used to identifty documentField in a pdf.
 
 `callback` -> used to notify user after confirmation a signature drawed. You will receive this object: `ENSignatureDataResult` and this is the class declaration
 
@@ -104,7 +105,7 @@ class ENSignatureDataResult {
 
 `bioData` -> is base64 of biometric data xml crypted
 `signatureImage` -> is base64 of image
-`signatureModel` -> is class with all info field just signed.
+`signatureModel` -> is class with all info about field just signed.
 `hasAlpha` -> boolean that indicates if `signatureImage` is with bg white or trasparent
 
 
@@ -193,14 +194,14 @@ class ENDefaultSignatureBoxTheme: ENSignatureBoxTheme(){
 }
 ```
 
-You can customize in signatureboxDialog:
+At this moment you can customize these uicomponents:
 
 -label style `signerName`
 -label/layout button: `confirm`, `cancel`, `repeat`
 -label: `timestamp`
 -background: `signatureArea`
 
-And in final signatureImage it is possibile personalize: 
+And watermark: 
 
 -`watermarkSigner` -> textColor, textTypeface(font)
 -`watermarkTimestamp` -> textColor and textTypeface

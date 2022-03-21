@@ -5,7 +5,7 @@
 2. [Basics](#basics)
 3. [ENSoftServerConfig](#ENSoftServerConfig)
 4. [ENSoftServerRepositories](#ENSoftServerRepositories)
-
+5. [ENSoftServerException](#ENSoftServerException)
 ## Gradle Dependency
 
 ![badge_version](badge_version.svg)
@@ -14,9 +14,9 @@
 
 The `SoftServer` contains all api request used to interact with document, for example:
 
-* find document
+* find 
 * download
-* update status document
+* update status 
 * signPdf
 * appose Checkbox, TextField, RadioButton
 
@@ -33,7 +33,7 @@ Here's a very basic example of inizialization of ENSoftServer in ENMobileSdk bui
 ```kotlin
 .with(ENSoftServer.Builder()
       .with(applicationContext)
-      .with(ENSoftServerConfig(baseUrl = BuildConfig.ENSOFTSERVER_SERVER_URL, BuildConfig.ENSOFTSERVER_LICENSE_KEY))
+      .with(ENSoftServerConfig(baseUrl = "your server url", "your license key"))
       .build())
 ```
 
@@ -99,7 +99,7 @@ At this moment we have:
 
 ...tbd
 
-##ENSoftServerException
+## ENSoftServerException
 
 **ENSoftServerException** is based in ***ENMobileSDKException*** but there is other exception.
 
