@@ -94,7 +94,7 @@ plugins {
 
 ## ENMobileSDK (conventionally ENCore)
 
-![badge_version](ENMobileSdk/badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 
 The `core` module includes everything you need to get started with the library. It contains all core and:
@@ -120,8 +120,7 @@ dependencies {
 ```
 
 ## ENViewer
-
-![badge_version](ENViewer/badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [Viewer Tutorial and Samples](ENViewer/readme.md)
 
@@ -141,9 +140,7 @@ dependencies {
 ```
  
 ## ENDigitalSignage
-
-![badge_version](ENDigitalSignage/badge_version.svg)
-
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [DigitalSignage Tutorial and Samples](ENDigitalSignage/readme.md)
 
@@ -158,9 +155,7 @@ dependencies {
 ```
 
 ## ENPdfMiddleware
-
-![badge_version](ENPdfMiddleware/badge_version.svg)
-
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [ENPdfMiddleware Tutorial and Samples](ENPdfMiddleware/readme.md)
 
@@ -179,9 +174,7 @@ dependencies {
 ```
 
 ## ENPresenter
-
-![badge_version](ENPresenter/badge_version.svg)
-
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [ENPresenter Tutorial and Samples](ENPresenter/readme.md)
 
@@ -194,10 +187,7 @@ dependencies {
 ```
 
 ## ENPubSub
-
-![badge_version](ENPubSub/badge_version.svg)
-
-
+![](https://badgen.net/badge/stable/1.0.0/blue)
 #### [ENPubSub Tutorial and Samples](ENPubSub/readme.md)
 
 The `PubSub ` module allow to estabilish a connection with websocket in particual with these types of ws:
@@ -213,9 +203,7 @@ dependencies {
 ```
 
 ## ENSignatureBox
-
-![badge_version](ENSignatureBox/badge_version.svg)
-
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [SignatureBox Tutorial and Samples](ENSignatureBox/readme.md)
 
@@ -232,7 +220,7 @@ dependencies {
 
 ## ENBioLibrary
 
-![badge_version](ENBioLibrary/badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 
 #### [ENBioLibrary Tutorial and Samples](ENBioLibrary/readme.md)
@@ -246,9 +234,7 @@ dependencies {
 ```
 
 ## ENSoftServer
-
-![badge_version](ENSoftServer/badge_version.svg)
-
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [ENSoftServer Tutorial and Samples](ENSoftServer/readme.md)
 

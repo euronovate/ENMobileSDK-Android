@@ -60,6 +60,10 @@ bgColor = context.getColor(R.color.bguserinfosignaturebox))
 At this moment we left possibility to customize these acrofields type:
 
 -checkbox style `checkBoxViewStyle`
+![checkbox](checkbox.png)
 -textbox style: `textBoxViewStyle`
+![textfield](textfield.png)
 -signature style: `signatureViewStyle`
+
+![signaturefield](signaturefield.png)
 

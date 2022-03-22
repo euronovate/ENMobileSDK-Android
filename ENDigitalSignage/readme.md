@@ -79,4 +79,5 @@ class ENDefaultDigitalSignageTheme: ENDigitalSignageTheme() {
 }
 ```
 With this code you can only edit layout and color of **DEVICE NAME**, on bottom right of digital signage. 
-You can see screenshoot on top of the Readme. (PAD001)
+You can see screenshoot:(PAD01)
+![tag](tag.png)
