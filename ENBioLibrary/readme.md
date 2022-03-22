@@ -7,8 +7,7 @@
 3. [ENBioLibraryActions](#ENBioLibraryActions)
 
 ## Gradle Dependency
-
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [BioLibrary Tutorial and Samples](biolibrary/readme.md)
 

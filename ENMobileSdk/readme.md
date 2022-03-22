@@ -17,8 +17,7 @@
 14. [ENMobileSdkException](#ENMobileSdkException)
 
 ## Gradle Dependency
-
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -209,7 +208,7 @@ or online mode with licenseKey and serverUrl:
 .with(authConfig = ENAuthConfig(licenseKey = "yourLicenseKey", serverUrl = "yourUrl"))
 ```
 
-If you haven't serverUrl and licenseKey or Jwt you can contact [info@euronovate.com ]() to request a trial. **Without their sdk won't initialized** so if you try to call an instance of a modules you will get a **crash**
+If you haven't serverUrl and licenseKey or Jwt you can contact [customer[dot]sales[at]euronovate[dot]com](mailto:customer.sales@euronovate.com) to request a trial. **Without their sdk won't initialized** so if you try to call an instance of a modules you will get a **crash**
 
 There is other parameter that you can pass via constructor of ENAuthConfig:
 

@@ -8,7 +8,8 @@
 
 ## Gradle Dependency
 
-![badge_version](badge_version.svg)
+![]([https://badgen.net/badge/stable/1.0.0/blue](https://badgen.net/badge/stable/1.0.0/blue))
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling on acrofields
 

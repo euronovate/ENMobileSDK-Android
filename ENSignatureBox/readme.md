@@ -9,7 +9,7 @@
 
 ## Gradle Dependency
 
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 
 #### [SignatureBox Tutorial and Samples](signaturebox/readme.md)

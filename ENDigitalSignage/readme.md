@@ -9,8 +9,7 @@
 5. [ENDigitalSignageTheme](#ENDigitalSignageTheme)
 
 ## Gradle Dependency
-
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 ![badge_version](slideshow.png)
 

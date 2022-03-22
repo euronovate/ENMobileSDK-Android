@@ -8,7 +8,7 @@
 5. [ENSoftServerException](#ENSoftServerException)
 ## Gradle Dependency
 
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 #### [SoftServer Tutorial and Samples](softserver/readme.md)
 

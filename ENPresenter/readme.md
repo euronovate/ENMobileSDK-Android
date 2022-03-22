@@ -9,7 +9,7 @@
 
 ## Gradle Dependency
 
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 The `presenter` module contains only a template used by `viewer` to render document. It is customized based on client.
 

@@ -8,7 +8,7 @@
 
 ## Gradle Dependency
 
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 The `PubSub `module help you to estabilish a connection with websocket. At this moment we support these types:
 

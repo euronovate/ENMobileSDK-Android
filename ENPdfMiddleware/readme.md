@@ -8,8 +8,7 @@
 
 
 ## Gradle Dependency
-
-![badge_version](badge_version.svg)
+![](https://badgen.net/badge/stable/1.0.0/blue)
 
 The `pdfMiddleware` module is the brain of the processing about pdf Document.
 
@@ -32,18 +31,21 @@ You have to **respect** *.with* order like in above example.
 
 
 ### ENPdfMiddleware Actions
+
+**extractPdfStrctureModel**: by this method you can obtain pdfContainer. You have to pass document in byteArray or if document is remote (guid) you have to pass too `Document` 
 ```kotlin
 ENPdfMiddleware.getInstance().extractPdfStructureModel(document: ByteArray): PdfContainer
 ```
-By this method you can obtain pdfContainer. You have to pass document in byteArray or if document is remote (guid) you have to pass too `Document` 
+
+**extractPdfStructureModel remote**: 
+
+`Document` is a class obtain from softserver `document/find` or `document/download`
 
 ```kotlin
 ENPdfMiddleware.getInstance().extractPdfStructureModel(document: ByteArray,remoteDocument: Document): PdfContainer
 ```
+return `PdfContainer` is an aggregator of all document information. You can pass it directly to viewer
 
-`Document` is a class obtain from softserver `document/find` or `document/download`
-
-`PdfContainer` is an aggregator of all document information. You can pass it directly to viewer
 
 ### ENPdfMiddlewareException
 
