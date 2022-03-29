@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             R.id.btnStart ->{
                 if(initialized){
                     progressDialog = showProgressDialog(title = getString(R.string.starting_signature),content = getString(R.string.please_wait))
-                    val pdfName = "Demo_AnamnesiCovid-19_ds.pdf"
+                    val pdfName = "Demo12_Verdi_PDFA1b.pdf"
                     val pdfFile = File(getExternalFilesDir(null)!!,pdfName)
                     ENFileUtils.copyAssetFileToInternalStorage(applicationContext.assets,getExternalFilesDir(null)!!,pdfName)
                     ENMobileSDK.getInstance().openDocument(ENBase64Utils.toBase64(ENFileUtils.getBytes(pdfFile.inputStream())!!),

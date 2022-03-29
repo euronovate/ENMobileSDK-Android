@@ -130,10 +130,11 @@ You have to **respect** *.with* order like in above example.
 
 ```kotlin
 ENLoggerConfig(var debuggable: Boolean, @LogLevel var logLevel: Int,
-               var logServerConfig: ENLogServerConfig?=null))
+			   var env: String, var logServerConfig: ENLogServerConfig?=null))
 ```
 * **debuggable**: you can enable / disable logging
 * **loglevel**: is an enum like android native (VERBOSE,ERROR,DEBUG) with this you can choice level of logging
+* **env**: you can specifiy your env example: PROD,DEV 
 * **logServerConfig**: is optional and is used to comunicate with LOGSERVER in Backend. 
 This is the constructor:
 
@@ -568,7 +569,9 @@ enum class ENEventType {
     appForegrounded, -> when app is put in foreground
     appBackgrounded, -> when app is put in bg 
     coreInitialized, -> when ENMobileSdk finished initialization
-    signDocument -> when receive an event to sign a document
+    signDocument, -> when receive an event to sign a document
+    viewDocument, -> when receive a request to open document in only read mode.
+	viewerDidClose -> when user closed viewer(abort,confirm,exit) we also return a guid or path with document status
 }
 ```
 
