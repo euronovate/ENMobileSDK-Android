@@ -8,6 +8,9 @@ import com.euronovate.auth.model.ENAuthConfig
 import com.euronovate.digitalsignage.ENDigitalSignage
 import com.euronovate.digitalsignage.extension.with
 import com.euronovate.digitalsignage.model.ENDigitalSignageConfig
+import com.euronovate.digitalsignage.model.ENDigitalSignageMediaConfig
+import com.euronovate.digitalsignage.model.ENLocalMedia
+import com.euronovate.digitalsignage.model.enums.ENDigitalSignageContentType
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
 import com.euronovate.logger.model.ENLanguageConfig
@@ -33,6 +36,7 @@ import kotlinx.coroutines.MainScope
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.OnClickListener, ENMobileInitializationCallback<String> {
     // Class private attributes **********************************************************************************************************************
     private lateinit var btnStart: Button
+    private lateinit var btnStartDs: Button
     private var initialized = false
 
     // Class public functions ************************************************************************************************************************
@@ -44,26 +48,21 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
     }
     private fun initLibrary(){
         ENMobileSDK.Builder()
-            .with(settings = ENSettings.Builder().with(applicationContext).build())
+            .with(context = applicationContext)
+            .with(settings = ENSettings.Builder().build())
             .with(logger = ENLogger.Builder()
-                .with(applicationContext)
                 .with(ENLoggerConfig(true,ENLogger.VERBOSE))
                 .build())
-            .with(context = applicationContext)
                 //TODO QUI
-            .with(mobileSdkConfig = ENMobileSdkConfig(languageConfig = ENLanguageConfig(selectorVisible = true,
-                languageEnabled = arrayListOf(ENLanguageType.en, ENLanguageType.el)),
-                networkConfig = ENNetworkConfig(skipSSL = true)
-            ))
+            .with(mobileSdkConfig = ENMobileSdkConfig(networkConfig = ENNetworkConfig(skipSSL = true),
+                certificateOwnerInfo = ENCertificateOwnerInfo(),
+                languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(ENLanguageType.en,ENLanguageType.el))))
             .with(initializationCallback = this@MainActivity)
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
-            ))
+            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url"))
             .with(theme = ENDefaultTheme())
-            .with(
-                ENDigitalSignage.Builder()
-                .with(applicationContext = applicationContext)
-                .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "serverUrl",
-                    licenseCode = "licenseKey"))
+            .with(ENDigitalSignage.Builder()
+                .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "serverUrl", licenseCode = "licenseKey",
+                    digitalSignageMediaConfig = ENDigitalSignageMediaConfig()))
                 .build())
             .build()
     }
@@ -72,10 +71,21 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnStart = findViewById(R.id.btnStart)
         btnStart.setOnClickListener(this)
         btnStart.isEnabled = initialized
+
+        btnStartDs = findViewById(R.id.btnStartDs)
+        btnStartDs.setOnClickListener(this)
+        btnStartDs.isEnabled = initialized
     }
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.btnStart ->{
+                ENDigitalSignage.getInstance().start()
+            }
+            R.id.btnStartDs ->{
+                ENDigitalSignage.getInstance().digitalSignageConfig.digitalSignageMediaConfig!!.localMediaContents = arrayListOf(
+                    ENLocalMedia(assetName = "landscape_placeholder.png",duration = 5000, ENDigitalSignageContentType.Image),
+                    ENLocalMedia(assetName = "landscape_placeholder.png",duration = 4000, ENDigitalSignageContentType.Image),
+                    ENLocalMedia(assetName = "landscape_placeholder.png",duration = 3000, ENDigitalSignageContentType.Image))
                 ENDigitalSignage.getInstance().start()
             }
         }
@@ -88,6 +98,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             is ENMobileSDKResponse.success -> {
                 initialized = true
                 btnStart.isEnabled = initialized
+                btnStartDs.isEnabled = initialized
             }
         }
     }

@@ -31,7 +31,9 @@ import com.euronovate.pdfmiddleware.extension.with
 import com.euronovate.signaturebox.ENSignatureBox
 import com.euronovate.signaturebox.extension.with
 import com.euronovate.signaturebox.model.ENSignatureBoxConfig
+import com.euronovate.signaturebox.model.ENSignatureContentMode
 import com.euronovate.signaturebox.model.ENSignatureImageConfig
+import com.euronovate.signaturebox.model.ENSignatureImageModeConfig
 import com.euronovate.utils.preferences.ENSettings
 import com.euronovate.utils.preferences.with
 import com.euronovate.utils.util.ENBase64Utils
@@ -39,6 +41,8 @@ import com.euronovate.utils.util.ENFileUtils
 import com.euronovate.viewer.ENViewer
 import com.euronovate.viewer.extension.openDocument
 import com.euronovate.viewer.extension.with
+import com.euronovate.viewer.model.ENViewerConfig
+import com.euronovate.viewer.model.enums.ENSignFieldPlaceholder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.Runnable
@@ -63,33 +67,27 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
     }
     private fun initLibrary(){
         ENMobileSDK.Builder()
-            .with(settings = ENSettings.Builder().with(applicationContext).build())
+            .with(context = applicationContext)
+            .with(settings = ENSettings.Builder().build())
             .with(logger = ENLogger.Builder()
-                .with(applicationContext)
                 .with(ENLoggerConfig(true,ENLogger.VERBOSE))
                 .build())
-            .with(applicationContext)
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url"))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
-                languageConfig = ENLanguageConfig(selectorVisible = true,
-                    languageEnabled = arrayListOf(ENLanguageType.en)),
-                networkConfig = ENNetworkConfig()
-            ))
+                languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()))
             .with(ENViewer.Builder()
-                .with(applicationContext = applicationContext)
+                .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
                 .build())
-            .with(ENPdfMiddleware.Builder()
-                .with(applicationContext)
-                .build())
+            .with(ENPdfMiddleware.Builder().build())
             .with(ENSignatureBox.Builder()
-                .with(applicationContext = applicationContext)
-                .with(signatureBoxConfig = ENSignatureBoxConfig(useAlpha = true,
+                .with(signatureBoxConfig = ENSignatureBoxConfig(
                     signatureSourceType = ENSignatureSourceType.Any,
-                    signatureImageConfig = ENSignatureImageConfig.signatureSignerNameAndTimestamp))
+                    signatureImageConfig = ENSignatureImageConfig(useAlpha = true,
+                        signatureContentMode = ENSignatureContentMode.keepFieldRatio,
+                        signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f))))
                 .build())
             .with(ENBio.Builder()
-                .with(applicationContext = applicationContext)
                 .build())
             .build()
     }
@@ -118,8 +116,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     val pdfName = "Demo12_Verdi_PDFA1b.pdf"
                     val pdfFile = File(getExternalFilesDir(null)!!,pdfName)
                     ENFileUtils.copyAssetFileToInternalStorage(applicationContext.assets,getExternalFilesDir(null)!!,pdfName)
-                    ENMobileSDK.getInstance().openDocument(ENBase64Utils.toBase64(ENFileUtils.getBytes(pdfFile.inputStream())!!),
-                        ENBase64Utils.toBase64(application.assets.open("encert.pem").readBytes()))
+                    ENMobileSDK.getInstance().openDocument(documentBase64 = ENBase64Utils.toBase64(ENFileUtils.getBytes(pdfFile.inputStream())!!),
+                        certPemBase64 = ENBase64Utils.toBase64(application.assets.open("encert.pem").readBytes()))
                     Thread(Runnable {
                         runOnUiThread {
                             progressDialog!!.dismiss()

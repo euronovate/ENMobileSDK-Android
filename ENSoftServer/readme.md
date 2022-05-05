@@ -8,7 +8,7 @@
 5. [ENSoftServerException](#ENSoftServerException)
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [SoftServer Tutorial and Samples](softserver/readme.md)
 
@@ -22,7 +22,7 @@ The `SoftServer` contains all api request used to interact with document, for ex
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.0.0"
+  implementation "com.euronovate.softserver:softserver:1.0.1"
 }
 ```
 
@@ -32,9 +32,7 @@ Here's a very basic example of inizialization of ENSoftServer in ENMobileSdk bui
 
 ```kotlin
 .with(ENSoftServer.Builder()
-      .with(applicationContext)
-      .with(ENSoftServerConfig(baseUrl = "your server url", "your license key"))
-      .build())
+      .with(ENSoftServerConfig(baseUrl = "your server url", "your license key")).build())
 ```
 
 You have to **respect** *.with* order like in above example.

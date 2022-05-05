@@ -52,13 +52,13 @@ dependencies {
     /**PROJECT IMPLEMENTATION **/
    // implementation 'com.google.guava:guava:27.0.1-android'
 
-    implementation "com.euronovate.viewer:viewer:1.0.0"
-    implementation "com.euronovate.mobilesdk:core:1.0.0"
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.0.0"
-    implementation "com.euronovate.libpdf:ENLibPdfAar:1.5.1"
-    implementation "com.euronovate.bio:bio:1.0.0"
-    implementation "com.euronovate.signaturebox:signaturebox:1.0.0"
-    implementation "com.euronovate.presenter:presenter:1.0.0"
+    implementation "com.euronovate.viewer:viewer:1.0.1"
+    implementation "com.euronovate.mobilesdk:core:1.0.1"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.0.1"
+    implementation "com.euronovate.libpdf:ENLibPdfAar:2.0.0"
+    implementation "com.euronovate.bio:bio:1.0.1"
+    implementation "com.euronovate.signaturebox:signaturebox:1.0.1"
+    implementation "com.euronovate.presenter:presenter:1.0.1"
 
     //GLIDE
     implementation deps.glide.core

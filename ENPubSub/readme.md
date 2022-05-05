@@ -8,7 +8,7 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 The `PubSub `module help you to estabilish a connection with websocket. At this moment we support these types:
 
@@ -18,7 +18,7 @@ The `PubSub `module help you to estabilish a connection with websocket. At this 
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pubsub:pubsub:1.0.0"
+    implementation "com.euronovate.pubsub:pubsub:1.0.1"
 }
 ```
 
@@ -30,11 +30,9 @@ Here's a very basic example of inizialization of ENPubSub in ENMobileSdk builder
  .with(pubSub = ENPubSub.Builder()
       .with(ENPubSubConfig(type = ENPubSubType.signalR,
   	   		connectionParams = { return@ENPubSubConfig getSignalRToken() }))
-                .with(applicationContext)
                 .build())
 ```
 You have to **respect** *.with* order like in above example.
-
 
 
 ## ENPubSubConfig
@@ -42,7 +40,7 @@ You have to **respect** *.with* order like in above example.
 This is a class that allow to config this module.
 
 ```kotlin
- ENPubSubConfig(var type: ENPubSubType?= null,
+ENPubSubConfig(var type: ENPubSubType?= null,
                 var connectionParams: (suspend () -> Pair<String, String>?)? = null)
 ```
 
@@ -93,10 +91,11 @@ This is an example with ***startSign***
 ```kotlin
 ENPubSub.getInstance().subscribe(ENPubSubChannel.startSign){
 		//it is jsonObject
-       val startSignDTO = Gson().fromJson((it as JSONObject).toString(), StartSignDTO::class.java)
-       ... open document ... send event to mobilesdk
-       ENMobileSDK.emitEvent(ENEventType.signDocument, startSignDTO) 
-}```
+       val signDocumentGuidDTO = Gson().fromJson((it as JSONObject).toString(), ENSignDocumentGuidDTO::class.java)  
+
+		ENMobileSDK.emitEvent(ENEventType.signDocument, signDocumentGuidDTO.convertToEvent())
+}
+```
 
 **Background/Foreground**
 

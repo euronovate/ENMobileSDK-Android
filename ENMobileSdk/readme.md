@@ -17,7 +17,7 @@
 14. [ENMobileSdkException](#ENMobileSdkException)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -29,7 +29,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.0.0'
+  implementation 'com.euronovate.mobilesdk:core:1.0.1'
 }
 ```
 
@@ -39,11 +39,10 @@ Here's a very basic example of inizialization of ENMobileSDK. You have to do thi
 
 ```kotlin
 ENMobileSDK.Builder()
-     .with(settings = ENSettings.Builder(applicationContext).build())
+     .with(context = applicationContext)
+     .with(settings = ENSettings.Builder().build())
      .with(logger = ENLogger.Builder()
-            .with(applicationContext)
             .with(ENLoggerConfig(true,ENLogger.VERBOSE)).build())
-     .with(applicationContext)
      .with(initializationCallback = this@MainActivity)
      .with(authConfig = ENAuthConfig(licenseKey = "your license key of enauth", serverUrl= "enauth server url"))
      .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),networkConfig = ENNetworkConfig(skipSSL = true))

@@ -7,7 +7,7 @@
 3. [ENBioLibraryActions](#ENBioLibraryActions)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [BioLibrary Tutorial and Samples](biolibrary/readme.md)
 
@@ -15,7 +15,7 @@ The `BioLibrary` module allow to collect all biometric data while you are signin
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.0.0"
+  implementation "com.euronovate.bio:bio:1.0.1"
 }
 ```
 
@@ -24,9 +24,7 @@ dependencies {
 Here's a very basic example of inizialization of ENBioLibrary in ENMobileSdk builder. You have to do this operation once time because we keep istance of each modules.
 
 ```gradle
-.with(ENBio.Builder()
-      .with(applicationContext = applicationContext)
-      .build())
+.with(ENBio.Builder().build())
 ```
 
 You have to **respect** *.with* order like in above example.

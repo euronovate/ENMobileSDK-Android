@@ -3,19 +3,20 @@
 ## Table of Contents
 1. [Gradle Dependency](#gradle-dependency)
 2. [Basics](#basics)
-3. [ENViewerActions](#ENViewerActions)
-4. [ENViewerTheme](#ENViewerTheme)
+3. [ENViewerConfig](#ENViewerConfig)
+4. [ENViewerActions](#ENViewerActions)
+5. [ENViewerTheme](#ENViewerTheme)
 
 ## Gradle Dependency
 
 ![]([https://badgen.net/badge/stable/1.0.0/blue](https://badgen.net/badge/stable/1.0.0/blue))
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling on acrofields
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.0.0"
+ 	implementation "com.euronovate.viewer:viewer:1.0.1"
 }
 ```
 
@@ -31,8 +32,19 @@ Here's a very basic example of inizialization of ENViewer in ENMobileSdk builder
 Must **respect** *.with* order like in above example.
 
 ![Viewer image](imgViewer.png)
+## ENViewerConfig
+There is a config in builder of viewer module. This is the constructor:
 
+```kotlin
+class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder)
+```
+`signFieldPlaceholder` is mandatory and it used to customize placeholder in signatureField you can choiche this options:
 
+- **signerName** -> if you want show signerName that will sign this field
+- **defaultPlaceholder** -> this is the default placeholder, this is the text: Press Here To Sign
+- **customPlaceholder**: -> you can write custom text
+
+![tap image](tap_here.png)
 ## ENViewerActions
 
 ```kotlin

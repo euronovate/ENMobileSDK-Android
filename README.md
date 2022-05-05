@@ -94,7 +94,7 @@ plugins {
 
 ## ENMobileSDK (conventionally ENCore)
 
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 
 The `core` module includes everything you need to get started with the library. It contains all core and:
@@ -115,12 +115,12 @@ The `ENDialog` contains a set of dialog type that you can use in your app and it
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.0.0'
+  implementation 'com.euronovate.mobilesdk:core:1.0.1'
 }
 ```
 
 ## ENViewer
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [Viewer Tutorial and Samples](ENViewer/readme.md)
 
@@ -135,7 +135,7 @@ The `viewer` module contains extensions to the core module, such as a document (
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.0.0"
+ 	implementation "com.euronovate.viewer:viewer:1.0.1"
 }
 ```
  
@@ -150,12 +150,12 @@ The `digitalsignage` module contains a main activity `ENDigitalSignageActivity` 
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.digitalsignage:digitalsignage:1.0.0"
+  implementation "com.euronovate.digitalsignage:digitalsignage:1.0.1"
 }
 ```
 
 ## ENPdfMiddleware
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [ENPdfMiddleware Tutorial and Samples](ENPdfMiddleware/readme.md)
 
@@ -174,7 +174,7 @@ dependencies {
 ```
 
 ## ENPresenter
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [ENPresenter Tutorial and Samples](ENPresenter/readme.md)
 
@@ -182,12 +182,12 @@ The `presenter` module contains only a templates used by `viewer` to render docu
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.presenter:presenter:1.0.0"
+    implementation "com.euronovate.presenter:presenter:1.0.1"
 }
 ```
 
 ## ENPubSub
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 #### [ENPubSub Tutorial and Samples](ENPubSub/readme.md)
 
 The `PubSub ` module allow to estabilish a connection with websocket in particual with these types of ws:
@@ -198,12 +198,12 @@ The `PubSub ` module allow to estabilish a connection with websocket in particua
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pubsub:pubsub:1.0.0"
+    implementation "com.euronovate.pubsub:pubsub:1.0.1"
 }
 ```
 
 ## ENSignatureBox
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [SignatureBox Tutorial and Samples](ENSignatureBox/readme.md)
 
@@ -214,13 +214,13 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.0.0"
+	implementation "com.euronovate.signaturebox:signaturebox:1.0.1"
 }
 ```
 
 ## ENBioLibrary
 
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 
 #### [ENBioLibrary Tutorial and Samples](ENBioLibrary/readme.md)
@@ -229,12 +229,12 @@ The `BioLibrary` module allow to collect all biometric data while you are signin
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.0.0"
+  implementation "com.euronovate.bio:bio:1.0.1"
 }
 ```
 
 ## ENSoftServer
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [ENSoftServer Tutorial and Samples](ENSoftServer/readme.md)
 
@@ -248,6 +248,6 @@ The `SoftServer` contains all api request used to interact with document, for ex
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.0.0"
+  implementation "com.euronovate.softserver:softserver:1.0.1"
 }
 ```

@@ -35,7 +35,9 @@ import com.euronovate.pubsub.model.ENPubSubType
 import com.euronovate.signaturebox.ENSignatureBox
 import com.euronovate.signaturebox.extension.with
 import com.euronovate.signaturebox.model.ENSignatureBoxConfig
+import com.euronovate.signaturebox.model.ENSignatureContentMode
 import com.euronovate.signaturebox.model.ENSignatureImageConfig
+import com.euronovate.signaturebox.model.ENSignatureImageModeConfig
 import com.euronovate.softserver.ENSoftServer
 import com.euronovate.softserver.extension.with
 import com.euronovate.softserver.model.ENSoftServerConfig
@@ -44,6 +46,8 @@ import com.euronovate.utils.preferences.with
 import com.euronovate.utils.util.ENFileUtils
 import com.euronovate.viewer.ENViewer
 import com.euronovate.viewer.extension.with
+import com.euronovate.viewer.model.ENViewerConfig
+import com.euronovate.viewer.model.enums.ENSignFieldPlaceholder
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import org.json.JSONObject
@@ -67,41 +71,36 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
     }
     private fun initLibrary(){
         ENMobileSDK.Builder()
-            .with(settings = ENSettings.Builder().with(applicationContext).build())
+            .with(context = applicationContext)
+            .with(settings = ENSettings.Builder().build())
             .with(logger = ENLogger.Builder()
-                .with(applicationContext)
                 .with(ENLoggerConfig(true,ENLogger.VERBOSE))
                 .build())
-            .with(applicationContext)
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
                 networkConfig = ENNetworkConfig(skipSSL = false)
             ))
             .with(ENViewer.Builder()
-                .with(applicationContext = applicationContext)
+                .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
                 .build())
-            .with(ENPdfMiddleware.Builder()
-                .with(applicationContext)
-                .build())
+            .with(ENPdfMiddleware.Builder().build())
             .with(ENSignatureBox.Builder()
-                .with(applicationContext = applicationContext)
-                .with(signatureBoxConfig = ENSignatureBoxConfig(useAlpha = true,
+                .with(signatureBoxConfig = ENSignatureBoxConfig(
                     signatureSourceType = ENSignatureSourceType.Any,
-                    signatureImageConfig = ENSignatureImageConfig.signatureSignerNameAndTimestamp))
+                    signatureImageConfig = ENSignatureImageConfig(useAlpha = true,
+                        signatureContentMode = ENSignatureContentMode.keepFieldRatio,
+                        signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f))))
                 .build())
             .with(pubSub = ENPubSub.Builder()
                 .with(
                     ENPubSubConfig(type = ENPubSubType.webSocket,
                         //wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm&notify_self
                     connectionParams = { return@ENPubSubConfig Pair("your url signalR","your token") }))
-                .with(applicationContext)
                 .build())
             .with(ENBio.Builder()
-                .with(applicationContext = applicationContext)
                 .build())
             .with(ENSoftServer.Builder()
-                .with(applicationContext)
                 .with(ENSoftServerConfig(baseUrl = "your softserver url", "your license key"))
                 .build())
             .build()

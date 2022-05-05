@@ -8,13 +8,13 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 The `pdfMiddleware` module is the brain of the processing about pdf Document.
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.0.0"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.0.1"
 }
 ```
 ## Basics
@@ -22,9 +22,7 @@ dependencies {
 Here's a very basic example of inizialization of ENPdfMiddleware.
 
 ```kotlin
-.with(ENPdfMiddleware.Builder()
-     .with(applicationContext)
-     .build())
+.with(ENPdfMiddleware.Builder().build())
 ```
                 
 You have to **respect** *.with* order like in above example.

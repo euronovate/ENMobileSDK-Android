@@ -9,7 +9,7 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 
 #### [SignatureBox Tutorial and Samples](signaturebox/readme.md)
@@ -21,7 +21,7 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.0.0"
+	implementation "com.euronovate.signaturebox:signaturebox:1.0.1"
 }
 ```
 
@@ -31,27 +31,36 @@ Here's a very basic example of inizialization of ENSignatureBoxLibrary in ENMobi
 
 ```kotlin
  .with(ENSignatureBox.Builder()
-      .with(applicationContext = applicationContext)
       .with(signatureBoxConfig = ENSignatureBoxConfig(useAlpha = true,
-                    signatureSourceType = ENSignatureSourceType.Any,
-                    signatureContentMode = ENSignatureContentMode.keepFieldRatio,
-                    signatureImageConfig = ENSignatureImageConfig.signatureSignerNameAndTimestamp))
+            signatureSourceType = ENSignatureSourceType.Any,
+            signatureContentMode = ENSignatureContentMode.keepFieldRatio,
+            signatureImageConfig = ENSignatureImageConfig.signatureSignerNameAndTimestamp))
        .build())
 ```
 You have to **respect** *.with* order like in above example.
 
+We need to focus with this parameter `signatureImageConfig`, you can choice this list of options:
 
+- justSignature
+- signatureAndSignerName
+- signatureAndTimestamp
+- signatureSignerNameAndTimestamp
 
+All of these parameters allow you to customize **size** or/and **sizeTimestamp** inside the watermark, beyond that you can reserve a % a space in height of watermark with **watermarkReservedHeight**, using this parameter you can avoid watermark above signature.
+E.g:
+```kotlin
+ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f)
+```
+
+![watermark reserved](signaturewaterkmarkreserverd.png)
 ## ENSignatureBoxConfig
 
 This is a class used to configure ENSignatureBox Module.
 
 ```kotlin
- ENSignatureBoxConfig(
-    var signatureSourceType: ENSignatureSourceType?,
-    var useAlpha: Boolean,
-    var signatureImageConfig: ENSignatureImageConfig = ENSignatureImageConfig.justSignature,
-    var signatureContentMode: ENSignatureContentMode = ENSignatureContentMode.keepFieldRatio
+ class ENSignatureBoxConfig(  
+    var signatureSourceType: ENSignatureSourceType,  
+    var signatureImageConfig: ENSignatureImageConfig,  
 )
 ```
 `signatureSourceType` you can choose the enabled mode to sign, you have this options:
@@ -60,6 +69,15 @@ This is a class used to configure ENSignatureBox Module.
 *  `Finger`
 *  `Any` --> in this case we select first method when you draw first line/dot
 
+`signatureImageConfig` is a class that contains a constructor like this:
+
+```kotlin
+class ENSignatureImageConfig(  
+    var useAlpha: Boolean,  
+    var signatureImageModeConfig: ENSignatureImageModeConfig = ENSignatureImageModeConfig.justSignature(),  
+    var signatureContentMode: ENSignatureContentMode = ENSignatureContentMode.keepFieldRatio  
+)
+```
 
 `useAlpha` if this parameter is set to true, the image return in signaturebox on confirm will be with background **trasparent** (like a png) if false bg will be **white** (like a jpg)
 
