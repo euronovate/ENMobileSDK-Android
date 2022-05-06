@@ -1,6 +1,5 @@
 package com.euronovate.examples.pubsubsoftserversignature
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,19 +10,19 @@ import com.euronovate.auth.model.ENAuthConfig
 import com.euronovate.bio.ENBio
 import com.euronovate.bio.extension.with
 import com.euronovate.bio.model.enum.ENSignatureSourceType
-import com.euronovate.examples.pubsubsoftserversignature.R
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
 import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
 import com.euronovate.mobilesdk.extensions.emitEvent
-import com.euronovate.mobilesdk.model.*
-import com.euronovate.mobilesdk.model.responses.business.document.StartSignDTO
-import com.euronovate.mobilesdk.ui.dialog.ENDialog
+import com.euronovate.mobilesdk.model.ENCertificateOwnerInfo
+import com.euronovate.mobilesdk.model.ENMobileSDKResponse
+import com.euronovate.mobilesdk.model.ENMobileSdkConfig
+import com.euronovate.mobilesdk.model.ENNetworkConfig
+import com.euronovate.mobilesdk.model.enums.ENEventType
+import com.euronovate.mobilesdk.model.responses.business.document.ENSignDocumentGuidDTO
 import com.euronovate.mobilesdk.ui.dialog.ENDialog.Companion.showGenericErrorDialog
-import com.euronovate.mobilesdk.ui.dialog.ENDialogTextConfig
-import com.euronovate.mobilesdk.ui.dialog.ENDialogType
 import com.euronovate.pdfmiddleware.ENPdfMiddleware
 import com.euronovate.pdfmiddleware.extension.with
 import com.euronovate.pubsub.ENPubSub
@@ -49,7 +48,8 @@ import com.euronovate.viewer.extension.with
 import com.euronovate.viewer.model.ENViewerConfig
 import com.euronovate.viewer.model.enums.ENSignFieldPlaceholder
 import com.google.gson.Gson
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 import org.json.JSONObject
 
 /**
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .with(
                     ENPubSubConfig(type = ENPubSubType.webSocket,
                         //wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm&notify_self
-                    connectionParams = { return@ENPubSubConfig Pair("your url signalR","your token") }))
+                        connectionParams = { return@ENPubSubConfig Pair("your url signalR","your token") }))
                 .build())
             .with(ENBio.Builder()
                 .build())
@@ -122,8 +122,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     ENPubSub.getInstance().init()
                     ENPubSub.getInstance().subscribe(ENPubSubChannel.startSign){
                         try{
-                            val startSignDTO = Gson().fromJson((it as JSONObject).toString(), StartSignDTO::class.java)
-                            ENMobileSDK.emitEvent(ENEventType.signDocument, startSignDTO)
+                            val signDocumentGuidDTO = Gson().fromJson((it as JSONObject).toString(), ENSignDocumentGuidDTO::class.java)
+                            ENMobileSDK.emitEvent(ENEventType.signDocument, signDocumentGuidDTO.convertToEvent())
                         }catch(ex: Exception){
                             runOnUiThread {
                                 showGenericErrorDialog(this,ex.message)

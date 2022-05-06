@@ -19,10 +19,11 @@ import com.euronovate.logger.model.ENLanguageType
 import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
-import com.euronovate.mobilesdk.model.ENCertificateOwnerInfo
-import com.euronovate.mobilesdk.model.ENMobileSDKResponse
-import com.euronovate.mobilesdk.model.ENMobileSdkConfig
-import com.euronovate.mobilesdk.model.ENNetworkConfig
+import com.euronovate.mobilesdk.extensions.emitEvent
+import com.euronovate.mobilesdk.model.*
+import com.euronovate.mobilesdk.model.enums.ENDocumentSourceType
+import com.euronovate.mobilesdk.model.enums.ENEventType
+import com.euronovate.mobilesdk.model.events.ENSignDocument
 import com.euronovate.mobilesdk.ui.dialog.ENDialog
 import com.euronovate.mobilesdk.ui.dialog.ENDialogTextConfig
 import com.euronovate.mobilesdk.ui.dialog.ENDialogType
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
     // Class private attributes **********************************************************************************************************************
     private lateinit var btnStart: Button
     private lateinit var btnShareLastPdf: Button
+    private lateinit var btnStartLastPdf: Button
     private var initialized = false
 
     // Class public functions ************************************************************************************************************************
@@ -96,6 +98,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnStart = findViewById(R.id.btnStart)
         btnStart.setOnClickListener(this)
         btnStart.isEnabled = initialized
+
+        btnStartLastPdf = findViewById(R.id.btnStartLastPdf)
+        btnStartLastPdf.setOnClickListener(this)
+        btnStartLastPdf.isEnabled = initialized
 
         btnShareLastPdf = findViewById(R.id.btnShareLastPdf)
         btnShareLastPdf.setOnClickListener(this)
@@ -138,6 +144,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     startActivity(Intent.createChooser(emailIntent, getString(R.string.send_with)))
                 }
             }
+            R.id.btnStartLastPdf->{
+                val lastPdf = ENFileUtils.getLastModified(cacheDir.absolutePath)
+                if(lastPdf != null && lastPdf.exists()){
+                    ENMobileSDK.emitEvent(ENEventType.viewDocument, ENSignDocument(documentType = ENDocumentSourceType.path(lastPdf.absolutePath)))
+                }
+            }
         }
     }
     override fun didGetResponse(response: ENMobileSDKResponse<String>?) {
@@ -148,6 +160,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             is ENMobileSDKResponse.success -> {
                 initialized = true
                 btnStart.isEnabled = initialized
+                btnStartLastPdf.isEnabled = initialized
             }
         }
     }

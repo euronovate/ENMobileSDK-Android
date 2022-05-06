@@ -61,6 +61,11 @@ dependencies {
     implementation "com.euronovate.presenter:presenter:1.0.1"
     implementation "com.euronovate.pubsub:pubsub:1.0.1"
 
+    //ROOM DB
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+    implementation deps.room.ktx
+
     //GLIDE
     implementation deps.glide.core
     annotationProcessor deps.glide.annotationGlideProcessor

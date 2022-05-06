@@ -1,6 +1,5 @@
 package com.euronovate.examples.dspubsubsoftserversignature
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -14,7 +13,6 @@ import com.euronovate.bio.model.enum.ENSignatureSourceType
 import com.euronovate.digitalsignage.ENDigitalSignage
 import com.euronovate.digitalsignage.extension.with
 import com.euronovate.digitalsignage.model.ENDigitalSignageConfig
-import com.euronovate.examples.dspubsubsoftserversignature.R
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
 import com.euronovate.logger.model.ENLanguageConfig
@@ -23,14 +21,15 @@ import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
 import com.euronovate.mobilesdk.extensions.emitEvent
-import com.euronovate.mobilesdk.model.*
-import com.euronovate.mobilesdk.model.responses.business.document.StartSignDTO
+import com.euronovate.mobilesdk.model.ENCertificateOwnerInfo
+import com.euronovate.mobilesdk.model.ENMobileSDKResponse
+import com.euronovate.mobilesdk.model.ENMobileSdkConfig
+import com.euronovate.mobilesdk.model.ENNetworkConfig
+import com.euronovate.mobilesdk.model.enums.ENEventType
+import com.euronovate.mobilesdk.model.responses.business.document.ENSignDocumentGuidDTO
 import com.euronovate.mobilesdk.theme.ENDefaultTheme
 import com.euronovate.mobilesdk.theme.with
-import com.euronovate.mobilesdk.ui.dialog.ENDialog
 import com.euronovate.mobilesdk.ui.dialog.ENDialog.Companion.showGenericErrorDialog
-import com.euronovate.mobilesdk.ui.dialog.ENDialogTextConfig
-import com.euronovate.mobilesdk.ui.dialog.ENDialogType
 import com.euronovate.pdfmiddleware.ENPdfMiddleware
 import com.euronovate.pdfmiddleware.extension.with
 import com.euronovate.pubsub.ENPubSub
@@ -56,7 +55,8 @@ import com.euronovate.viewer.extension.with
 import com.euronovate.viewer.model.ENViewerConfig
 import com.euronovate.viewer.model.enums.ENSignFieldPlaceholder
 import com.google.gson.Gson
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 import org.json.JSONObject
 
 /**
