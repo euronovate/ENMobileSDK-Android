@@ -29,6 +29,7 @@ android {
             excludes += ['META-INF/DEPENDENCIES']
         }
     }
+    namespace 'com.euronovate.examples.digitalSignage'
 }
 dependencies {
     implementation deps.jetbrains.stdlib

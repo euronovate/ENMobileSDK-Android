@@ -30,6 +30,7 @@ android {
             excludes += ['META-INF/DEPENDENCIES']
         }
     }
+    namespace 'com.euronovate.examples.localsignature'
 }
 dependencies {
     implementation deps.jetbrains.stdlibjdk7

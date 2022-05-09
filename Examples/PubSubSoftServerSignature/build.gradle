@@ -31,6 +31,7 @@ android {
             excludes += ['META-INF/DEPENDENCIES']
         }
     }
+    namespace 'com.euronovate.examples.pubsubsoftserversignature'
 }
 dependencies {
     implementation deps.jetbrains.stdlib
