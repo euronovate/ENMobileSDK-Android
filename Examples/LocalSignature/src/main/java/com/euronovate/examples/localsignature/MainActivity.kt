@@ -10,8 +10,7 @@ import androidx.core.content.FileProvider
 import com.euronovate.auth.model.ENAuthConfig
 import com.euronovate.bio.ENBio
 import com.euronovate.bio.extension.with
-import com.euronovate.bio.model.enum.ENSignatureSourceType
-import com.euronovate.examples.localsignature.R
+import com.euronovate.bio.model.enums.ENSignatureSourceType
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
 import com.euronovate.logger.model.ENLanguageConfig
@@ -32,9 +31,9 @@ import com.euronovate.pdfmiddleware.extension.with
 import com.euronovate.signaturebox.ENSignatureBox
 import com.euronovate.signaturebox.extension.with
 import com.euronovate.signaturebox.model.ENSignatureBoxConfig
-import com.euronovate.signaturebox.model.ENSignatureContentMode
 import com.euronovate.signaturebox.model.ENSignatureImageConfig
 import com.euronovate.signaturebox.model.ENSignatureImageModeConfig
+import com.euronovate.signaturebox.model.enums.ENSignatureContentMode
 import com.euronovate.utils.preferences.ENSettings
 import com.euronovate.utils.preferences.with
 import com.euronovate.utils.util.ENBase64Utils

@@ -377,7 +377,14 @@ This is an example:
             languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(ENLanguageType.en, ENLanguageType.el))
 ))
 ```
-
+* `languageConfig` is an object that allow to enable/disable language picker in ENDigitalSignage/ENViewer this is the contructor
+  ```kotlin
+  class ENLanguageConfig(  
+     var languageEnabled: ArrayList<ENLanguageType>? = null,  
+     var selectorVisible: Boolean? = null  
+)
+  ```
+You can specify a list of language will be avaiable, and consider the first of the list will be setted like default for the first time.
 * `networkConfig` is an object that contains all global variable used in network (example: in api) this is the constructor:
 
 ```kotlin

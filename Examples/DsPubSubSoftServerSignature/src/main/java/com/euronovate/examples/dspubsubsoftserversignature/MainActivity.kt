@@ -9,7 +9,7 @@ import androidx.core.content.FileProvider
 import com.euronovate.auth.model.ENAuthConfig
 import com.euronovate.bio.ENBio
 import com.euronovate.bio.extension.with
-import com.euronovate.bio.model.enum.ENSignatureSourceType
+import com.euronovate.bio.model.enums.ENSignatureSourceType
 import com.euronovate.digitalsignage.ENDigitalSignage
 import com.euronovate.digitalsignage.extension.with
 import com.euronovate.digitalsignage.model.ENDigitalSignageConfig
@@ -35,15 +35,15 @@ import com.euronovate.pdfmiddleware.extension.with
 import com.euronovate.pubsub.ENPubSub
 import com.euronovate.pubsub.extension.subscribe
 import com.euronovate.pubsub.extension.with
-import com.euronovate.pubsub.model.ENPubSubChannel
 import com.euronovate.pubsub.model.ENPubSubConfig
-import com.euronovate.pubsub.model.ENPubSubType
+import com.euronovate.pubsub.model.enums.ENPubSubChannel
+import com.euronovate.pubsub.model.enums.ENPubSubType
 import com.euronovate.signaturebox.ENSignatureBox
 import com.euronovate.signaturebox.extension.with
 import com.euronovate.signaturebox.model.ENSignatureBoxConfig
-import com.euronovate.signaturebox.model.ENSignatureContentMode
 import com.euronovate.signaturebox.model.ENSignatureImageConfig
 import com.euronovate.signaturebox.model.ENSignatureImageModeConfig
+import com.euronovate.signaturebox.model.enums.ENSignatureContentMode
 import com.euronovate.softserver.ENSoftServer
 import com.euronovate.softserver.extension.with
 import com.euronovate.softserver.model.ENSoftServerConfig
