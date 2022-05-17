@@ -58,7 +58,10 @@ Our sdk use a set of dependecies that they are required, this is a list:
   implementation "com.squareup.okhttp3:okhttp:4.7.2"
   implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
   implementation 'org.conscrypt:conscrypt-android:2.2.1'
-  
+
+  //EURONOVATE
+  implementation "com.euronovate.libpdf:ENLibPdfAar:2.0.1"
+
   //GLIDE
   api 'com.github.bumptech.glide:glide:4.12.0'
   annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
@@ -140,7 +143,7 @@ dependencies {
 ```
  
 ## ENDigitalSignage
-![](https://badgen.net/badge/stable/1.0.0/blue)
+![](https://badgen.net/badge/stable/1.0.1/blue)
 
 #### [DigitalSignage Tutorial and Samples](ENDigitalSignage/readme.md)
 

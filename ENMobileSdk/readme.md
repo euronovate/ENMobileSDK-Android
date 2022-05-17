@@ -540,6 +540,32 @@ class ENDefaultDialogsTheme: ENDialogsTheme(){
             leftButton =  ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.whitelightsubtitle), textTypeface = font().regular(),borderColor = context.getColor(R.color.lightblue),borderWidth = 1)
         )
     }
+    
+	override fun inputDialog(): ENDialogConfig {  
+	    val context = ENMobileSDK.getInstance().applicationContext  
+	    return ENDialogConfig(title = ENUIViewStyle(textSize = 33f,textColor = context.getColor(R.color.white),textTypeface =  font().regular()),  
+	        subTitle = ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.whitelightsubtitle),textTypeface = font().light()),  
+	        bg= ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog)),  
+	        input = ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.white),textTypeface = font().regular(),borderColor = context.getColor(R.color.bguserinfosignaturebox),borderWidth = 1),  
+	        rightButton = ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.white),textTypeface = font().regular(),bgColor = context.getColor(R.color.bguserinfosignaturebox),borderColor = context.getColor(R.color.bguserinfosignaturebox),borderWidth = 1),  
+	        rightBand = ENUIViewStyle(bgColor = context.getColor(R.color.bguserinfosignaturebox)),  
+	        rightIcon = ENUIViewStyle(srcImage = R.drawable.ic_question,tintColor = context.getColor(R.color.white)),  
+	        leftButton =  ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.whitelightsubtitle), textTypeface = font().regular(),borderColor = context.getColor(R.color.white),borderWidth = 1)  
+	    )  
+	}  
+	  
+	override fun listDialog(): ENDialogConfig {  
+	    val context = ENMobileSDK.getInstance().applicationContext  
+	    return ENDialogConfig(title = ENUIViewStyle(textSize = 33f,textColor = context.getColor(R.color.white),textTypeface =  font().regular()),  
+	        subTitle = ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.whitelightsubtitle),textTypeface = font().light()),  
+	        bg= ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog)),  
+	        rightBand = ENUIViewStyle(bgColor = context.getColor(R.color.bguserinfosignaturebox)),  
+	        rightIcon = ENUIViewStyle(srcImage = R.drawable.ic_ballot_light,tintColor = context.getColor(R.color.white)),  
+	        titleRowList =  ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.whitelightsubtitle), textTypeface = font().bold()),  
+	        subTitleRowList =  ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.whitelightsubtitle), textTypeface = font().regular()),  
+	        leftButton =  ENUIViewStyle(textSize = 25f,textColor = context.getColor(R.color.whitelightsubtitle), textTypeface = font().regular(),borderColor = context.getColor(R.color.white),borderWidth = 1)  
+	    )  
+	}
 
     override fun font(): ENFont {
         return ENDefaultFont()
@@ -547,6 +573,13 @@ class ENDefaultDialogsTheme: ENDialogsTheme(){
 }
 
 ```
+  - `positiveDialog`
+  - `negativeDialog`
+  - `warningDialog
+  - `progressDialog`
+  - `questionDialog`
+  - `inputDialog`
+  - `listDialog`
 
 You can also personalize Typeface with `font` function, you have to override it like this:
 

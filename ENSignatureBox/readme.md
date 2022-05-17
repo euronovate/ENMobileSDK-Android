@@ -209,6 +209,10 @@ class ENDefaultSignatureBoxTheme: ENSignatureBoxTheme(){
 	     val context = ENMobileSDK.getInstance().applicationContext  
 		 return ENUIViewStyle( textColor = context.getColor(R.color.waterMarkTextColor), textTypeface = font().regular())  
 	}
+	override fun contentContainer(): ENUIViewStyle {  
+	    val context = ENMobileSDK.getInstance().applicationContext  
+	    return ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog))  
+	}
 }
 ```
 
@@ -218,6 +222,7 @@ At this moment you can customize these uicomponents:
 -label/layout button: `confirm`, `cancel`, `repeat`
 -label: `timestamp`
 -background: `signatureArea`
+-background `contentContainer` is the layout below signatureArea above timestamp and below topBar(signer , confirm button , ...)
 
 And watermark: 
 
