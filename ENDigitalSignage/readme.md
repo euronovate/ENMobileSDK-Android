@@ -58,6 +58,9 @@ ENDigitalSignageMediaConfig(
 ```kotlin
 ENLocalMedia(assetName = "landscape_placeholder.png",duration = 5000, ENDigitalSignageContentType.Image)
  ```
+**duration** -> is in millisecond. It is a coutdown onFinish ds will go to next media.
+**assetName** -> name and extension of file in assets folder of android.
+**type** -> you can use `ENDigitalSignageContentType` enum with these possibilities: 1) `Image` 2) `Video`
 - `landPlaceholderAssetName` this is a string parameter, must contain assetName of placeholder image in landscape mode.
 -  `portPlaceholderAssetName` this is a string parameter, must contain assetName of placeholder image in portrait mode.
 
