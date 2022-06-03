@@ -40,11 +40,14 @@ You have to **respect** *.with* order like in above example.
 This is a class that allow to config this module.
 
 ```kotlin
-ENPubSubConfig(var type: ENPubSubType?= null,
-                var connectionParams: (suspend () -> Pair<String, String>?)? = null)
+class ENPubSubConfig(var type: ENPubSubType?= null,  
+                     var reconnectionEnabled: Boolean?=false,  
+                     var connectionParams: (suspend () -> Pair<String, String>?)? = null)
 ```
 
 `type` is an enum of `ENPubSubType` it contains a list of connectionType
+
+`reconnectionEnabled` flag used to enable timer for reconnection to websocket in case of failure or disconnection (e.g lost network)
 
 `connectionParams` is a function that user can implement that must be return a Pair with `URL` and `accessToken` if available. They are mandatory to estabilish connection.
 
