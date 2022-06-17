@@ -360,9 +360,21 @@ class MainApplication : ENApplication(){
 
 ## ENMobileSDKConfig
 
-As you can guess from the builder source code, you have the possibility to configure some parameters of the "core"
+As you can guess from the builder source code, you have the possibility to configure some parameters (some are optional other not) of the "core"
 
-This is an example:
+The Constructor is:
+```kotlin
+class ENMobileSdkConfig(  
+    var enableSignatureOverwrite: Boolean?=true,  
+    var keepScreenAlwaysOn:Boolean?=false,  
+   .var languageConfig: ENLanguageConfig?=null,  
+    var certificateOwnerInfo: ENCertificateOwnerInfo? = null,  
+    var certificateIntegrity: String?=null,  
+    var networkConfig: ENNetworkConfig = ENNetworkConfig()  
+)
+```
+
+and this is an example:
 
 ```kotlin
 .with(mobileSdkConfig = ENMobileSdkConfig(

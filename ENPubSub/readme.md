@@ -41,13 +41,23 @@ This is a class that allow to config this module.
 
 ```kotlin
 class ENPubSubConfig(var type: ENPubSubType?= null,  
-                     var reconnectionEnabled: Boolean?=false,  
+					 var pubSubReconnectionType: ENPubSubReconnectionType = ENPubSubReconnectionType.disabled(),
                      var connectionParams: (suspend () -> Pair<String, String>?)? = null)
 ```
 
 `type` is an enum of `ENPubSubType` it contains a list of connectionType
 
-`reconnectionEnabled` flag used to enable timer for reconnection to websocket in case of failure or disconnection (e.g lost network)
+`pubSubReconnectionType` is an sealed class used like an advanced enum:
+
+```kotlin
+sealed class ENPubSubReconnectionType {  
+    data class disabled(val status: String = "disabled"): ENPubSubReconnectionType()  
+    data class enabled(var connectionTimerInterval: Int = 60, var reconnectionTimerInterval: Int = 15): ENPubSubReconnectionType()  
+}
+```
+You have a two possibility:
+1) disable timer for reconnection
+2) or enable and you can specify how often in seconds `connectionTimerInterval` & `reconnectionTimerInterval`
 
 `connectionParams` is a function that user can implement that must be return a Pair with `URL` and `accessToken` if available. They are mandatory to estabilish connection.
 
@@ -69,9 +79,15 @@ class ENPubSubConnectionParamConfig(
     var url: String,
     var bodyParameters: FormBody? = null,
     var bodyJson: JSONObject? = null,
-    var headerParameters: HashMap<String, String>? = null
+    var headerParameters: HashMap<String, String>? = null,
+    var oAuth2: Boolean=false
 )
 ```
+
+-**url** of request
+-**oAuth2**: you can specificy if he will be able to use oauth2 properly configured in core
+-**header body** etc... like http client request (okhttp)
+
 After initialization of this class you can call this actions:
 
 ```kotlin
