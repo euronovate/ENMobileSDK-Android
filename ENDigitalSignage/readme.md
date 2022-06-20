@@ -53,7 +53,7 @@ ENDigitalSignageMediaConfig(
  var landPlaceholderAssetName: String? = null,  
  var portPlaceholderAssetName: String? = null)
  ```
-- `localMediaContents` is an array of objects ENLocalMedia used to play slideshow only offline mode with your assets. 
+- `localMediaContents` is an array of objects ENLocalMedia used to play slideshow only **OFFLINE** mode with your assets. 
    An example of localMedia initiliazation:
 ```kotlin
 ENLocalMedia(assetName = "landscape_placeholder.png",duration = 5000, ENDigitalSignageContentType.Image)

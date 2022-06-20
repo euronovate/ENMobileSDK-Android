@@ -36,7 +36,8 @@ Must **respect** *.with* order like in above example.
 There is a config in builder of viewer module. This is the constructor:
 
 ```kotlin
-class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder)
+class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder,  
+                     var idleTimeout: Long?=null)
 ```
 `signFieldPlaceholder` is mandatory and it used to customize placeholder in signatureField you can choiche this options:
 
@@ -45,6 +46,9 @@ class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder)
 - **customPlaceholder**: -> you can write custom text
 
 ![tap image](tap_here.png)
+
+`idleTimeout`: if configured it will allow to close viewer in case of idle after X seconds.
+
 ## ENViewerActions
 
 ```kotlin

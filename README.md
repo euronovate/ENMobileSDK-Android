@@ -1,6 +1,8 @@
 # ENMobileSDK
 
-#### [View Releases and Changelogs](https://github.com/euronovate/ENMobileSDK-Android/releases)
+#### [View Releases](https://github.com/euronovate/ENMobileSDK-Android/releases)
+
+#### [View Changelogs](Changelogs/index.md)
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
