@@ -39,20 +39,7 @@ Here's a very basic example of inizialization of ENSignatureBoxLibrary in ENMobi
 ```
 You have to **respect** *.with* order like in above example.
 
-We need to focus with this parameter `signatureImageConfig`, you can choice this list of options:
 
-- justSignature
-- signatureAndSignerName
-- signatureAndTimestamp
-- signatureSignerNameAndTimestamp
-
-All of these parameters allow you to customize **size** or/and **sizeTimestamp** inside the watermark, beyond that you can reserve a % a space in height of watermark with **watermarkReservedHeight**, using this parameter you can avoid watermark above signature.
-E.g:
-```kotlin
-ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f)
-```
-
-![watermark reserved](signaturewaterkmarkreserverd.png)
 ## ENSignatureBoxConfig
 
 This is a class used to configure ENSignatureBox Module.
@@ -88,7 +75,18 @@ class ENSignatureImageConfig(
 * `signatureAndTimestamp`, -> only timestamp
 * `signatureSignerNameAndTimestamp` -> both signer and timestamp
 
-another customization about signature image with this config: `signatureContentMode `. This paramter is used to **fit** or **fill** signatureField in pdf, we have options:
+We need to focus with this parameter `signatureImageConfig`
+
+All of these options allow you to customize **size** or/and **sizeTimestamp** inside the watermark, beyond that you can reserve a % a space in height of watermark with **watermarkReservedHeight**, using this parameter you can avoid watermark above signature.
+E.g:
+```kotlin
+ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f)
+```
+
+![watermark reserved](signaturewaterkmarkreserverd.png)
+
+
+`signatureContentMode `. This paramter is used to **fit** or **fill** signatureField in pdf, we have options:
 
 * `ignoreFieldRatio`,
 * `keepFieldRatio`

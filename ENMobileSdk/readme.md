@@ -682,12 +682,14 @@ class ENDefaultFont: ENFont(){
 There is an EventDriven inside a mobileSdk, at this moment we have these events:
 ```kotlin
 enum class ENEventType {
-    appForegrounded, -> when app is put in foreground
-    appBackgrounded, -> when app is put in bg 
-    coreInitialized, -> when ENMobileSdk finished initialization
-    signDocument, -> when receive an event to sign a document
-    viewDocument, -> when receive a request to open document in only read mode.
+    appForegrounded -> when app is put in foreground
+    appBackgrounded -> when app is put in bg 
+    coreInitialized -> when ENMobileSdk finished initialization
+    signDocument -> when receive an event to sign a document
+    viewDocument -> when receive a request to open document in only read mode.
 	viewerDidClose -> when user closed viewer(abort,confirm,exit) we also return a guid or path with document status
+	viewerIsIdle --> when the viewer is in standby so user does not do any action
+    settingsChanged --> when the user goes into the settings and makes changes
 }
 ```
 
