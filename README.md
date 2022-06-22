@@ -2,7 +2,7 @@
 
 #### [View Releases](https://github.com/euronovate/ENMobileSDK-Android/releases)
 
-#### [View Changelogs](Changelogs/index.md)
+#### [View Changelogs](CHANGELOG.md)
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
