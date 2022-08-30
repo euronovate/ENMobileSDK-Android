@@ -9,7 +9,7 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.0.1/blue)
+![](https://badgen.net/badge/stable/1.0.2/blue)
 
 
 #### [SignatureBox Tutorial and Samples](signaturebox/readme.md)
@@ -21,7 +21,7 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.0.1"
+	implementation "com.euronovate.signaturebox:signaturebox:1.0.2"
 }
 ```
 
@@ -34,7 +34,8 @@ Here's a very basic example of inizialization of ENSignatureBoxLibrary in ENMobi
       .with(signatureBoxConfig = ENSignatureBoxConfig(useAlpha = true,
             signatureSourceType = ENSignatureSourceType.Any,
             signatureContentMode = ENSignatureContentMode.keepFieldRatio,
-            signatureImageConfig = ENSignatureImageConfig.signatureSignerNameAndTimestamp))
+            signatureImageConfig = ENSignatureImageConfig.signatureSignerNameAndTimestamp)),
+            signatureBoxType = ENSignatureBoxType.theme1
        .build())
 ```
 You have to **respect** *.with* order like in above example.
@@ -48,14 +49,18 @@ This is a class used to configure ENSignatureBox Module.
  class ENSignatureBoxConfig(  
     var signatureSourceType: ENSignatureSourceType,  
     var signatureImageConfig: ENSignatureImageConfig,  
+    var signatureBoxType: ENSignatureBoxType?= ENSignatureBoxType.simple  
 )
 ```
+
+### ENSignatureSourceType
 `signatureSourceType` you can choose the enabled mode to sign, you have this options:
 
 *  `Pen` 
 *  `Finger`
 *  `Any` --> in this case we select first method when you draw first line/dot
 
+### ENSignatureImageConfig
 `signatureImageConfig` is a class that contains a constructor like this:
 
 ```kotlin
@@ -91,14 +96,29 @@ ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeig
 * `ignoreFieldRatio`,
 * `keepFieldRatio`
 
+### ENSignatureBoxType
+`signatureBoxType` is an enum that allows to select one of the different theme:
+
+- `simple`: it is a **default** style
+
+![simple](simple.png)
+
+- `theme1`: 
+
+![theme1](theme1.png)
+
+See paragraph [ENSignatureBoxTheme](#ENSignatureBoxTheme) about customization of each types
+
 ## ENSignatureBoxActions
 
 **Show**
 
 ```kotlin
 ENSignatureBox.getInstance().show(activity: Activity, 
-	pdfContainer: PdfContainer, signatureFieldName: String,
-	callback: (ENSignatureBoxResponse<ENSignatureDataResult>)->Unit)
+		 pdfContainer: PdfContainer?=null, 
+         signatureFieldName: String?=null,  
+         debugMode:Boolean?=false
+         callback: (ENSignatureBoxResponse<ENSignatureDataResult>)->Unit)
 ```
 to open signatureBox you need to pass:
 
@@ -107,6 +127,8 @@ to open signatureBox you need to pass:
 `pdfContainer` -> structure obtained after **processing** of document in `ENPdfMiddleware`
 
 `signatureFieldName` -> this is unique string used to identifty documentField in a pdf.
+
+`debugMode` -> is a debug mode used to test signaturebox, in this mode we log all touchedpoints (x,y, pressure)
 
 `callback` -> used to notify user after confirmation a signature drawed. You will receive this object: `ENSignatureDataResult` and this is the class declaration
 
@@ -139,82 +161,174 @@ ENSignatureBox.getInstance().isAlreadyVisible()
 You can customize your ENSignatureBox with this code:
 
 ```kotlin
-class ENDefaultSignatureBoxTheme: ENSignatureBoxTheme(){
-    override fun userIcon(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(srcImage = R.drawable.ic_people,tintColor = context.getColor(R.color.white))
-    }
-
-    override fun userText(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle( textColor = context.getColor(R.color.white),
-            textSize = 20f,textTypeface = null)
-    }
-
-    override fun userContainer(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(bgColor = context.getColor(R.color.bguserinfosignaturebox))
-    }
-    override fun repeatIcon(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(srcImage = R.drawable.ic_repeat,tintColor = context.getColor(R.color.white),
-            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())
-    }
-
-    override fun signatureContainer(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(bgColor = context.getColor(R.color.signatureColor))
-    }
-
-    override fun timeStampText(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle( textColor = context.getColor(R.color.white), textSize = 20f,textTypeface = font().light())
-    }
-
-    override fun font(): ENFont {
-        return ENDefaultFont()
-    }
-
-    override fun confirmIcon(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(srcImage = R.drawable.ic_done,tintColor = context.getColor(R.color.yellow),
-            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())
-    }
-
-    override fun abortIcon(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(srcImage = R.drawable.ic_abort,tintColor = context.getColor(R.color.redsemidark),
-            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())
-    }
-
-    override fun topContainer(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(bgColor = context.getColor(R.color.titletextprogressdialog))
-    }
-
-    override fun bottomContainer(): ENUIViewStyle {
-        val context = ENMobileSDK.getInstance().applicationContext
-        return ENUIViewStyle(bgColor = context.getColor(R.color.titletextprogressdialog))
-    }
-
-
-	override fun watermarkSigner(): ENUIViewStyle {  
-	    val context = ENMobileSDK.getInstance().applicationContext  
-		return ENUIViewStyle( textColor = context.getColor(R.color.waterMarkTextColor), textTypeface = font().medium())  
-	}  
+class ENDefaultSignatureBoxTheme(): ENSignatureBoxTheme(){  
+    override fun signatureBoxSimpleTheme(): ENSignatureBoxSimpleTheme {  
+        return ENDefaultSignatureBoxSimpleTheme()  
+    }  
   
-	override fun watermarkTimeStamp(): ENUIViewStyle {  
-	     val context = ENMobileSDK.getInstance().applicationContext  
-		 return ENUIViewStyle( textColor = context.getColor(R.color.waterMarkTextColor), textTypeface = font().regular())  
-	}
-	override fun contentContainer(): ENUIViewStyle {  
-	    val context = ENMobileSDK.getInstance().applicationContext  
-	    return ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog))  
-	}
+    override fun signatureBoxTheme1(): ENSignatureBoxTheme1 {  
+        return ENDefaultSignatureBoxTheme1()  
+    }  
 }
 ```
 
-At this moment you can customize these uicomponents:
+You have to override only theme choiced in config by enum `ENSignatureBoxType`
+
+### ENDefaultSignatureBoxSimpleTheme
+
+```kotlin
+class ENDefaultSignatureBoxSimpleTheme: ENSignatureBoxSimpleTheme(){  
+    override fun userIcon(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(srcImage = R.drawable.ic_people,tintColor = context.getColor(R.color.white))  
+    }  
+  
+    override fun userText(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.white),  
+            textSize = 20f,textTypeface = null)  
+    }  
+  
+    override fun userContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.darkGray))  
+    }  
+    override fun repeatIcon(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(srcImage = R.drawable.ic_repeat,tintColor = context.getColor(R.color.white),  
+            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())  
+    }  
+  
+    override fun signatureContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.white), borderColor = context.getColor(R.color.white), borderWidth = 3, cornerRadius = 10)  
+    }  
+  
+    override fun contentContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog))  
+    }  
+  
+    override fun timeStampText(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.white), textSize = 20f,textTypeface = font().light())  
+    }  
+  
+    override fun font(): ENFont {  
+        return ENDefaultFont()  
+    }  
+  
+    override fun watermarkSigner(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.bguserinfosignaturebox), textTypeface = font().medium())  
+    }  
+  
+    override fun watermarkTimeStamp(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.bguserinfosignaturebox), textTypeface = font().regular())  
+    }  
+  
+    override fun confirmIcon(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(srcImage = R.drawable.ic_circle_done,  
+            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())  
+    }  
+  
+    override fun cancelIcon(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(srcImage = R.drawable.ic_circle_cancel_selector, textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())  
+    }  
+  
+    override fun topContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.darkGray))  
+    }  
+  
+    override fun bottomContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog))  
+    }  
+}
+```
+
+### ENDefaultSignatureBoxTheme1
+
+In this theme `cancel/abort` button and `confirm` are handled by **ENTwiceBarTheme**
+```kotlin
+class ENDefaultSignatureBoxTheme1: ENSignatureBoxTheme1(){  
+    override fun userText(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.white),  
+            textSize = 20f,textTypeface = null)  
+    }  
+  
+    override fun userContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.darkGray))  
+    }  
+    override fun repeatIcon(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(srcImage = R.drawable.ic_repeat,tintColor = context.getColor(R.color.white),  
+            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())  
+    }  
+  
+    override fun signatureContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.white), borderColor = context.getColor(R.color.white), borderWidth = 3, cornerRadius = 10)  
+    }  
+  
+    override fun contentContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog))  
+    }  
+  
+    override fun bottomBarTheme(): ENTwiceBarTheme {  
+        return ENDefaultTwiceBarViewerTheme()  
+    }  
+  
+    override fun timeStampText(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.white), textSize = 20f,textTypeface = font().light())  
+    }  
+  
+    override fun font(): ENFont {  
+        return ENDefaultFont()  
+    }  
+  
+    override fun watermarkSigner(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.bguserinfosignaturebox), textTypeface = font().medium())  
+    }  
+  
+    override fun watermarkTimeStamp(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.bguserinfosignaturebox), textTypeface = font().regular())  
+    }  
+    override fun topContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.darkGray))  
+    }  
+}
+```
+
+### ENTwiceBarTheme
+
+![twicebar](twicebar.png)
+
+```kotlin
+class ENDefaultTwiceBarViewerTheme: ENTwiceBarTheme(){  
+    override fun confirm(): ENUIViewStyle {  
+        return ENUIViewStyle(bgDrawableRes = R.drawable.bg_confirm_bar, srcImage = R.drawable.ic_circle_done_empty_selector,  
+        textColorSelector = R.color.text_white_enable_gray_disable, textSize = 35f)  
+    }  
+    override fun abort(): ENUIViewStyle {  
+        return ENUIViewStyle(bgDrawableRes = R.drawable.bg_cancel_bar, srcImage = R.drawable.ic_circle_cancel_empty_selector,  
+            textColorSelector = R.color.text_white_enable_gray_disable, textSize = 35f)  
+    }  
+}
+```
+
+For each themes: at this moment you can customize these uicomponents:
 
 -label style `signerName`
 -label/layout button: `confirm`, `cancel`, `repeat`
