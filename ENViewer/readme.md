@@ -25,9 +25,10 @@ dependencies {
 Here's a very basic example of inizialization of ENViewer in ENMobileSdk builder. You have to do this operation once time because we keep istance of each modules.
 
 ```kotlin
-.with(ENViewer.Builder()
-     .with(applicationContext = applicationContext)
-     .build())
+.with(ENViewer.Builder()  
+    .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder(),  
+    viewerType = ENViewerType.simple, viewerBarType = ENViewerBarType.simple))  
+    .build())
 ```
 Must **respect** *.with* order like in above example.
 
@@ -60,6 +61,7 @@ class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder,
 
 - `simple`: is default layout
 
+![simple ](simple_viewer.png)
 - `theme1`: is another type of layout with 2 bars: leftBar fixed in this position and bottombar (**ENTwiceBar**) with two options confirm and cancel.
 
 ![theme 1](theme1_viewer.png)
@@ -67,7 +69,18 @@ class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder,
 **bottombar**: you can customize it with theme
 ![twicebar](twicebar.png)
 
-`viewerBarType`
+### ENViewerBarType
+`viewerBarType` is another that allow to customize viewerBar we have these options:
+
+`simple` : in this case it has confirm and cancel buttons
+
+![viewerbar_simple](viewerbar_simple.png)
+
+`theme1`:  in this case (image is rotated) it hasn't confirm and cancel buttons.
+
+![viewerbar_theme1](viewerbar_theme1.png)
+
+Size of icon is customizable with an override of `dimen` styles we will explain in theme chapter
 
 ## ENViewerActions
 
@@ -115,89 +128,137 @@ If you want handle `ENSoftServerException` or other type you have to use `try / 
 This is an example of initialization of ENViewerTheme:
 
 ```kotlin
-class ENDefaultViewerTheme: ENViewerTheme(){
-    override fun bottomBarTheme(): ENBottomBarTheme {
-        return ENDefaultBottomBarTheme()
-    }
+class ENDefaultViewerTheme: ENViewerTheme(){  
+    override fun viewerSimpleTheme(): ENViewerSimpleTheme {  
+        return ENDefaultViewerSimpleTheme()  
+    }  
+  
+    override fun viewerTheme1(): ENViewerTheme1 {  
+       return ENDefaultViewerTheme1()  
+    }  
 }
 ```
 
+You have to **override** only method based on the chosen theme.
+
+### ENViewerSimpleTheme
+
+This is an example of initialization of `ENViewerSimpleTheme`:
+
+```kotlin
+class ENDefaultViewerSimpleTheme: ENViewerSimpleTheme(){  
+    override fun viewerBarTheme(): ENViewerBarSimpleTheme {  
+        return ENDefaultViewerBarSimpleTheme()  
+    }  
+}
+```
+
+
 At this moment with this theme you can customize:
 
-- bottomBarTheme -> this is the ui component rendered above document viewer
+- `viewerBarTheme` -> this is the ui component rendered above document viewer
 
 
-### ENBottomBarTheme
+### ENViewerBarSimpleTheme
 
 Right away you can find an example of bottombar "customized":
 
 ![Bottom bar](bottombar.png)
 
 ```kotlin
-class ENDefaultBottomBarTheme: ENBottomBarTheme(){  
-    override fun leftLayout(): ENUIViewStyle {
-        return ENUIViewStyle(bgColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.titletextprogressdialog))
-    }
-
-    override fun flagCountry(): ENUIViewStyle {
-        return ENUIViewStyle(borderWidth = 5, borderColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),
-        cornerRadius = 40)
-    }
-
-    override fun pageInfo(): ENUIViewStyle {
-        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),
-            textTypeface = font().regular())
-    }
-
-    override fun zoomIn(): ENUIViewStyle {
-        return ENUIViewStyle(srcImage = R.drawable.zoom_in_selector)
-    }
-
-    override fun zoomOut(): ENUIViewStyle {
-        return ENUIViewStyle(srcImage = R.drawable.zoom_out_selector)
-    }
-
-    override fun previousPage(): ENUIViewStyle {
-        return ENUIViewStyle(srcImage = R.drawable.ic_previous_page_selector)
-    }
-
-    override fun nextPage(): ENUIViewStyle {
-        return ENUIViewStyle(srcImage = R.drawable.ic_next_page_selector)
-    }
-
-    override fun rightLayout(): ENUIViewStyle {
-        return ENUIViewStyle(bgColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.bguserinfosignaturebox))
-    }
-
-    override fun signInfo(): ENUIViewStyle {
-        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),
-        textTypeface =  font().regular())
-    }
-
-    override fun sign(): ENUIViewStyle {
-        return ENUIViewStyle(srcImage = R.drawable.ic_pen_selector)
-    }
-
-    override fun confirmIcon(): ENUIViewStyle {
-        return ENUIViewStyle(srcImage = R.drawable.ic_circle_done_selector)
-    }
-
-    override fun confirmLabel(): ENUIViewStyle {
-        return ENUIViewStyle(textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),
-        textTypeface = font().regular())
-    }
-
-    override fun abortIcon(): ENUIViewStyle {
-        return ENUIViewStyle(srcImage = R.drawable.ic_circle_abort_selector)
-    }
-
-    override fun abortLabel(): ENUIViewStyle {
-        return ENUIViewStyle(textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),
-            textTypeface = font().regular())
-    }
-    override fun font(): ENFont {
-        return ENDefaultFont()
-    }
+class ENDefaultViewerBarSimpleTheme: ENViewerBarSimpleTheme(){  
+    override fun leftLayout(): ENUIViewStyle {  
+        return ENUIViewStyle(bgColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.bgcolordialog))  
+    }  
+  
+    override fun flagCountry(): ENUIViewStyle {  
+        return ENUIViewStyle(borderWidth = 5, borderColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+        cornerRadius = 40)  
+    }  
+  
+    override fun pageInfo(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface = font().regular())  
+    }  
+  
+    override fun pageCounter(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface = font().regular())  
+    }  
+    override fun zoomIn(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.zoom_in_selector)  
+    }  
+  
+    override fun zoomOut(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.zoom_out_selector)  
+    }  
+  
+    override fun previousPage(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_previous_page_selector)  
+    }  
+  
+    override fun nextPage(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_next_page_selector)  
+    }  
+  
+    override fun rightLayout(): ENUIViewStyle {  
+        return ENUIViewStyle(bgColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.bguserinfosignaturebox))  
+    }  
+  
+    override fun signInfo(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+        textTypeface =  font().regular())  
+    }  
+  
+    override fun signCounter(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface =  font().regular())  
+    }  
+  
+    override fun sign(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_pen_light_selector)  
+    }  
+  
+    override fun confirmIcon(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_circle_done_empty_selector)  
+    }  
+  
+    override fun confirmLabel(): ENUIViewStyle {  
+        return ENUIViewStyle(textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+        textTypeface = font().regular())  
+    }  
+  
+    override fun abortIcon(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_circle_abort_selector)  
+    }  
+  
+    override fun abortLabel(): ENUIViewStyle {  
+        return ENUIViewStyle(textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface = font().regular())  
+    }  
+    override fun font(): ENFont {  
+        return ENDefaultFont()  
+    }  
 }
 ```
 
+### ENViewerTheme1
+
+Here an example of init ENViewerTheme1 class:
+
+```kotlin
+class ENDefaultViewerTheme1: ENViewerTheme1(){  
+    override fun viewerBarTheme(): ENViewerBarTheme1 {  
+        return ENDefaultViewerBarTheme1()  
+    }  
+    override fun bottomBarTheme(): ENTwiceBarTheme {  
+        return ENDefaultTwiceBarViewerTheme()  
+    }  
+}
+```
+You have to override:
+
+### ENViewerBarTheme1
+
+
+### ENTwiceBarTheme
