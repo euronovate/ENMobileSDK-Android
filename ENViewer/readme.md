@@ -10,13 +10,13 @@
 ## Gradle Dependency
 
 ![]([https://badgen.net/badge/stable/1.0.0/blue](https://badgen.net/badge/stable/1.0.0/blue))
-![](https://badgen.net/badge/stable/1.0.1/blue)
+![](https://badgen.net/badge/stable/1.0.2/blue)
 
 The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling on acrofields
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.0.1"
+ 	implementation "com.euronovate.viewer:viewer:1.0.2"
 }
 ```
 
@@ -37,8 +37,12 @@ There is a config in builder of viewer module. This is the constructor:
 
 ```kotlin
 class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder,  
-                     var idleTimeout: Long?=null)
+                     var idleTimeout: Long?=null,  
+                     var viewerType: ENViewerType?=ENViewerType.simple,  
+                     var viewerBarType: ENViewerBarType?=ENViewerBarType.simple)
 ```
+
+### ENSignFieldPlaceholder
 `signFieldPlaceholder` is mandatory and it used to customize placeholder in signatureField you can choiche this options:
 
 - **signerName** -> if you want show signerName that will sign this field
@@ -47,7 +51,23 @@ class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder,
 
 ![tap image](tap_here.png)
 
+### IdleTimeout
 `idleTimeout`: if configured it will allow to close viewer in case of idle after X seconds.
+
+### ENViewerType
+
+`viewerType` is an enum with these options:
+
+- `simple`: is default layout
+
+- `theme1`: is another type of layout with 2 bars: leftBar fixed in this position and bottombar (**ENTwiceBar**) with two options confirm and cancel.
+
+![theme 1](theme1_viewer.png)
+
+**bottombar**: you can customize it with theme
+![twicebar](twicebar.png)
+
+`viewerBarType`
 
 ## ENViewerActions
 

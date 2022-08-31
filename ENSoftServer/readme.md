@@ -6,9 +6,10 @@
 3. [ENSoftServerConfig](#ENSoftServerConfig)
 4. [ENSoftServerRepositories](#ENSoftServerRepositories)
 5. [ENSoftServerException](#ENSoftServerException)
-## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.0.1/blue)
+
+## Gradle Dependency
+![](https://badgen.net/badge/stable/1.0.2/blue)
 
 #### [SoftServer Tutorial and Samples](softserver/readme.md)
 
@@ -22,7 +23,7 @@ The `SoftServer` contains all api request used to interact with document, for ex
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.0.1"
+  implementation "com.euronovate.softserver:softserver:1.0.2"
 }
 ```
 

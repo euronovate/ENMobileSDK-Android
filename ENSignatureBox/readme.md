@@ -130,6 +130,8 @@ to open signatureBox you need to pass:
 
 `debugMode` -> is a debug mode used to test signaturebox, in this mode we log all touchedpoints (x,y, pressure)
 
+![debugMode](debugmode.png)
+
 `callback` -> used to notify user after confirmation a signature drawed. You will receive this object: `ENSignatureDataResult` and this is the class declaration
 
 ```kotlin
