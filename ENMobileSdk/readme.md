@@ -757,3 +757,29 @@ There is a set of exception specific used in core and submodules:
 * **serverException** is returned when server of your baseurl isn't unreachable
 * **noInternetConnection** is returned when you have disabled wifi or mobile. You will receive this error after api request.
 * **errorObtainOAuth2Token** if you activated OAuth2, it is return when we receive an error from OAuth2 provider.
+
+## ENBaseActivity
+
+We have created a base activity for our activity (signaturebox,viewer etc...) you can extend your class if you want so you will able to use our shorcut for example:
+
+- `checkPermission` used to request or check run time permission (eg: camera, audio etc..)
+- `contextLanguage`  you will receive context already localized with the current language.
+
+## Custom UI
+
+### ENTwiceActionBarView
+it is a component UI that you can use via xml or via programmatically in layout, for example:
+
+```kotlin
+
+<com.euronovate.mobilesdk.ui.ENTwiceActionBarView  
+    android:id="@+id/twiceActionBarView"  
+    android:layout_width="match_parent"  
+    android:layout_height="90dp"  
+    android:layout_alignParentBottom="true"  
+    app:iconSize="50dp" />
+```
+
+It consists of a layout divided in half: on the left a button with a label and an icon on the right another button with another label and icon.
+The buttons can be disabled, hidden at will, even programmatically.
+You can see an example in `ENViewer` modules
