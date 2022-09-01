@@ -6,6 +6,7 @@
 3. [ENViewerConfig](#ENViewerConfig)
 4. [ENViewerActions](#ENViewerActions)
 5. [ENViewerTheme](#ENViewerTheme)
+6. [Style](#Style) 
 
 ## Gradle Dependency
 
@@ -260,5 +261,116 @@ You have to override:
 
 ### ENViewerBarTheme1
 
+This is an example of initialization of `ENDefaultViewerBarTheme1`
+
+```kotlin
+class ENDefaultViewerBarTheme1: ENViewerBarTheme1(){  
+    override fun leftLayout(): ENUIViewStyle {  
+        return ENUIViewStyle(bgColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.bgcolordialog))  
+    }  
+  
+    override fun flagCountry(): ENUIViewStyle {  
+        return ENUIViewStyle(borderWidth = 5, borderColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            cornerRadius = 40)  
+    }  
+  
+    override fun pageInfo(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface = font().regular())  
+    }  
+  
+    override fun pageCounter(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface = font().regular())  
+    }  
+  
+    override fun zoomIn(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.zoom_in_selector)  
+    }  
+  
+    override fun zoomOut(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.zoom_out_selector)  
+    }  
+  
+    override fun previousPage(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_previous_page_selector)  
+    }  
+  
+    override fun nextPage(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_next_page_selector)  
+    }  
+  
+    override fun rightLayout(): ENUIViewStyle {  
+        return ENUIViewStyle(bgColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.bguserinfosignaturebox))  
+    }  
+  
+    override fun signInfo(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface =  font().regular())  
+    }  
+  
+    override fun signCounter(): ENUIViewStyle {  
+        return ENUIViewStyle(textSize = 20f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+            textTypeface =  font().regular())  
+    }  
+  
+    override fun sign(): ENUIViewStyle {  
+        return ENUIViewStyle(srcImage = R.drawable.ic_pen_light_selector)  
+    }  
+  
+    override fun font(): ENFont {  
+        return ENDefaultFont()  
+    }  
+}
+```
+
+it is similar to that `ENViewerBarSimpleTheme` but it hasn't confirm,cancel button because you need to override `ENTwiceBarTheme`
 
 ### ENTwiceBarTheme
+
+Here an example of initialization:
+
+```kotlin
+class ENDefaultTwiceBarViewerTheme: ENTwiceBarTheme(){  
+    override fun confirm(): ENUIViewStyle {  
+        return ENUIViewStyle(bgDrawableRes = R.drawable.bg_confirm_bar, srcImage = R.drawable.ic_circle_done_empty_selector,  
+        textColorSelector = R.color.text_white_enable_gray_disable, textSize = 35f)  
+    }  
+    override fun abort(): ENUIViewStyle {  
+        return ENUIViewStyle(bgDrawableRes = R.drawable.bg_cancel_bar, srcImage = R.drawable.ic_circle_cancel_empty_selector,  
+            textColorSelector = R.color.text_white_enable_gray_disable, textSize = 35f)  
+    }  
+}
+```
+With this theme you can customize only two button:
+-abort (right)
+-confirm (left)
+
+
+## Style
+
+### Dimens `style` 
+
+At this moment we have this style variables, that you can override:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>  
+    <dimen name="viewerBarTheme1_width">90dp</dimen>  
+    <dimen name="twiceBarTheme1_height">90dp</dimen>  
+  
+    <!-- generic theme -->  
+    <dimen name="viewerCountrySelector_width_height">40dp</dimen>  
+    <!-- theme 1 -->  
+    <dimen name="iconViewerBarTheme1_width_height">55dp</dimen>  
+    <!-- simple theme -->  
+    <dimen name="viewerBarSimple_width_or_height">@dimen/abc_action_bar_default_height_material</dimen>  
+    <dimen name="iconViewerBarSimple_width_height">38dp</dimen>  
+</resources>
+```
+They are used to set `Width` & `Height` of:
+
+- icons
+- country selector
+- layout viewerBar
+- layout twicebar(bottombar)
