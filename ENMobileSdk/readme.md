@@ -762,8 +762,12 @@ There is a set of exception specific used in core and submodules:
 
 We have created a base activity for our activity (signaturebox,viewer etc...) you can extend your class if you want so you will able to use our shorcut for example:
 
-- `checkPermission` used to request or check run time permission (eg: camera, audio etc..)
+- `checkPermissions` used to request or check run time permission (eg: camera, audio etc..)
 - `contextLanguage`  you will receive context already localized with the current language.
+
+Inside this we have an autocatcher for crash, if log server is configured sdk will send to logserver info about `exception`
+
+In this base activity we handle `keepScreenAlwaysOn` automatically.
 
 ## Custom UI
 
@@ -783,3 +787,5 @@ it is a component UI that you can use via xml or via programmatically in layout,
 It consists of a layout divided in half: on the left a button with a label and an icon on the right another button with another label and icon.
 The buttons can be disabled, hidden at will, even programmatically.
 You can see an example in `ENViewer` modules
+
+![twicebar](twicebar.png)
