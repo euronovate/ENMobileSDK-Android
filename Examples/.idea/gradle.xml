@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/DigitalSignage" />
             <option value="$PROJECT_DIR$/DsPubSubSoftServerSignature" />
             <option value="$PROJECT_DIR$/LocalSignature" />
+            <option value="$PROJECT_DIR$/MultiLayoutViewerSignatureBox" />
             <option value="$PROJECT_DIR$/PubSubSoftServerSignature" />
             <option value="$PROJECT_DIR$/SoftServerSignature" />
           </set>
