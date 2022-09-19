@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnShareLastPdf.isEnabled = true
     }
     private fun showProgressDialog(title: String? = getString(R.string.info), content: String? = getString(R.string.please_wait)): Dialog {
-        val dialogProgress = ENDialog.getInstance().dialog(activity = this, dialogType = ENDialogType.progress,
+        val dialogProgress = ENDialog.getInstance().dialog(activity = this, dialogType = ENDialogType.horizontalProgress,
             dialogTextConfig = ENDialogTextConfig(title = title, content = content))
         dialogProgress.show()
         return dialogProgress
@@ -161,6 +161,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 btnStart.isEnabled = initialized
                 btnStartLastPdf.isEnabled = initialized
             }
+            else -> {}
         }
     }
 }

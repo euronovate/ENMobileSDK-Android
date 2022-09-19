@@ -17,7 +17,7 @@
 14. [ENMobileSdkException](#ENMobileSdkException)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.0.1/blue)
+![](https://badgen.net/badge/stable/1.0.2/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -29,7 +29,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.0.1'
+  implementation 'com.euronovate.mobilesdk:core:1.0.2'
 }
 ```
 
@@ -425,7 +425,8 @@ As you can guess from the builder source code, you have the possibility to confi
 The Constructor is:
 ```kotlin
 class ENMobileSdkConfig(  
-    var enableSignatureOverwrite: Boolean?=true,  
+    var enableSignatureOverwrite: Boolean?=true, 
+    var considerAllSignatureFieldCharacters: Boolean?=false, 
     var keepScreenAlwaysOn:Boolean?=false,  
    .var languageConfig: ENLanguageConfig?=null,  
     var certificateOwnerInfo: ENCertificateOwnerInfo? = null,  
@@ -534,11 +535,12 @@ ENCertificateOwnerInfo (
 )
 ```
 
-* `certificateIntegrity` must contains base64 of pem with privateKey and certificate. If it is set, the certificate generation operation will be skipped during the applying of the first signature in the document
+* `certificateIntegrity` must contains base64 of pem with privateKey and certificate. If it is set, the certificate generation operation will be skipped during the applying of the first signature in the document.
 * `languageConfig` allow user to set a list of avaiable language in app, based on our enum `ENLanguageType` 
    In the specific config you can also decide if enable or not languagePicker in`ENViewer` and/or `ENDigitalSignage`
-* `enableSignatureOverwrite` is a flag that allow to overwrite a signature in a document
+* `enableSignatureOverwrite` is a flag that allow to overwrite a signature in a document.
 * `keepScreenAlwaysOn` is a flag that allow to keep screen of device always active without go in standby.
+* `considerAllSignatureFieldCharacters` : another flag used to ignore groupName symbol strange.
 
 ## Theming
 
@@ -755,3 +757,35 @@ There is a set of exception specific used in core and submodules:
 * **serverException** is returned when server of your baseurl isn't unreachable
 * **noInternetConnection** is returned when you have disabled wifi or mobile. You will receive this error after api request.
 * **errorObtainOAuth2Token** if you activated OAuth2, it is return when we receive an error from OAuth2 provider.
+
+## ENBaseActivity
+
+We have created a base activity for our activity (signaturebox,viewer etc...) you can extend your class if you want so you will able to use our shorcut for example:
+
+- `checkPermissions` used to request or check run time permission (eg: camera, audio etc..)
+- `contextLanguage`  you will receive context already localized with the current language.
+
+Inside this we have an autocatcher for crash, if log server is configured sdk will send to logserver info about `exception`
+
+In this base activity we handle `keepScreenAlwaysOn` automatically.
+
+## Custom UI
+
+### ENTwiceActionBarView
+it is a component UI that you can use via xml or via programmatically in layout, for example:
+
+```kotlin
+
+<com.euronovate.mobilesdk.ui.ENTwiceActionBarView  
+    android:id="@+id/twiceActionBarView"  
+    android:layout_width="match_parent"  
+    android:layout_height="90dp"  
+    android:layout_alignParentBottom="true"  
+    app:iconSize="50dp" />
+```
+
+It consists of a layout divided in half: on the left a button with a label and an icon on the right another button with another label and icon.
+The buttons can be disabled, hidden at will, even programmatically.
+You can see an example in `ENViewer` modules
+
+![twicebar](twicebar.png)

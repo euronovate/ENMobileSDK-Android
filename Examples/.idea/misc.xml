@@ -5,6 +5,8 @@
       <map>
         <entry key="DigitalSignage/src/main/res/layout/activity_main.xml" value="0.12259371833839919" />
         <entry key="LocalSignature/src/main/res/layout/activity_main.xml" value="0.25104166666666666" />
+        <entry key="MultiLayoutViewerSignatureBox/src/main/res/layout/activity_main.xml" value="0.14266304347826086" />
+        <entry key="SoftServerSignature/src/main/res/layout/activity_main.xml" value="0.14266304347826086" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="localSignature/src/main/res/layout/activity_main.xml" value="0.12259371833839919" />
       </map>

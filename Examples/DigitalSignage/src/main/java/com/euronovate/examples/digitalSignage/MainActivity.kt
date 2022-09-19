@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(ENLanguageType.en,ENLanguageType.el))))
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
-                jwt =  "your jwt"))
+                jwt =  "your jwt optional if you set licensekey and serverUrl"))
             .with(theme = ENDefaultTheme())
             .with(ENDigitalSignage.Builder()
                 .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "serverUrl", licenseCode = "licenseKey",
@@ -84,10 +84,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             }
             R.id.btnStartDs ->{
                 ENDigitalSignage.getInstance().digitalSignageConfig.digitalSignageMediaConfig!!.localMediaContents = arrayListOf(
-                    ENLocalMedia(assetName = "landscape_placeholder.png",duration = 5000, ENDigitalSignageContentType.Image),
-                    ENLocalMedia(assetName = "landscape_placeholder.png",duration = 4000, ENDigitalSignageContentType.Image),
-                    ENLocalMedia(assetName = "landscape_placeholder.png",duration = 3000, ENDigitalSignageContentType.Image),
-                    ENLocalMedia(assetName = "portrait_placeholder.png",duration = 3000, ENDigitalSignageContentType.Image)
+                    ENLocalMedia(assetName = "fixed_land.jpeg",duration = 5000, ENDigitalSignageContentType.Image),
+                    ENLocalMedia(assetName = "fixed_land.jpeg",duration = 4000, ENDigitalSignageContentType.Image),
+                    ENLocalMedia(assetName = "fixed_land.jpeg",duration = 3000, ENDigitalSignageContentType.Image),
+                    ENLocalMedia(assetName = "fixed_portrait.jpeg",duration = 3000, ENDigitalSignageContentType.Image)
                 )
                 ENDigitalSignage.getInstance().start()
             }

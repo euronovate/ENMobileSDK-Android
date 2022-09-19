@@ -1,0 +1,96 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.euronovate.examples.multilayoutviewersignaturebox"
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES']
+        }
+    }
+    namespace 'com.euronovate.examples.multilayoutviewersignaturebox'
+}
+dependencies {
+    implementation deps.jetbrains.stdlibjdk7
+    implementation deps.jetbrains.stdlib
+    implementation deps.jetbrains.coroutines_core
+    implementation deps.jetbrains.coroutines_android
+    implementation deps.kpermissions.kpermissions
+    implementation deps.kpermissions.kpermissions_coroutines
+    implementation deps.easypermissions
+
+    implementation deps.androidx.core
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.constraintLayout
+    implementation deps.androidx.crypto
+    implementation deps.androidx.material
+    implementation deps.androidx.exifinterface
+
+    implementation deps.gson
+    implementation deps.androidx.preferences
+    /**PROJECT IMPLEMENTATION **/
+   // implementation 'com.google.guava:guava:27.0.1-android'
+
+    implementation "com.euronovate.viewer:viewer:1.0.2"
+    implementation "com.euronovate.mobilesdk:core:1.0.2"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.0.2"
+    implementation "com.euronovate.libpdf:ENLibPdfAar:2.0.1"
+    implementation "com.euronovate.bio:bio:1.0.2"
+    implementation "com.euronovate.signaturebox:signaturebox:1.0.2"
+    implementation "com.euronovate.presenter:presenter:1.0.2"
+
+    //GLIDE
+    implementation deps.glide.core
+    annotationProcessor deps.glide.annotationGlideProcessor
+
+    //Lifecycle UI
+    implementation deps.androidx.lifecycle.extensions
+    implementation deps.androidx.lifecycle.runtime
+    annotationProcessor deps.androidx.lifecycle.compiler
+
+    // crypto
+    implementation deps.bouncycastle.bcprov
+    implementation deps.bouncycastle.bcpkix
+
+    //API okhttp
+    implementation deps.okhttp.okhttp
+    implementation deps.okhttp.logging_interceptor
+    implementation deps.conscrypt
+
+    //LOGGING
+    implementation deps.slf4j
+    //IO
+    implementation deps.simple_xml
+
+    api deps.jsonwebtoken.jjwt_api
+    runtimeOnly deps.jsonwebtoken.jjwt_impl
+    runtimeOnly (deps.jsonwebtoken.org_json){
+        exclude group: 'org.json', module: 'json'
+    }
+
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.junit_ext
+    androidTestImplementation deps.test.expresso_core
+}

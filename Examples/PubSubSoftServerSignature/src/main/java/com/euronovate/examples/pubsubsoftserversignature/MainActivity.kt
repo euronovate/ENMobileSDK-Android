@@ -12,6 +12,8 @@ import com.euronovate.bio.extension.with
 import com.euronovate.bio.model.enums.ENSignatureSourceType
 import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
+import com.euronovate.logger.model.ENLanguageConfig
+import com.euronovate.logger.model.ENLanguageType
 import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.callback.ENMobileInitializationCallback
@@ -77,8 +79,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .with(ENLoggerConfig(true,ENLogger.VERBOSE))
                 .build())
             .with(initializationCallback = this@MainActivity)
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",))
+            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url"))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
+                languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)),
                 networkConfig = ENNetworkConfig(skipSSL = false)
             ))
             .with(ENViewer.Builder()
@@ -95,13 +98,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(pubSub = ENPubSub.Builder()
                 .with(
                     ENPubSubConfig(type = ENPubSubType.webSocket,
-                        //wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm&notify_self
-                        connectionParams = { return@ENPubSubConfig Pair("your url signalR","your token") }))
+                        connectionParams = { return@ENPubSubConfig Pair("your wss url","your token") }))
                 .build())
             .with(ENBio.Builder()
                 .build())
             .with(ENSoftServer.Builder()
-                .with(ENSoftServerConfig(baseUrl = "your softserver url", "your license key"))
+                .with(ENSoftServerConfig(baseUrl = "your softserver url", "your softserver license key"))
                 .build())
             .build()
     }
@@ -156,6 +158,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 initialized = true
                 btnStart.isEnabled = initialized
             }
+            else -> {}
         }
     }
 }
