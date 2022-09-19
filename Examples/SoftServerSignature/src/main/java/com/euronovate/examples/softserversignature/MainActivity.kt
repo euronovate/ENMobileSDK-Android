@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     progressDialog = showProgressDialog(title = getString(R.string.starting_signature),content = getString(R.string.please_wait))
                     GlobalScope.launch {
                         try{
-                            ENMobileSDK.getInstance().openRemoteDocument("c57aaf62-b3a6-4b57-8863-72366dbf8b49")
+                            ENMobileSDK.getInstance().openRemoteDocument("your guid")
                         }catch(softServerEx: Exception){
                             softServerEx.printStackTrace()
                             runOnUiThread { Toast.makeText(applicationContext,softServerEx.message, Toast.LENGTH_LONG).show() }

@@ -14,10 +14,19 @@
         android:layout_height="wrap_content">
         <Button
             android:layout_width="wrap_content"
-            android:id="@+id/btnStart"
+            android:id="@+id/btnStartSimple"
             android:layout_weight="1"
             android:visibility="visible"
-            android:text="Open"
+            android:text="Open Simple"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/btnStartTheme1"
+            android:layout_weight="1"
+            android:visibility="visible"
+            android:text="Open Theme1"
             android:layout_gravity="center_horizontal"
             android:textAllCaps="false"
             android:layout_height="wrap_content"/>
