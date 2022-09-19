@@ -232,7 +232,6 @@ class ENDefaultViewerBarSimpleTheme: ENViewerBarSimpleTheme(){
     override fun abortIcon(): ENUIViewStyle {  
         return ENUIViewStyle(srcImage = R.drawable.ic_circle_abort_selector)  
     }  
-  
     override fun abortLabel(): ENUIViewStyle {  
         return ENUIViewStyle(textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
             textTypeface = font().regular())  
@@ -240,6 +239,14 @@ class ENDefaultViewerBarSimpleTheme: ENViewerBarSimpleTheme(){
     override fun font(): ENFont {  
         return ENDefaultFont()  
     }  
+    override fun versionLabel(): ENUIViewStyle {  
+	    return ENUIViewStyle(textSize = 15f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+        textTypeface =  font().regular())  
+	}  
+	override fun versionValue(): ENUIViewStyle {  
+	    return ENUIViewStyle(textSize = 12f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+        textTypeface =  font().regular())  
+	}
 }
 ```
 
@@ -321,6 +328,15 @@ class ENDefaultViewerBarTheme1: ENViewerBarTheme1(){
     override fun font(): ENFont {  
         return ENDefaultFont()  
     }  
+	override fun versionLabel(): ENUIViewStyle {  
+	    return ENUIViewStyle(textSize = 19f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+        textTypeface =  font().regular())  
+	}  
+  
+	override fun versionValue(): ENUIViewStyle {  
+	    return ENUIViewStyle(textSize = 15f, textColor = ENMobileSDK.getInstance().applicationContext.getColor(R.color.white),  
+        textTypeface =  font().regular())  
+	}
 }
 ```
 

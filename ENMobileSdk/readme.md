@@ -432,6 +432,7 @@ class ENMobileSdkConfig(
     var certificateOwnerInfo: ENCertificateOwnerInfo? = null,  
     var certificateIntegrity: String?=null,  
     var networkConfig: ENNetworkConfig = ENNetworkConfig()  
+    var appVersion: String?=null
 )
 ```
 
@@ -541,6 +542,7 @@ ENCertificateOwnerInfo (
 * `enableSignatureOverwrite` is a flag that allow to overwrite a signature in a document.
 * `keepScreenAlwaysOn` is a flag that allow to keep screen of device always active without go in standby.
 * `considerAllSignatureFieldCharacters` : another flag used to ignore groupName symbol strange.
+* `appVersion`: is a string used by our sdk to render it with a label in `ENViewer` & `ENDigitalSignage`
 
 ## Theming
 
