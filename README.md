@@ -2,7 +2,7 @@
 
 #### [View Releases](https://github.com/euronovate/ENMobileSDK-Android/releases)
 
-#### [View Changelogs](CHANGELOG.md)
+#### [View Changelogs](Changelogs/CHANGELOG.md)
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -98,6 +98,7 @@ plugins {
 ```
 
 ## ENMobileSDK (conventionally ENCore)
+#### [Core Tutorial and Samples](ENMobileSdk/readme.md)
 
 ![](https://badgen.net/badge/stable/1.0.2/blue)
 
