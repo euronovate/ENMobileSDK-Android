@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .build())
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
+                jwt= "your jwt"
             ))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
                 networkConfig = ENNetworkConfig(skipSSL = true)
@@ -103,18 +104,18 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .build())
             .with(pubSub = ENPubSub.Builder()
                 .with(ENPubSubConfig(type = ENPubSubType.webSocket,
-                    connectionParams = { return@ENPubSubConfig Pair("wss://demo.piesocket.com/v3/channel_1?api_key=oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm&notify_self","") }))
+                    connectionParams = { return@ENPubSubConfig Pair("your wss url","") }))
                 .build())
             .with(ENBio.Builder().build())
             .with(ENSoftServer.Builder()
-                .with(ENSoftServerConfig(baseUrl = "yourBaseUrl", "your licenseCode"))
+                .with(ENSoftServerConfig(baseUrl = "your softserver url", "your licenseCode softserver"))
                 .build())
             .with(theme = ENDefaultTheme())
             .with(mobileSdkConfig = ENMobileSdkConfig(languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(
                 ENLanguageType.en, ENLanguageType.el))
             )).with(ENDigitalSignage.Builder()
-                    .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "serverUrl",
-                        licenseCode = "licenseKey"))
+                    .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "your digital signage url",
+                        licenseCode = "your licenseKey digitalsignage"))
                     .build())
             .build()
     }
