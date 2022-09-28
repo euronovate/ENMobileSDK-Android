@@ -9,7 +9,7 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.0.2/blue)
+![](https://badgen.net/badge/stable/1.1.0/blue)
 
 
 #### [SignatureBox Tutorial and Samples](signaturebox/readme.md)
@@ -21,7 +21,7 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.0.2"
+	implementation "com.euronovate.signaturebox:signaturebox:1.1.0"
 }
 ```
 
@@ -47,9 +47,10 @@ This is a class used to configure ENSignatureBox Module.
 
 ```kotlin
  class ENSignatureBoxConfig(  
-    var signatureSourceType: ENSignatureSourceType,  
-    var signatureImageConfig: ENSignatureImageConfig,  
-    var signatureBoxType: ENSignatureBoxType?= ENSignatureBoxType.simple  
+    val signatureSourceType: ENSignatureSourceType,  
+    val signatureImageConfig: ENSignatureImageConfig,  
+    val signatureBoxType: ENSignatureBoxType? = ENSignatureBoxType.simple,  
+    val showFullScreen: Boolean = false  
 )
 ```
 
@@ -107,7 +108,19 @@ ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeig
 
 ![theme1](theme1.png)
 
+- `graphologist`: 
+![graphologist](graphologist_theme.png)
+
+
 See paragraph [ENSignatureBoxTheme](#ENSignatureBoxTheme) about customization of each types
+
+### showFullScreen
+
+this parameter has default value equal to false, you can set a true to render a signaturebox fullscreen like this:
+
+![fullscreen_example](fullscreen_example.png)
+
+
 
 ## ENSignatureBoxActions
 
@@ -115,12 +128,17 @@ See paragraph [ENSignatureBoxTheme](#ENSignatureBoxTheme) about customization of
 
 ```kotlin
 ENSignatureBox.getInstance().show(activity: Activity, 
-		 pdfContainer: PdfContainer?=null, 
-         signatureFieldName: String?=null,  
-         debugMode:Boolean?=false
-         callback: (ENSignatureBoxResponse<ENSignatureDataResult>)->Unit)
+								  pdfContainer: PdfContainer?=null,
+								  signatureFieldName: String?=null,
+								  callback: (ENSignatureBoxResponse)->Unit,
+								  debugMode:Boolean?=false)
 ```
-to open signatureBox you need to pass:
+
+After `v1.1.0` you can open signaturebox in two ways:
+
+*Default*
+
+To open signatureBox you need to pass:
 
 `activity` -> current activity.
 
@@ -128,11 +146,28 @@ to open signatureBox you need to pass:
 
 `signatureFieldName` -> this is unique string used to identifty documentField in a pdf.
 
+`callback` 
+
+*Debug mode*
+
+To open in this mode you have to pass these parameters:
+
+`activity` -> current activity.
+
 `debugMode` -> is a debug mode used to test signaturebox, in this mode we log all touchedpoints (x,y, pressure)
 
 ![debugMode](debugmode.png)
 
-`callback` -> used to notify user after confirmation a signature drawed. You will receive this object: `ENSignatureDataResult` and this is the class declaration
+`callback` -> used to notify user after confirmation a signature drawed. You will receive a sealed class `ENSignatureBoxResponse` with 3 different cases:
+
+```kotlin
+data class error(val error: Error) : ENSignatureBoxResponse()  
+data class success(val item: ENSignatureDataResult) : ENSignatureBoxResponse()  
+data class debugMode(val item: ArrayList<ENSignaturePoint>?) : ENSignatureBoxResponse()
+```
+
+**error**:  is used in case of problem
+**success**: is used in normal mode that return this object: `ENSignatureDataResult` and this is the class declaration
 
 ```kotlin
 class ENSignatureDataResult {
@@ -147,6 +182,19 @@ class ENSignatureDataResult {
 `signatureImage` -> is base64 of image
 `signatureModel` -> is class with all info about field just signed.
 `hasAlpha` -> boolean that indicates if `signatureImage` is with bg white or trasparent
+
+**debugMode**: return an arrayList of this `ENSignaturePoint` that contains all info about each touched points.
+
+```kotlin
+data class ENSignaturePoint(  
+    var eventX: Float? = null,  
+    var eventY: Float? = null,  
+    var eventPressure: Float? = null,  
+    var eventTime: Long? = null,  
+    var source: ENSignatureSourceType? = null,  
+    var isUpEvent: Boolean = false  
+)
+```
 
 
 **isSignatureBox is visible**
@@ -170,6 +218,10 @@ class ENDefaultSignatureBoxTheme(): ENSignatureBoxTheme(){
   
     override fun signatureBoxTheme1(): ENSignatureBoxTheme1 {  
         return ENDefaultSignatureBoxTheme1()  
+    }  
+  
+    override fun signatureBoxGraphologistTheme(): ENSignatureBoxGraphologistTheme {  
+        return ENDefaultSignatureBoxGraphologistTheme()  
     }  
 }
 ```
@@ -346,3 +398,51 @@ And watermark:
 Watermark is text below  `signature image`  after acquiring the signature from the user, in the `ENSignatureBoxConfig.signatureImageConfig`  you can change which text you would show
 
 
+### ENDefaultSignatureBoxGraphologistTheme
+
+In this theme we have have only two button `share` and `clear`
+
+```kotlin
+class ENDefaultSignatureBoxGraphologistTheme: ENSignatureBoxGraphologistTheme(){  
+    override fun repeat(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(srcImage = R.drawable.ic_repeat,tintColor = context.getColor(R.color.white),  
+            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())  
+    }  
+  
+    override fun signatureContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.white), borderColor = context.getColor(R.color.white), borderWidth = 3, cornerRadius = 10)  
+    }  
+  
+    override fun contentContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.bgcolordialog))  
+    }  
+  
+    override fun font(): ENFont {  
+        return ENDefaultFont()  
+    }  
+  
+    override fun watermarkSigner(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.bguserinfosignaturebox), textTypeface = font().medium())  
+    }  
+  
+    override fun watermarkTimeStamp(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle( textColor = context.getColor(R.color.bguserinfosignaturebox), textTypeface = font().regular())  
+    }  
+  
+    override fun confirm(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(srcImage = R.drawable.ic_circle_done,  
+            textColor = context.getColor(R.color.white), textSize = 23f,textTypeface = font().light())  
+    }  
+  
+    override fun topContainer(): ENUIViewStyle {  
+        val context = ENMobileSDK.getInstance().applicationContext  
+        return ENUIViewStyle(bgColor = context.getColor(R.color.darkGray))  
+    }  
+}
+```
