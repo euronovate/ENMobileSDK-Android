@@ -7,7 +7,7 @@
 3. [ENBioLibraryActions](#ENBioLibraryActions)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.0.2/blue)
+![](https://badgen.net/badge/stable/1.1.0/blue)
 
 #### [BioLibrary Tutorial and Samples](biolibrary/readme.md)
 
@@ -15,7 +15,7 @@ The `BioLibrary` module allow to collect all biometric data while you are signin
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.0.2"
+  implementation "com.euronovate.bio:bio:1.1.0"
 }
 ```
 
@@ -31,7 +31,7 @@ You have to **respect** *.with* order like in above example.
 
 ## ENBioLibraryActions
 
-**addSignatureTouchedPoint**
+### addSignatureTouchedPoint
 
 this method allow to collect all info about one point (x,y,pressure,timestamp ecc...)  
 
@@ -41,7 +41,7 @@ ENBio.getInstance().addSignatureTouchedPoint(SignatureTouchedPoint(eventX = even
 you need to pass `SignatureTouchedPoint`
 
 
-**isSourceTypeConsistent**
+### isSourceTypeConsistent
 
 if you want to check your current sourceMethod if it is consistent with other package, you will call this method. You have to pass `signatureSourceType`
 
@@ -51,7 +51,7 @@ ENBio.getInstance().isSourceTypeConsistent(touchEventInputMethod)
 `return Bool`
 
 
-**clearBioPackets**
+### clearBioPackets
 
 It allow to clear all biometricPacket in memory
 
@@ -59,9 +59,7 @@ It allow to clear all biometricPacket in memory
 ENBio.getInstance().clearBioPackets()
 ```
 
-**getBioContent**
-
-With this method user can obtain base64 based on xml of biometricData array collected.
+### getBioContent
 
 ```kotlin
 ENBio.getInstance().getBioContent(
@@ -76,9 +74,32 @@ ENBio.getInstance().getBioContent(
     windowManager = windowManager,
     documentHash = documentHash,
     documentSize = documentSize,
-    isFea = true
+    isFea = true,
+    debugMode: Boolean = false
 )
 ```
 
+This is method is used to obtain a base64 of biometric data collected during the signature process or in `debugMode` can return an arraylist of `ENSignaturePoint`
 
 
+So this function return a sealed class called: `ENBioResponse`
+
+```kotlin
+sealed class ENBioResponse {  
+    data class encodedXml(val value: String?) : ENBioResponse() // base64  
+    data class rawData(val points: ArrayList<ENSignaturePoint>?) : ENBioResponse()  
+}
+```
+
+**encodedXml** is returned a base64 like a string 
+
+**rawData** returned an arraylist of `ENSignaturePoint` is only used in debugMode
+
+
+### getFirstSignaturePointEventTime
+
+This function return a `Long` timeInMillisecond for the first point touched on drawer or collected by `ENBio`
+
+```kotlin
+ENBio.getInstance().getFirstSignaturePointEventTime()
+```
