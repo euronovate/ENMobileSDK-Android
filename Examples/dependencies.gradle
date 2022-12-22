@@ -47,7 +47,7 @@ ext {
                     kpermissions_coroutines: "com.github.fondesa:kpermissions-coroutines:3.3.0"
             ],
             euronovate:[
-                    "libpdf": "com.euronovate.libpdf:ENLibPdfAar:2.0.1"
+                    "libpdf": "com.euronovate.libpdf:ENLibPdfAar:2.1.4"
             ],
             bouncycastle:[
                     bcprov:"org.bouncycastle:bcprov-jdk15on:1.61",
