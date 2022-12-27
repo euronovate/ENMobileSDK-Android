@@ -8,7 +8,7 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.1.1/blue)
+![](https://badgen.net/badge/stable/1.2.0/blue)
 
 The `PubSub `module help you to estabilish a connection with websocket. At this moment we support these types:
 
@@ -18,7 +18,7 @@ The `PubSub `module help you to estabilish a connection with websocket. At this 
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pubsub:pubsub:1.1.1"
+    implementation "com.euronovate.pubsub:pubsub:1.2.0"
 }
 ```
 
