@@ -58,9 +58,9 @@ dependencies {
     implementation "com.euronovate.libpdf:ENLibPdfAar:2.1.4"
     implementation "com.euronovate.bio:bio:1.2.0"
     implementation "com.euronovate.signaturebox:signaturebox:1.2.0"
-    implementation "com.euronovate.softserver:softserver:1.0.3"
+    implementation "com.euronovate.softserver:softserver:1.2.0"
     implementation "com.euronovate.presenter:presenter:1.2.0"
-    implementation "com.euronovate.pubsub:pubsub:1.0.3"
+    implementation "com.euronovate.pubsub:pubsub:1.2.0"
 
     //ROOM DB
     implementation deps.room.runtime

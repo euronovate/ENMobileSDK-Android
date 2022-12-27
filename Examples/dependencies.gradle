@@ -1,7 +1,7 @@
 ext {
     // project version
-    versionCode = 100010
-    versionName = '1.0.1'
+    versionCode = 100200
+    versionName = '1.2.0'
     // Sdk and tools
     minSdkVersion = 23
     compileSdkVersion = 31
