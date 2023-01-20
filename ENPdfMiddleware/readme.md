@@ -8,13 +8,13 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.2.0/blue)
+![](https://badgen.net/badge/stable/1.2.1/blue)
 
 The `pdfMiddleware` module is the brain of the processing about pdf Document.
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.2.0"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.2.1"
 }
 ```
 ## Basics
