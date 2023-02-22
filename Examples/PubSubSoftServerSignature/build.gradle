@@ -52,15 +52,15 @@ dependencies {
     implementation deps.androidx.preferences
 
     /**PROJECT IMPLEMENTATION **/
-    implementation "com.euronovate.viewer:viewer:1.2.1"
-    implementation "com.euronovate.mobilesdk:core:1.2.1"
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.2.1"
-    implementation "com.euronovate.libpdf:ENLibPdfAar:2.1.6"
-    implementation "com.euronovate.bio:bio:1.2.1"
-    implementation "com.euronovate.signaturebox:signaturebox:1.2.1"
-    implementation "com.euronovate.softserver:softserver:1.2.1"
-    implementation "com.euronovate.presenter:presenter:1.2.1"
-    implementation "com.euronovate.pubsub:pubsub:1.2.1"
+    implementation "com.euronovate.viewer:viewer:$enmsdk_version"
+    implementation "com.euronovate.mobilesdk:core:$enmsdk_version"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:$enmsdk_version"
+    implementation "com.euronovate.libpdf:ENLibPdfAar:$enlibpdf"
+    implementation "com.euronovate.bio:bio:$enmsdk_version"
+    implementation "com.euronovate.signaturebox:signaturebox:$enmsdk_version"
+    implementation "com.euronovate.softserver:softserver:$enmsdk_version"
+    implementation "com.euronovate.presenter:presenter:$enmsdk_version"
+    implementation "com.euronovate.pubsub:pubsub:$enmsdk_version"
 
     //ROOM DB
     implementation deps.room.runtime

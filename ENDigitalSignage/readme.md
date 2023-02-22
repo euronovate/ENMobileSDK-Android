@@ -9,7 +9,7 @@
 5. [ENDigitalSignageTheme](#ENDigitalSignageTheme)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.2.1/blue)
+![](https://badgen.net/badge/stable/1.2.2/blue)
 
 ![badge_version](slideshow.png)
 
@@ -17,7 +17,7 @@ The `digitalsignage` module contains a main activity `ENDigitalSignageActivity` 
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.digitalsignage:digitalsignage:1.2.1"
+  implementation "com.euronovate.digitalsignage:digitalsignage:1.2.2"
 }
 ```
 ## Basics

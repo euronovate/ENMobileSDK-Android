@@ -7,7 +7,7 @@
 3. [ENBioLibraryActions](#ENBioLibraryActions)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.2.1/blue)
+![](https://badgen.net/badge/stable/1.2.2/blue)
 
 #### [BioLibrary Tutorial and Samples](biolibrary/readme.md)
 
@@ -15,7 +15,7 @@ The `BioLibrary` module allow to collect all biometric data while you are signin
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.2.1"
+  implementation "com.euronovate.bio:bio:1.2.2"
 }
 ```
 
@@ -50,6 +50,31 @@ ENBio.getInstance().isSourceTypeConsistent(touchEventInputMethod)
 ```
 `return Bool`
 
+
+### lastSignaturePoint
+
+Used to obtain lastSignaturePoint, can return null if none exist
+
+```kotlin
+fun ENBio.lastSignaturePoint(): ENSignaturePoint?
+```
+
+### signaturePointsIsEmpty
+
+If you need to know if signaturePoints is empty or not you can call this.
+
+```kotlin
+fun ENBio.signaturePointsIsEmpty(): Boolean 
+```
+
+
+### getFirstSignaturePointEventTime
+
+You can call this function to get first event time of signature points array.
+
+```kotlin
+fun ENBio.getFirstSignaturePointEventTime(): Long 
+```
 
 ### clearBioPackets
 
