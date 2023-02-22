@@ -11,7 +11,10 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
     }
-
+    ext {
+        enmsdk_version = "1.2.2"
+        enlibpdf = "2.1.6"
+    }
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

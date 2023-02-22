@@ -50,8 +50,8 @@ dependencies {
     implementation deps.androidx.preferences
 
     /**PROJECT IMPLEMENTATION **/
-    implementation "com.euronovate.mobilesdk:core:1.2.1"
-    implementation "com.euronovate.digitalsignage:digitalsignage:1.2.1"
+    implementation "com.euronovate.mobilesdk:core:$enmsdk_version"
+    implementation "com.euronovate.digitalsignage:digitalsignage:$enmsdk_version"
 
     //GLIDE
     implementation deps.glide.core
