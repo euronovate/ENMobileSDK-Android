@@ -9,19 +9,19 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.2.1/blue)
+![](https://badgen.net/badge/stable/1.2.2/blue)
 
 
 #### [SignatureBox Tutorial and Samples](signaturebox/readme.md)
 
 ![badge_version](imgSignatureBox.png)
 
-The `SignatureBox` module allow to capture finger or stylus digital signature in specific popup/dialog called `ENSignatureActivity `. 
+The `SignatureBox` module allow to capture finger or stylus digital signature in specific popup/dialog called `ENSignatureActivity `. From version 1.2.2 we collect `onHover` points if you are using "stylus" to sign a document.
 The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.2.0"
+	implementation "com.euronovate.signaturebox:signaturebox:1.2.2"
 }
 ```
 
