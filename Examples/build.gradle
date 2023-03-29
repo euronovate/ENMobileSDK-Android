@@ -12,7 +12,7 @@ buildscript {
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
     }
     ext {
-        enmsdk_version = "1.2.2"
+        enmsdk_version = "1.2.3"
         enlibpdf = "2.1.6"
     }
 }

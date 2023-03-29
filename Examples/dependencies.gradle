@@ -1,7 +1,7 @@
 ext {
     // project version
-    versionCode = 100201
-    versionName = '1.2.1'
+    versionCode = 100203
+    versionName = '1.2.3'
     // Sdk and tools
     minSdkVersion = 23
     compileSdkVersion = 31
@@ -45,9 +45,6 @@ ext {
             kpermissions:[
                     kpermissions: "com.github.fondesa:kpermissions:3.3.0",
                     kpermissions_coroutines: "com.github.fondesa:kpermissions-coroutines:3.3.0"
-            ],
-            euronovate:[
-                    "libpdf": "com.euronovate.libpdf:ENLibPdfAar:2.1.6"
             ],
             bouncycastle:[
                     bcprov:"org.bouncycastle:bcprov-jdk15on:1.61",
