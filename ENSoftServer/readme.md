@@ -9,7 +9,7 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.2.3/blue)
+![](https://badgen.net/badge/stable/1.3.0/blue)
 
 #### [SoftServer Tutorial and Samples](softserver/readme.md)
 
@@ -23,7 +23,7 @@ The `SoftServer` contains all api request used to interact with document, for ex
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.2.3"
+  implementation "com.euronovate.softserver:softserver:1.3.0"
 }
 ```
 
@@ -52,6 +52,8 @@ class ENSoftServerConfig(
 `baseUrl` and `licenseCode` are mandatory
 
 ## ENSoftServerRepositories
+
+NB: **Will be deprecated in favor of useCase**
 
 All method are `suspend` so you need to call this in coroutine or async context.
 
@@ -90,13 +92,44 @@ ENSoftServer.getInstance().getDocumentRepository()
 `documentTypeFind` --> allow to get all category type find of documents
 
 
-**Dossier Repository**
+## UseCase
 
-This class contains all api with baseEndpoint `business/dossier/`
+With 1.3.0 we introduced compatibility with `hilt/dagger` and we started using of usecase to obtain info, like softserver.
 
-At this moment we have:
+At this moment we released:
 
-...tbd
+### Document
+
+-`DocumentFindUseCase` : used to retrieve a specific document.
+-`DocumentUpdateStatusUseCase` : used to updated document status.
+
+### Dossier
+
+-`DossierFindDocumentsUseCase` : obtain a set list of all documents assigned to a dossier.
+-`DossierFindSingleUseCase` : retrieve single dossier
+-`DossierFindUseCase` : retrieve a list of dossier by userId
+-`DossierStatusUpdateUseCase` : used to updated dossier status.
+
+### Type
+
+-`TypeFindUseCase` : obtain a list of all type in database
+
+### User
+
+-`FindUserUseCase` : authenticate inside softserver
+
+**EXAMPLE** 
+
+you have to initialize useCase via Hilt for each useCase in your activity, after that you can call by istance and method `.invoke`
+
+```
+documentFindUseCase.invoke(  
+    Gson().fromJson(  
+        payload.toString(),  
+        DocumentFindPayload::class.java  
+    )  
+)
+```
 
 ## ENSoftServerException
 

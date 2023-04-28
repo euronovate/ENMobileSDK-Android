@@ -96,7 +96,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder(), viewerType = ENViewerType.theme1,
                     viewerBarType = ENViewerBarType.theme1))
                 .build())
-            .with(ENPdfMiddleware.Builder().build())
+            .with(ENPdfMiddleware.Builder().with(ENPdfMiddlewareConfig(
+                closeDocumentStatusOnConfirm = true,
+                abortDocumentStatusOnCancel = true
+            ).build()))
             .with(ENSignatureBox.Builder()
                 .with(signatureBoxConfig = ENSignatureBoxConfig(
                     signatureSourceType = ENSignatureSourceType.Any,

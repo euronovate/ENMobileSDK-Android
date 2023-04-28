@@ -8,13 +8,13 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.2.3/blue)
+![](https://badgen.net/badge/stable/1.3.0/blue)
 
 The `pdfMiddleware` module is the brain of the processing about pdf Document.
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.2.3"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.0"
 }
 ```
 ## Basics
@@ -22,11 +22,31 @@ dependencies {
 Here's a very basic example of inizialization of ENPdfMiddleware.
 
 ```kotlin
-.with(ENPdfMiddleware.Builder().build())
+.with(ENPdfMiddleware.Builder().with(ENPdfMiddlewareConfig(closeDocumentStatusOnConfirm = true, abortDocumentStatusOnCancel = true)).build())
 ```
                 
 You have to **respect** *.with* order like in above example.
 
+
+## ENPDFMiddlewareConfig
+
+As you can guess from the builder source code, you have the possibility to configure some parameters (some are optional other not) of the "core"
+
+The Constructor is:
+```kotlin
+class ENPdfMiddlewareConfig (  
+       val closeDocumentStatusOnConfirm: Boolean,   
+       val abortDocumentStatusOnCancel: Boolean)
+)
+```
+and this is an example:
+
+```kotlin
+with(ENPdfMiddlewareConfig(closeDocumentStatusOnConfirm = true, abortDocumentStatusOnCancel = true)
+```
+* `closeDocumentStatusOnConfirm` is a flag used in viewer, if it's true after you will tap on close document viewer will call pdfMiddleware(softserver) to close document ---> `updateDocumentStatus` to **CLOSE**
+
+* `closeDocumentStatusOnConfirm` is a flag used in viewer, if it's true after you will tap on abort document viewer will call pdfMiddleware(softserver) to  `updateDocumentStatus` with status **ABORTED**
 
 ### ENPdfMiddleware Actions
 
