@@ -17,7 +17,7 @@
 14. [ENMobileSdkException](#ENMobileSdkException)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.2.3/blue)
+![](https://badgen.net/badge/stable/1.3.0/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -29,7 +29,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.2.3'
+  implementation 'com.euronovate.mobilesdk:core:1.3.0'
 }
 ```
 

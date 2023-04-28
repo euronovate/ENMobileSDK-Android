@@ -9,13 +9,13 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.2.3/blue)
+![](https://badgen.net/badge/stable/1.3.0/blue)
 
 The `presenter` module contains only a template used by `viewer` to render document. It is customized based on client.
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.presenter:presenter:1.2.3"
+    implementation "com.euronovate.presenter:presenter:1.3.0"
 }
 ```
 ## Basics

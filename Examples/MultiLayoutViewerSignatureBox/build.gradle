@@ -50,6 +50,15 @@ dependencies {
 
     implementation deps.gson
     implementation deps.androidx.preferences
+
+    implementation deps.lifecycle.lifecycle_runtime
+    implementation deps.lifecycle.lifecycle_viewmodel
+    implementation deps.lifecycle.lifecycle_viewmodel_ktx
+    //Dagger - Hilt
+    implementation deps.hilt.android
+    kapt deps.hilt.android_compiler
+    implementation deps.hilt.navigation_compose
+
     /**PROJECT IMPLEMENTATION **/
    // implementation 'com.google.guava:guava:27.0.1-android'
 

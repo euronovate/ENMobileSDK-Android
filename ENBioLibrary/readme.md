@@ -7,7 +7,7 @@
 3. [ENBioLibraryActions](#ENBioLibraryActions)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.2.3/blue)
+![](https://badgen.net/badge/stable/1.3.0/blue)
 
 #### [BioLibrary Tutorial and Samples](biolibrary/readme.md)
 
@@ -15,7 +15,7 @@ The `BioLibrary` module allow to collect all biometric data while you are signin
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.2.3"
+  implementation "com.euronovate.bio:bio:1.3.0"
 }
 ```
 

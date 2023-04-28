@@ -80,7 +80,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(ENViewer.Builder()
                 .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
                 .build())
-            .with(ENPdfMiddleware.Builder().build())
+            .with(ENPdfMiddleware.Builder().with(ENPdfMiddlewareConfig(
+                closeDocumentStatusOnConfirm = true,
+                abortDocumentStatusOnCancel = true
+            ).build()))
             .with(ENSignatureBox.Builder()
                 .with(signatureBoxConfig = ENSignatureBoxConfig(
                     signatureSourceType = ENSignatureSourceType.Any,
