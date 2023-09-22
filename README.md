@@ -29,6 +29,12 @@ maven {
 }
 ```
 
+> We are migrating the repository to a new url that will be like
+> 
+> **https://artifactory.internal.euronovate.com/ui/repos/tree/General/android-release-local**
+> 
+> Upon completion of the transition, we will update the documentation with the correct url
+
 In the most recent project of gradle / android-studio, you have to set this in `settings.gradle`
 
 ### Gradle Dependecies required
