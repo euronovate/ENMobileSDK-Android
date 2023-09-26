@@ -1,17 +1,22 @@
 # ENSoftServer
 
 ## Table of Contents
-1. [Gradle Dependency](#gradle-dependency)
-2. [Basics](#basics)
-3. [ENSoftServerConfig](#ENSoftServerConfig)
-4. [ENSoftServerRepositories](#ENSoftServerRepositories)
-5. [ENSoftServerException](#ENSoftServerException)
+- [ENSoftServer](#ensoftserver)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENSoftServerConfig](#ensoftserverconfig)
+  - [ENSoftServerRepositories](#ensoftserverrepositories)
+  - [UseCase](#usecase)
+    - [Document](#document)
+    - [Dossier](#dossier)
+    - [Type](#type)
+    - [User](#user)
+  - [ENSoftServerException](#ensoftserverexception)
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.5/blue)
-
-#### [SoftServer Tutorial and Samples](softserver/readme.md)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 The `SoftServer` contains all api request used to interact with document, for example:
 
@@ -23,7 +28,7 @@ The `SoftServer` contains all api request used to interact with document, for ex
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.3.5"
+  implementation "com.euronovate.softserver:softserver:1.3.6"
 }
 ```
 

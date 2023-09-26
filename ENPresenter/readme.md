@@ -2,20 +2,22 @@
 
 ## Table of Contents
 
-1. [Gradle Dependency](#gradle-dependency)
-2. [Basics](#basics)
-3. [ENPresenterActions](#ENPresenterActions)
-4. [ENPresenterTheme](#ENPresenterTheme)
+- [ENPresenter](#enpresenter)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENPresenterActions](#enpresenteractions)
+  - [ENPresenterTheme](#enpresentertheme)
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.3.5/blue)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 The `presenter` module contains only a template used by `viewer` to render document. It is customized based on client.
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.presenter:presenter:1.3.5"
+    implementation "com.euronovate.presenter:presenter:1.3.6"
 }
 ```
 ## Basics

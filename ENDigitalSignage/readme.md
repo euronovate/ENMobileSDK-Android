@@ -2,14 +2,16 @@
 
 ## Table of Contents
 
-1. [Gradle Dependency](#Gradle-Dependency)
-2. [Basics](#basics)
-3. [ENDigitalSignageConfig](#ENDigitalSignageConfig)
-4. [ENDigitalSignageActions](#ENDigitalSignageActions)
-5. [ENDigitalSignageTheme](#ENDigitalSignageTheme)
+- [ENDigitalSignage](#endigitalsignage)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENDigitalSignageConfig](#endigitalsignageconfig)
+  - [ENDigitalSignageActions](#endigitalsignageactions)
+  - [ENDigitalSignageTheme](#endigitalsignagetheme)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.5/blue)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 ![badge_version](slideshow.png)
 
@@ -17,7 +19,7 @@ The `digitalsignage` module contains a main activity `ENDigitalSignageActivity` 
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.digitalsignage:digitalsignage:1.3.5"
+  implementation "com.euronovate.digitalsignage:digitalsignage:1.3.6"
 }
 ```
 ## Basics

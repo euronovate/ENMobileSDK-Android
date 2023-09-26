@@ -2,23 +2,30 @@
 
 ## Table of Contents
 
-1. [Gradle Dependency](#gradle-dependency)
-2. [Basics](#basics)
-3. [ENBioLibraryActions](#ENBioLibraryActions)
+- [ENBioLibrary](#enbiolibrary)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENBioLibraryActions](#enbiolibraryactions)
+    - [addSignatureTouchedPoint](#addsignaturetouchedpoint)
+    - [isSourceTypeConsistent](#issourcetypeconsistent)
+    - [lastSignaturePoint](#lastsignaturepoint)
+    - [signaturePointsIsEmpty](#signaturepointsisempty)
+    - [getFirstSignaturePointEventTime](#getfirstsignaturepointeventtime)
+    - [clearBioPackets](#clearbiopackets)
+    - [getBioContent](#getbiocontent)
+    - [getFirstSignaturePointEventTime](#getfirstsignaturepointeventtime-1)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.5/blue)
-
-#### [BioLibrary Tutorial and Samples](biolibrary/readme.md)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 The `BioLibrary` module allow to collect all biometric data while you are signing document. We collect `x` `y` and `pressure` , `timestamp` etc. All data are crypted and in base64.
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.3.5"
+  implementation "com.euronovate.bio:bio:1.3.6"
 }
 ```
-
 ## Basics
 
 Here's a very basic example of inizialization of ENBioLibrary in ENMobileSdk builder. You have to do this operation once time because we keep istance of each modules.

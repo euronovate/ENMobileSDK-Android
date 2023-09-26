@@ -2,19 +2,23 @@
 
 ## Table of Contents
 
-1. [Gradle Dependency](#gradle-dependency)
-2. [Basics](#basics)
-3. [ENPdfMiddlewareException](#ENPdfMiddlewareException)
+- [ENPdfMiddleware](#enpdfmiddleware)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENPDFMiddlewareConfig](#enpdfmiddlewareconfig)
+    - [ENPdfMiddleware Actions](#enpdfmiddleware-actions)
+    - [ENPdfMiddlewareException](#enpdfmiddlewareexception)
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.5/blue)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 The `pdfMiddleware` module is the brain of the processing about pdf Document.
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.5"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.6"
 }
 ```
 ## Basics

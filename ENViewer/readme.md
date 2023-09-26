@@ -1,23 +1,35 @@
 # ENViewer
 
 ## Table of Contents
-1. [Gradle Dependency](#gradle-dependency)
-2. [Basics](#basics)
-3. [ENViewerConfig](#ENViewerConfig)
-4. [ENViewerActions](#ENViewerActions)
-5. [ENViewerTheme](#ENViewerTheme)
-6. [Style](#Style) 
+- [ENViewer](#enviewer)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENViewerConfig](#enviewerconfig)
+    - [ENSignFieldPlaceholder](#ensignfieldplaceholder)
+    - [IdleTimeout](#idletimeout)
+    - [ENViewerType](#enviewertype)
+    - [ENViewerBarType](#enviewerbartype)
+  - [ENViewerActions](#envieweractions)
+    - [ENMobileSDK Extensions](#enmobilesdk-extensions)
+  - [ENViewerTheme](#enviewertheme)
+    - [ENViewerSimpleTheme](#enviewersimpletheme)
+    - [ENViewerBarSimpleTheme](#enviewerbarsimpletheme)
+    - [ENViewerTheme1](#enviewertheme1)
+    - [ENViewerBarTheme1](#enviewerbartheme1)
+    - [ENTwiceBarTheme](#entwicebartheme)
+  - [Style](#style)
+    - [Dimens `style`](#dimens-style)
 
 ## Gradle Dependency
 
-![]([https://badgen.net/badge/stable/1.0.0/blue](https://badgen.net/badge/stable/1.0.0/blue))
-![](https://badgen.net/badge/stable/1.3.5/blue)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling on acrofields
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.3.5"
+ 	implementation "com.euronovate.viewer:viewer:1.3.6"
 }
 ```
 

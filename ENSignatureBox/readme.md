@@ -1,18 +1,25 @@
 # ENSignatureBox
 
 ## Table of Contents
-1. [Gradle Dependency](#gradle-dependency)
-2. [Basics](#basics)
-3. [ENSignatureBoxConfig](#ENSignatureBoxConfig)
-4. [ENSignatureBoxActions](#ENSignatureBoxActions)
-5. [ENSignatureBoxTheme](#ENSignatureBoxTheme)
+- [ENSignatureBox](#ensignaturebox)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENSignatureBoxConfig](#ensignatureboxconfig)
+    - [ENSignatureSourceType](#ensignaturesourcetype)
+    - [ENSignatureImageConfig](#ensignatureimageconfig)
+    - [ENSignatureBoxType](#ensignatureboxtype)
+    - [showFullScreen](#showfullscreen)
+  - [ENSignatureBoxActions](#ensignatureboxactions)
+  - [ENSignatureBoxTheme](#ensignatureboxtheme)
+    - [ENDefaultSignatureBoxSimpleTheme](#endefaultsignatureboxsimpletheme)
+    - [ENDefaultSignatureBoxTheme1](#endefaultsignatureboxtheme1)
+    - [ENTwiceBarTheme](#entwicebartheme)
+    - [ENDefaultSignatureBoxGraphologistTheme](#endefaultsignatureboxgraphologisttheme)
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.3.5/blue)
-
-
-#### [SignatureBox Tutorial and Samples](signaturebox/readme.md)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 ![badge_version](imgSignatureBox.png)
 
@@ -21,7 +28,7 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.3.5"
+	implementation "com.euronovate.signaturebox:signaturebox:1.3.6"
 }
 ```
 

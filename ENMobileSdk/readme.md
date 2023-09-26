@@ -2,22 +2,31 @@
 
 ## Table of Contents
 
-1. [Gradle Dependency](#gradle-dependency)
-2. [Basics](#basics)
-3. [ENSettings](#ensettings)
-4. [ENLogger](#enlogger)
-5. [Initialization Callback](#initialization-callback)
-6. [ENAuth](#enauth)
-7. [ENDialog](#endialog)
-8. [Utilities](#utilities)
-9. [ENMobileSDKConfig](#ENMobileSDKConfig)
-10. [Theming](#Theming)
-12. [InternalEventDriven](#InternalEventDriven)
-13. [ENMobileSdkActions](#enmobilesdkactions)
-14. [ENMobileSdkException](#ENMobileSdkException)
+- [Core](#core)
+  - [Table of Contents](#table-of-contents)
+  - [Gradle Dependency](#gradle-dependency)
+  - [Basics](#basics)
+  - [ENSettings](#ensettings)
+    - [ENSettings Actions](#ensettings-actions)
+  - [ENLogger](#enlogger)
+    - [ENLogger Actions](#enlogger-actions)
+  - [Initialization Callback](#initialization-callback)
+  - [ENAuth](#enauth)
+    - [ENAuthException](#enauthexception)
+  - [ENDialog](#endialog)
+    - [ENDialog Actions](#endialog-actions)
+  - [Utilities](#utilities)
+  - [ENMobileSDKConfig](#enmobilesdkconfig)
+  - [Theming](#theming)
+  - [InternalEventDriven](#internaleventdriven)
+  - [ENMobileSdkActions](#enmobilesdkactions)
+  - [ENMobileSdkException](#enmobilesdkexception)
+  - [ENBaseActivity](#enbaseactivity)
+  - [Custom UI](#custom-ui)
+    - [ENTwiceActionBarView](#entwiceactionbarview)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.5/blue)
+![](https://badgen.net/badge/stable/1.3.6/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -29,7 +38,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.3.5'
+  implementation 'com.euronovate.mobilesdk:core:1.3.6'
 }
 ```
 
