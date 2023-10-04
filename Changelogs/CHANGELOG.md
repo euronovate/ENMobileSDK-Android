@@ -2,7 +2,7 @@
 
 ## v1.3.7
 
-- update ENLibPdf to 2.3.1
+- update ENLibPdf to 2.3.2
 - reduce minSdk from 23 to 21
 - fix version's label translation on viewer
 

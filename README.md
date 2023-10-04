@@ -70,7 +70,7 @@ Our sdk use a set of dependecies that they are required, this is a list:
   implementation 'org.conscrypt:conscrypt-android:2.2.1'
 
   //EURONOVATE
-  implementation "com.euronovate.libpdf:ENLibPdfAar:2.3.1"
+  implementation "com.euronovate.libpdf:ENLibPdfAar:2.3.2"
 
   //GLIDE
   api 'com.github.bumptech.glide:glide:4.12.0'
