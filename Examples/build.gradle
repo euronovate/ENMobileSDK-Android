@@ -12,8 +12,8 @@ buildscript {
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
     }
     ext {
-        enmsdk_version = "1.3.6"
-        enlibpdf = "2.3.1"
+        enmsdk_version = "1.3.7"
+        enlibpdf = "2.3.2"
     }
 }
 task clean(type: Delete) {
