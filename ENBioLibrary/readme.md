@@ -17,13 +17,13 @@
     - [getFirstSignaturePointEventTime](#getfirstsignaturepointeventtime-1)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.7/blue)
+![](https://badgen.net/badge/stable/1.3.8/blue)
 
 The `BioLibrary` module allow to collect all biometric data while you are signing document. We collect `x` `y` and `pressure` , `timestamp` etc. All data are crypted and in base64.
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.3.7"
+  implementation "com.euronovate.bio:bio:1.3.8"
 }
 ```
 ## Basics

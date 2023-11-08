@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.8
+
+- fix crash on EncryptedPreferences
+
 ## v1.3.7
 
 - update ENLibPdf to 2.3.2
