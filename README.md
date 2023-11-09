@@ -10,6 +10,10 @@
 ### THIS SOFTWARE REQUIRES A LICENSE TO WORK.
 FOR ANY INFORMATION ABOUT, CONTACT US TO [customer[dot]sales[at]euronovate[dot]com](mailto:customer.sales@euronovate.com)
 
+# OS support
+- Android minimum supported version: 6.0 (API 23)
+- Android maximum supported version: 13.0 (API 33)
+
 # Modules
 
 The core module is the fundamental module that you need in order to use this sdk.
