@@ -7,7 +7,7 @@
 ## v1.3.7
 
 - update ENLibPdf to 2.3.2
-- reduce minSdk from 23 to 21
+- reduce minSdk from 23 to 21 (only to compile, no Android 5 support)
 - fix version's label translation on viewer
 
 ## v1.3.6
