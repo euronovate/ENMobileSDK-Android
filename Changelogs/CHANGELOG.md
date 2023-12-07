@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.9
+
+- fix default values for ENTXT and ENCHK
+
 ## v1.3.8
 
 - fix crash on EncryptedPreferences
