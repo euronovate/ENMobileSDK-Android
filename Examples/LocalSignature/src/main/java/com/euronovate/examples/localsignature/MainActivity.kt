@@ -28,6 +28,7 @@ import com.euronovate.mobilesdk.ui.dialog.ENDialogTextConfig
 import com.euronovate.mobilesdk.ui.dialog.ENDialogType
 import com.euronovate.pdfmiddleware.ENPdfMiddleware
 import com.euronovate.pdfmiddleware.extension.with
+import com.euronovate.pdfmiddleware.model.ENPdfMiddlewareConfig
 import com.euronovate.signaturebox.ENSignatureBox
 import com.euronovate.signaturebox.extension.with
 import com.euronovate.signaturebox.model.ENSignatureBoxConfig
@@ -80,10 +81,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(ENViewer.Builder()
                 .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
                 .build())
-            .with(ENPdfMiddleware.Builder().with(ENPdfMiddlewareConfig(
+            .with(ENPdfMiddleware.Builder().with(
+                ENPdfMiddlewareConfig(
                 closeDocumentStatusOnConfirm = true,
                 abortDocumentStatusOnCancel = true
-            ).build()))
+            )
+            ).build())
             .with(ENSignatureBox.Builder()
                 .with(signatureBoxConfig = ENSignatureBoxConfig(
                     signatureSourceType = ENSignatureSourceType.Any,

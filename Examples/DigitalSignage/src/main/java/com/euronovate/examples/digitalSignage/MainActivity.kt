@@ -46,29 +46,54 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         initUI()
         initLibrary()
     }
-    private fun initLibrary(){
+
+    private fun initLibrary() {
         ENMobileSDK.Builder()
             .with(context = applicationContext)
             .with(settings = ENSettings.Builder().build())
-            .with(logger = ENLogger.Builder()
-                .with(ENLoggerConfig(true,ENLogger.VERBOSE))
-                .build())
-                //TODO QUI
-            .with(mobileSdkConfig = ENMobileSdkConfig(networkConfig = ENNetworkConfig(skipSSL = true),
-                certificateOwnerInfo = ENCertificateOwnerInfo(),
-                languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(ENLanguageType.en,ENLanguageType.el))))
+            .with(
+                logger = ENLogger.Builder()
+                    .with(ENLoggerConfig(true, ENLogger.VERBOSE))
+                    .build()
+            )
+            //TODO QUI
+            .with(
+                mobileSdkConfig = ENMobileSdkConfig(
+                    networkConfig = ENNetworkConfig(skipSSL = true),
+                    certificateOwnerInfo = ENCertificateOwnerInfo(),
+                    languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en, ENLanguageType.el))
+                )
+            )
             .with(initializationCallback = this@MainActivity)
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
-                jwt =  "your jwt optional if you set licensekey and serverUrl"))
+            .with(
+                authConfig = ENAuthConfig(
+                    "your licenseKey", "your server Url",
+                    jwt = "your jwt optional if you set licensekey and serverUrl"
+                )
+            )
             .with(theme = ENDefaultTheme())
-            .with(ENDigitalSignage.Builder()
-                .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "serverUrl", licenseCode = "licenseKey",
-                    digitalSignageMediaConfig = ENDigitalSignageMediaConfig()))
-                .build())
+            .with(
+                ENDigitalSignage.Builder()
+                    .with(
+                        digitalSignageConfig = ENDigitalSignageConfig(
+                            baseUrl = "serverUrl", licenseCode = "licenseKey",
+                            digitalSignageMediaConfig = ENDigitalSignageMediaConfig(
+                                landPlaceholderAssetName = "fixed_land.jpeg", portPlaceholderAssetName = "fixed_portrait.jpeg",
+                                localMediaContents = arrayListOf(
+                                    ENLocalMedia(assetName = "fixed_land.jpeg", duration = 5000, ENDigitalSignageContentType.Image),
+                                    ENLocalMedia(assetName = "fixed_land.jpeg", duration = 4000, ENDigitalSignageContentType.Image),
+                                    ENLocalMedia(assetName = "fixed_land.jpeg", duration = 3000, ENDigitalSignageContentType.Image),
+                                    ENLocalMedia(assetName = "fixed_portrait.jpeg", duration = 3000, ENDigitalSignageContentType.Image)
+                                )
+                            )
+                        )
+                    )
+                    .build()
+            )
             .build()
     }
 
-    private fun initUI(){
+    private fun initUI() {
         btnStart = findViewById(R.id.btnStart)
         btnStart.setOnClickListener(this)
         btnStart.isEnabled = initialized
@@ -77,27 +102,25 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnStartDs.setOnClickListener(this)
         btnStartDs.isEnabled = initialized
     }
+
     override fun onClick(v: View?) {
-        when(v!!.id){
-            R.id.btnStart ->{
+        when (v!!.id) {
+            R.id.btnStart -> {
                 ENDigitalSignage.getInstance().start()
             }
-            R.id.btnStartDs ->{
-                ENDigitalSignage.getInstance().digitalSignageConfig.digitalSignageMediaConfig!!.localMediaContents = arrayListOf(
-                    ENLocalMedia(assetName = "fixed_land.jpeg",duration = 5000, ENDigitalSignageContentType.Image),
-                    ENLocalMedia(assetName = "fixed_land.jpeg",duration = 4000, ENDigitalSignageContentType.Image),
-                    ENLocalMedia(assetName = "fixed_land.jpeg",duration = 3000, ENDigitalSignageContentType.Image),
-                    ENLocalMedia(assetName = "fixed_portrait.jpeg",duration = 3000, ENDigitalSignageContentType.Image)
-                )
+
+            R.id.btnStartDs -> {
                 ENDigitalSignage.getInstance().start()
             }
         }
     }
+
     override fun didGetResponse(response: ENMobileSDKResponse<String>?) {
         when (response) {
             is ENMobileSDKResponse.error -> {
                 //TODO
             }
+
             is ENMobileSDKResponse.success -> {
                 initialized = true
                 btnStart.isEnabled = initialized
