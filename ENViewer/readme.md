@@ -110,16 +110,18 @@ If you want to check if viewer is alreadyVisible. (it also consider signaturebox
 
 ### ENMobileSDK Extensions
 
-When user adds in your app this module, automatically he will find himself in `ENMobileSdk.getInstance()` this methods:
+Adding this module in an app, in `ENMobileSdk.getInstance()` those methods can be found:
 
-**OPEN LOCAL DOCUMENT **
+**OPEN LOCAL DOCUMENT**
 
 ```kotlin
 ENMobileSDK.openDocument(documentBase64: String, certPemBase64: String?=null): Boolean
 ```
-You can use this method to open a document local in `base64`, and you can also pass `pem` used to crypt ***biometricData***. It is optional because we support too only ***graphometric signature***
+You can use this method to open a document locally in `base64`, and you can also pass a `pem` certificate used to crypt ***biometricData***. It is optional because we support only ***graphometric signature***
 
-Exist another similar method to open document with byte array.
+> NOTE: the `pem` certificate is only used to encrypt the biometric data, not to sign the document with an integrity signature
+
+For this method there is an overload to open document with a byte array.
 
 ```kotlin
 ENMobileSDK.openDocument(data : ByteArray,certPemBase64: String?=null): Boolean
