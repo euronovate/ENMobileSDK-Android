@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.3.11
+
+- add custom FES and FEA type into ENSignDocument
+
+## v1.3.10
+
+- add custom watermark height and list of strings into ENSignDocument
+
 ## v1.3.9
 
 - fix default values for ENTXT and ENCHK

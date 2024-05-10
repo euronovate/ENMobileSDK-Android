@@ -26,7 +26,7 @@
     - [ENTwiceActionBarView](#entwiceactionbarview)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.9/blue)
+![](https://badgen.net/badge/stable/1.3.11/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -38,7 +38,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.3.9'
+  implementation 'com.euronovate.mobilesdk:core:1.3.11'
 }
 ```
 
@@ -730,11 +730,25 @@ ENMobileSDK.unSubscribeEvent(ENEventCallback..)
 ```
 **Emit Event**
 
-You can emite event to a specific event and pass your custom data, for example:
+You can emit a specific event and pass your custom data, for example:
 
 ```kotlin
-ENMobileSDK.emitEvent(ENEventType.signDocument,StartSignDTO("guid"))
+ENMobileSDK.emitEvent(
+    ENEventType.signDocument,
+    ENSignDocument(
+        signer = null,
+        documentType = ENDocumentSourceType.guid("documentGuid"),
+        watermarkReservedHeight = 0.3,
+        watermarkOrderedStrings = listOf("Name", "Surname"),
+        documentSignatureType = DocumentSignatureType.FEA,
+    )
+)
 ```
+
+Example of custom data are:
+* a custom height for the watermark information inside the signature image
+* a custom list of strings for the watermark information inside the signature image
+* the type of the signature (FES/FEA)
 
 ## ENMobileSdkActions
 
