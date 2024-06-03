@@ -571,14 +571,16 @@ abstract class ENTheme {
     abstract fun signatureBoxTheme(): ENSignatureBoxTheme
     abstract fun dialogsTheme(): ENDialogsTheme
     abstract fun digitalSignageTheme(): ENDigitalSignageTheme
-	abstract fun presenterTheme(): ENPresenterTheme
+    abstract fun presenterTheme(): ENPresenterTheme
+    abstract fun viewerTheme(): ENViewerTheme
 }
 ```
 
 In the specific sub modules (libraries) we explained how to customize these themes:
   - `ENSignatureBox`
   - `ENDigitalSignage`
-  - `ENPresenterTheme
+  - `ENPresenterTheme`
+  - `ENViewerTheme`
   
 
 Instead  if you want customize `ENDialogsTheme` you will follow these examples:
@@ -673,7 +675,7 @@ class ENDefaultDialogsTheme: ENDialogsTheme(){
 ```
   - `positiveDialog`
   - `negativeDialog`
-  - `warningDialog
+  - `warningDialog`
   - `progressDialog`
   - `questionDialog`
   - `inputDialog`
