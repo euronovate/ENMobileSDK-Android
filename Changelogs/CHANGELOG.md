@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.12
+
+- add didSignDocument SDK event that carries the GUID of the document and the image (Bitmap) of the newly applied signature
+
 ## v1.3.11
 
 - add custom FES and FEA type into ENSignDocument
