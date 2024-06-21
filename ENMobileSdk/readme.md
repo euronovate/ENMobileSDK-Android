@@ -713,6 +713,10 @@ enum class ENEventType {
 	viewerDidClose -> when user closed viewer(abort,confirm,exit) we also return a guid or path with document status
 	viewerIsIdle --> when the viewer is in standby so user does not do any action
     settingsChanged --> when the user goes into the settings and makes changes
+    didSignDocument --> when a signature is successfully applied to a document
+    abortedDocument --> when the document has been aborted on SoftServer
+    closedDocument --> when the document has been closed on SoftServer
+    cancelledDocument --> when the signature flow has been canceled
 }
 ```
 
@@ -751,6 +755,18 @@ Example of custom data are:
 * a custom height for the watermark information inside the signature image
 * a custom list of strings for the watermark information inside the signature image
 * the type of the signature (FES/FEA)
+
+Example of `didSignDocument`:
+```kotlin
+ENMobileSDK.subscribeEvent(ENEventCallback(ENEventType.didSignDocument) { callbackData ->
+    (callbackData as? DidSignDocumentEventData)?.let {
+        // The callback data carries the GUID of the document and the image (Bitmap) of the newly applied signature
+        // Handle it.guid or it.signatureImage
+        it.signatureImage.recycle()
+    }
+})
+```
+
 
 ## ENMobileSdkActions
 
