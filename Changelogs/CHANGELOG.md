@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.13
+
+- change custom watermark behavior introduced with v1.3.10. Now is an additional information below the potential signer name or timestamp
+
 ## v1.3.12
 
 - add didSignDocument SDK event that carries the GUID of the document and the image (Bitmap) of the newly applied signature

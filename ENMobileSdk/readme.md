@@ -26,7 +26,7 @@
     - [ENTwiceActionBarView](#entwiceactionbarview)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.12/blue)
+![](https://badgen.net/badge/stable/1.3.13/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -38,7 +38,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.3.12'
+  implementation 'com.euronovate.mobilesdk:core:1.3.13'
 }
 ```
 
@@ -755,6 +755,8 @@ Example of custom data are:
 * a custom height for the watermark information inside the signature image
 * a custom list of strings for the watermark information inside the signature image
 * the type of the signature (FES/FEA)
+
+> NOTE: the custom list of strings will be added below the custom watermark that can be set with `ENSignatureImageModeConfig` (see the details here [ENSignatureImageConfig](https://github.com/euronovate/ENMobileSDK-Android/tree/master/ENSignatureBox#ensignatureimageconfig))
 
 Example of `didSignDocument`:
 ```kotlin
