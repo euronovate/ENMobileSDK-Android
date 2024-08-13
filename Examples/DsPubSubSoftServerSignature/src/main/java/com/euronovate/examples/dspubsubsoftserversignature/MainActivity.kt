@@ -178,6 +178,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 initialized = true
                 btnStart.isEnabled = initialized
             }
+            else -> {}
         }
+
     }
 }

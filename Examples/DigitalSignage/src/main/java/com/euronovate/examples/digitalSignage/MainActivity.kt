@@ -126,6 +126,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 btnStart.isEnabled = initialized
                 btnStartDs.isEnabled = initialized
             }
+
+            else -> {}
         }
     }
 }

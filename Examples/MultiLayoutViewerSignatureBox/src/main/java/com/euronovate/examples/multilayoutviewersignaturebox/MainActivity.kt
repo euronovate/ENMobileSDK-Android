@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     else -> {}
                 }
             })
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
+            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url", jwt = "your license jwt"
             ))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
                 languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()))
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             .with(ENPdfMiddleware.Builder().with(
                 ENPdfMiddlewareConfig(
                 closeDocumentStatusOnConfirm = true,
-                abortDocumentStatusOnCancel = true
+                abortDocumentStatusOnCancel = false
             )
             ).build())
             .with(ENSignatureBox.Builder()
@@ -204,14 +204,19 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     else -> {}
                 }
             })
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url"))
+            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url", jwt = "your license jwt"))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
                 languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()))
             .with(ENViewer.Builder()
                 .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder(), viewerType = viewerType,
                     viewerBarType = viewerBarType))
                 .build())
-            .with(ENPdfMiddleware.Builder().build())
+            .with(ENPdfMiddleware.Builder().with(
+                ENPdfMiddlewareConfig(
+                    closeDocumentStatusOnConfirm = true,
+                    abortDocumentStatusOnCancel = false
+                )
+            ).build())
             .with(ENSignatureBox.Builder()
                 .with(signatureBoxConfig = ENSignatureBoxConfig(
                     signatureSourceType = ENSignatureSourceType.Any,

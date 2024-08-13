@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                 .with(ENLoggerConfig(true,ENLogger.VERBOSE))
                 .build())
             .with(initializationCallback = this@MainActivity)
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url"))
+            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url", jwt = "your license jwt"))
             .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
                 languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)),
                 networkConfig = ENNetworkConfig(skipSSL = false)
