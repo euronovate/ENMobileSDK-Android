@@ -26,7 +26,7 @@
     - [ENTwiceActionBarView](#entwiceactionbarview)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.13/blue)
+![](https://badgen.net/badge/stable/1.3.14/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -38,7 +38,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.3.13'
+  implementation 'com.euronovate.mobilesdk:core:1.3.14'
 }
 ```
 
@@ -762,8 +762,8 @@ Example of `didSignDocument`:
 ```kotlin
 ENMobileSDK.subscribeEvent(ENEventCallback(ENEventType.didSignDocument) { callbackData ->
     (callbackData as? DidSignDocumentEventData)?.let {
-        // The callback data carries the GUID of the document and the image (Bitmap) of the newly applied signature
-        // Handle it.guid or it.signatureImage
+        // The callback data carries the GUID of the document and the image with its name (Bitmap) of the newly applied signature
+        // Handle it.documentGuid / it.signatureName / it.signatureImage
         it.signatureImage.recycle()
     }
 })

@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.14
+
+- refactor didSignDocument event: guid parameter name changed to documentGuid, add signatureName to identify the signatureImage
+
 ## v1.3.13
 
 - change custom watermark behavior introduced with v1.3.10. Now is an additional information below the potential signer name or timestamp

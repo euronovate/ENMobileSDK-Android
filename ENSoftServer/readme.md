@@ -16,7 +16,7 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.13/blue)
+![](https://badgen.net/badge/stable/1.3.14/blue)
 
 The `SoftServer` contains all api request used to interact with document, for example:
 
@@ -28,7 +28,7 @@ The `SoftServer` contains all api request used to interact with document, for ex
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.3.13"
+  implementation "com.euronovate.softserver:softserver:1.3.14"
 }
 ```
 

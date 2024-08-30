@@ -10,7 +10,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
     }
     ext {
-        enmsdk_version = "1.3.13"
+        enmsdk_version = "1.3.14"
         enlibpdf = "2.3.2"
     }
 }

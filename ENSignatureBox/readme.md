@@ -19,7 +19,7 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.3.13/blue)
+![](https://badgen.net/badge/stable/1.3.14/blue)
 
 ![badge_version](imgSignatureBox.png)
 
@@ -28,7 +28,7 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.3.13"
+	implementation "com.euronovate.signaturebox:signaturebox:1.3.14"
 }
 ```
 
