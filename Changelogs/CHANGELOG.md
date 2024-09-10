@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.15
+
+- fix for android 14 crash
+- improved biodata generation speed
+
 ## v1.3.14
 
 - refactor didSignDocument event: guid parameter name changed to documentGuid, add signatureName to identify the signatureImage

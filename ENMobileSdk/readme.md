@@ -26,7 +26,7 @@
     - [ENTwiceActionBarView](#entwiceactionbarview)
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.14/blue)
+![](https://badgen.net/badge/stable/1.3.15/blue)
 
 The `core` module contains everything you need to get started with the library. It contains all core and:
 
@@ -38,7 +38,7 @@ The `core` module contains everything you need to get started with the library. 
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.3.14'
+  implementation 'com.euronovate.mobilesdk:core:1.3.15'
 }
 ```
 
