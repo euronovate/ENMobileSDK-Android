@@ -45,7 +45,7 @@ Our sdk use a set of dependecies that they are required, this is a list:
   implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
   implementation 'androidx.exifinterface:exifinterface:1.3.2'
 
-  //Database room
+  // Database room
   implementation("androidx.room:room-runtime:$roomVersion")
   kapt("androidx.room:room-compiler:$roomVersion")
   implementation("androidx.room:room-ktx:$roomVersion")
@@ -57,30 +57,41 @@ Our sdk use a set of dependecies that they are required, this is a list:
   implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
   implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
-   // hilt
-   implementation "com.google.dagger:hilt-android:2.44"
-   kapt "com.google.dagger:hilt-android-compiler:2.44"
-   implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+  // hilt
+  implementation "com.google.dagger:hilt-android:2.44"
+  kapt "com.google.dagger:hilt-android-compiler:2.44"
+  implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
 
-   // crypto
+  // Compose
+  def composeBom = platform('androidx.compose:compose-bom:2023.01.00')
+  implementation composeBom
+  androidTestImplementation composeBom
+  implementation 'androidx.compose.material3:material3'
+  implementation 'androidx.compose.foundation:foundation'
+  implementation 'androidx.compose.ui:ui'
+  implementation 'androidx.compose.ui:ui-tooling-preview'
+  debugImplementation 'androidx.compose.ui:ui-tooling'
+  
+  // crypto
   implementation "org.bouncycastle:bcprov-jdk15on:1.61"
   implementation "org.bouncycastle:bcpkix-jdk15on:1.61"
   
-  //API okhttp
+  // API okhttp
   implementation "com.squareup.okhttp3:okhttp:4.7.2"
   implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
   implementation 'org.conscrypt:conscrypt-android:2.2.1'
 
-  //EURONOVATE
+  // EURONOVATE
   implementation "com.euronovate.libpdf:ENLibPdfAar:2.3.2"
 
-  //GLIDE
+  // GLIDE
   api 'com.github.bumptech.glide:glide:4.12.0'
   annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
   
-  //LOGGING
+  // LOGGING
   implementation "org.slf4j:slf4j-simple:1.6.1"
-  //IO
+  
+  // IO
   implementation 'org.simpleframework:simple-xml:2.7.1'
   api 'io.jsonwebtoken:jjwt-api:0.10.7'
   runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.7'
@@ -110,7 +121,7 @@ plugins {
 ## ENMobileSDK (conventionally ENCore)
 #### [Core Tutorial and Samples](ENMobileSdk/readme.md)
 
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 
 The `core` module includes everything you need to get started with the library. It contains all core and:
@@ -131,12 +142,12 @@ The `ENDialog` contains a set of dialog type that you can use in your app and it
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.3.15'
+  implementation 'com.euronovate.mobilesdk:core:1.3.16'
 }
 ```
 
 ## ENViewer
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 #### [Viewer Tutorial and Samples](ENViewer/readme.md)
 
@@ -151,12 +162,12 @@ The `viewer` module contains extensions to the core module, such as a document (
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.3.15"
+ 	implementation "com.euronovate.viewer:viewer:1.3.16"
 }
 ```
  
 ## ENDigitalSignage
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 #### [DigitalSignage Tutorial and Samples](ENDigitalSignage/readme.md)
 
@@ -166,12 +177,12 @@ The `digitalsignage` module contains a main activity `ENDigitalSignageActivity` 
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.digitalsignage:digitalsignage:1.3.15"
+  implementation "com.euronovate.digitalsignage:digitalsignage:1.3.16"
 }
 ```
 
 ## ENPdfMiddleware
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 #### [ENPdfMiddleware Tutorial and Samples](ENPdfMiddleware/readme.md)
 
@@ -185,12 +196,12 @@ The `pdfMiddleware` is an extension of the core and it is a brain of the process
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.15"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.16"
 }
 ```
 
 ## ENPresenter
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 #### [ENPresenter Tutorial and Samples](ENPresenter/readme.md)
 
@@ -198,12 +209,12 @@ The `presenter` module contains only a templates used by `viewer` to render docu
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.presenter:presenter:1.3.15"
+    implementation "com.euronovate.presenter:presenter:1.3.16"
 }
 ```
 
 ## ENPubSub
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 #### [ENPubSub Tutorial and Samples](ENPubSub/readme.md)
 
 The `PubSub ` module allow to estabilish a connection with websocket in particual with these types of ws:
@@ -214,12 +225,12 @@ The `PubSub ` module allow to estabilish a connection with websocket in particua
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pubsub:pubsub:1.3.15"
+    implementation "com.euronovate.pubsub:pubsub:1.3.16"
 }
 ```
 
 ## ENSignatureBox
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 #### [SignatureBox Tutorial and Samples](ENSignatureBox/readme.md)
 
@@ -230,13 +241,13 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.3.15"
+	implementation "com.euronovate.signaturebox:signaturebox:1.3.16"
 }
 ```
 
 ## ENBioLibrary
 
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 
 #### [ENBioLibrary Tutorial and Samples](ENBioLibrary/readme.md)
@@ -245,25 +256,30 @@ The `BioLibrary` module allow to collect all biometric data while you are signin
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.3.15"
+  implementation "com.euronovate.bio:bio:1.3.16"
 }
 ```
 
 ## ENSoftServer
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 #### [ENSoftServer Tutorial and Samples](ENSoftServer/readme.md)
 
-The `SoftServer` contains all api request used to interact with document, for example:
+The `SoftServer` module contains the APIs used to interact with documents:
 
 * find document
-* download
-* update status document
-* signPdf
-* appose Checkbox, TextField, RadioButton
+* download document
+* update document status
+* acquire signature
+* acquire Checkbox, TextField
+
+It also includes an API to retrieve information from dossiers:
+
+* find dossier
+* find documents in dossier
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.3.15"
+  implementation "com.euronovate.softserver:softserver:1.3.16"
 }
 ```

@@ -6,7 +6,8 @@
   - [Gradle Dependency](#gradle-dependency)
   - [Basics](#basics)
   - [ENSoftServerConfig](#ensoftserverconfig)
-  - [ENSoftServerRepositories](#ensoftserverrepositories)
+  - [ENSoftServerRepositories (Document/Custom API)](#ensoftserverrepositories-documentcustom-api)
+  - [Dossier API](#dossier-api)
   - [UseCase](#usecase)
     - [Document](#document)
     - [Dossier](#dossier)
@@ -16,19 +17,24 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
-The `SoftServer` contains all api request used to interact with document, for example:
+The `SoftServer` module contains the APIs used to interact with documents:
 
-* find 
-* download
-* update status 
-* signPdf
-* appose Checkbox, TextField, RadioButton
+* find document
+* download document
+* update document status
+* acquire signature
+* acquire Checkbox, TextField
+
+It also includes an API to retrieve information from dossiers:
+
+* find dossier
+* find documents in dossier
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.3.15"
+  implementation "com.euronovate.softserver:softserver:1.3.16"
 }
 ```
 
@@ -56,17 +62,21 @@ class ENSoftServerConfig(
 
 `baseUrl` and `licenseCode` are mandatory
 
-## ENSoftServerRepositories
+## ENSoftServerRepositories (Document/Custom API)
 
-NB: **Will be deprecated in favor of useCase**
-
-All method are `suspend` so you need to call this in coroutine or async context.
+All method are `suspend` so you need to call this in a coroutine or async context.
 
 **Custom Repository**
 
 This class contains all api with baseEndpoint `business/custom/`
 
-> *At this moment we have:*
+You can call each method like this:
+
+```kotlin
+ENSoftServer.getInstance().getCustomRepository()
+``` 
+
+As of now there is:
 
 `execMap` -> used to call a custom action available in softserver
 
@@ -74,13 +84,13 @@ This class contains all api with baseEndpoint `business/custom/`
 
 This class contains all api with baseEndpoint `business/document/`
 
-You can each method from this:
+You can call each method like this:
 
 ```kotlin
 ENSoftServer.getInstance().getDocumentRepository()
 ``` 
 
-> *At this moment we have:*
+As of now there are:
 
 `acquireOneShotFromStream` -> allow to upload programmatically a document to softserver.
 
@@ -96,12 +106,33 @@ ENSoftServer.getInstance().getDocumentRepository()
 
 `documentTypeFind` --> allow to get all category type find of documents
 
+## Dossier API
+
+API with base endpoint `business/dossier/`
+
+All method are suspend so you need to call this in a coroutine or async context.
+
+As of now there are:
+
+`findDossier` -> Retrieve dossier metadata given its GUID.
+
+```kotlin
+ENMobileSDK.getInstance().findDossier(dossierGuid = "GUID")
+``` 
+
+`findDocumentsInDossier` -> Retrieve all the documents in a dossier given the dossier's GUID.
+
+```kotlin
+ENMobileSDK.getInstance().findDocumentsInDossier(dossierGuid = "GUID")
+``` 
+
+> Please note that all the functions for the dossier's API could throw an exception that has to be managed.
 
 ## UseCase
 
-With 1.3.0 we introduced compatibility with `hilt/dagger` and we started using of usecase to obtain info, like softserver.
+With 1.3.0 we introduced compatibility with `hilt/dagger` and we started using of usecase to obtain info, like softserver. This API is an alternative to the old API.
 
-At this moment we released:
+As of now we released:
 
 ### Document
 

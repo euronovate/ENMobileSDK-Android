@@ -18,18 +18,19 @@
     - [ENViewerTheme1](#enviewertheme1)
     - [ENViewerBarTheme1](#enviewerbartheme1)
     - [ENTwiceBarTheme](#entwicebartheme)
+    - [ENViewerPinpadTheme](#enviewerpinpadtheme)
   - [Style](#style)
     - [Dimens `style`](#dimens-style)
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.3.15/blue)
+![](https://badgen.net/badge/stable/1.3.16/blue)
 
 The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling on acrofields
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.3.15"
+ 	implementation "com.euronovate.viewer:viewer:1.3.16"
 }
 ```
 
@@ -140,7 +141,7 @@ If you want handle `ENSoftServerException` or other type you have to use `try / 
 
 ## ENViewerTheme
 
-This is an example of initialization of ENViewerTheme:
+This is an example of initialization of `ENViewerTheme`:
 
 ```kotlin
 class ENDefaultViewerTheme: ENViewerTheme(){  
@@ -376,6 +377,27 @@ With this theme you can customize only two button:
 -abort (right)
 -confirm (left)
 
+### ENViewerPinpadTheme
+
+The theme used to customize the pinpad component that is showed during a signature with OTP functionality.
+
+This is an example of initialization of `ENViewerPinpadTheme`:
+
+```kotlin
+override fun viewerPinpadTheme(): ENViewerPinpadTheme {
+
+        return ENViewerPinpadTheme(
+            pinPadStyle = ENPinPadInputViewStyle.Round,
+            pinPadButtonBackgroundColorRes = R.color.teal_200,
+            pinPadButtonLabelColorRes = R.color.white,
+            pinPadButtonBorderColorRes = R.color.teal_200,
+            pinPadActionButtonBackgroundColorRes = R.color.teal_200,
+            pinPadActionButtonLabelColorRes = R.color.white,
+            otpLabelColorRes = R.color.white,
+            pinPadButtonSpacing = 10,
+        )
+    }
+```
 
 ## Style
 
