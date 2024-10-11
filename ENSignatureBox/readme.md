@@ -107,11 +107,11 @@ ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeig
 ### ENSignatureBoxType
 `signatureBoxType` is an enum that allows to select one of the different theme:
 
-- `simple`: it is a **default** style
+- `simple`: it is the **default** style
 
 ![simple](simple.png)
 
-- `theme1`: 
+- `theme1`: another style specifically designed for tablets
 
 ![theme1](theme1.png)
 

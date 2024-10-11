@@ -73,10 +73,10 @@ class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder,
 
 `viewerType` is an enum with these options:
 
-- `simple`: is default layout
+- `simple`: the default layout
 
 ![simple ](simple_viewer.png)
-- `theme1`: is another type of layout with 2 bars: leftBar fixed in this position and bottombar (**ENTwiceBar**) with two options confirm and cancel.
+- `theme1`: another type of layout with 2 bars: leftBar fixed in this position and bottombar (**ENTwiceBar**) with two options confirm and cancel. This layout is specifically designed for tablets.
 
 ![theme 1](theme1_viewer.png)
 
@@ -90,7 +90,7 @@ class ENViewerConfig(val signFieldPlaceholder: ENSignFieldPlaceholder,
 
 ![viewerbar_simple](viewerbar_simple.png)
 
-`theme1`:  in this case (image is rotated) it hasn't confirm and cancel buttons.
+`theme1`:  in this case (image is rotated) it does not have confirm and cancel buttons.
 
 ![viewerbar_theme1](viewerbar_theme1.png)
 
