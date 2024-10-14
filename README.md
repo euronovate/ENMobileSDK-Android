@@ -12,7 +12,7 @@ FOR ANY INFORMATION ABOUT, CONTACT US TO [customer[dot]sales[at]euronovate[dot]c
 
 # OS support
 - Android minimum supported version: 6.0 (API 23)
-- Android maximum supported version: 13.0 (API 33)
+- Android maximum supported version: 14.0 (API 34)
 
 # Modules
 
