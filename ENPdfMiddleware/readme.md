@@ -12,13 +12,13 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 The `pdfMiddleware` module is the brain of the processing about pdf Document.
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.16"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.17"
 }
 ```
 ## Basics
@@ -38,9 +38,10 @@ As you can guess from the builder source code, you have the possibility to confi
 
 The Constructor is:
 ```kotlin
-class ENPdfMiddlewareConfig (  
-       val closeDocumentStatusOnConfirm: Boolean,   
-       val abortDocumentStatusOnCancel: Boolean)
+class ENPdfMiddlewareConfig(
+    val closeDocumentStatusOnConfirm: Boolean,
+    val abortDocumentStatusOnCancel: Boolean,
+    val disableBackButtonWhenSignaturesCompleted: Boolean = false,
 )
 ```
 and this is an example:
@@ -48,9 +49,11 @@ and this is an example:
 ```kotlin
 with(ENPdfMiddlewareConfig(closeDocumentStatusOnConfirm = true, abortDocumentStatusOnCancel = true)
 ```
-* `closeDocumentStatusOnConfirm` is a flag used in viewer, if it's true after you will tap on close document viewer will call pdfMiddleware(softserver) to close document ---> `updateDocumentStatus` to **CLOSE**
+* `closeDocumentStatusOnConfirm` if it's true, after a tap on "close" document button the viewer calls softserver's `updateDocumentStatus` with status **CLOSE**
 
-* `closeDocumentStatusOnConfirm` is a flag used in viewer, if it's true after you will tap on abort document viewer will call pdfMiddleware(softserver) to  `updateDocumentStatus` with status **ABORTED**
+* `abortDocumentStatusOnCancel` if it's true after, a tap on "abort/cancel" document button the viewer calls softserver's  `updateDocumentStatus` with status **ABORTED**
+
+* `disableBackButtonWhenSignaturesCompleted` set this flag to true if the "abort/cancel" button should be disabled when all the signatures are done for the current document.
 
 ### ENPdfMiddleware Actions
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## v 1.3.17
+
+- fix & update compilation tools: AGP 8, Java 1.8 (from Java 11), Kotlin 1.9.25
+- update libraries: jetpack compose, coroutines and kotlin stdlib, json webtoken, zt-zip
+- remove unused libraries: glide compiler, slf4j, core4j, simple-xml
+- fix ENSignatureContentMode.ignoreFieldRatio/keepFieldRatio behaviour
+- add parameter to ENPdfMiddlewareConfig.disableBackButtonWhenSignaturesCompleted
+- add parameters to ENSignatureBoxConfig: minBioPackagesToAllowConfirmationUsingStylus / minBioPackagesToAllowConfirmationUsingFinger
+- new ENSignatureBoxType: simpleRightConfirm
+
 ## v 1.3.16
 
 - support for Android 14

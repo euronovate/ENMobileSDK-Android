@@ -58,12 +58,12 @@ Our sdk use a set of dependecies that they are required, this is a list:
   implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
   // hilt
-  implementation "com.google.dagger:hilt-android:2.44"
-  kapt "com.google.dagger:hilt-android-compiler:2.44"
+  implementation "com.google.dagger:hilt-android:2.52"
+  kapt "com.google.dagger:hilt-android-compiler:2.52"
   implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
 
   // Compose
-  def composeBom = platform('androidx.compose:compose-bom:2023.01.00')
+  def composeBom = platform('androidx.compose:compose-bom:2024.10.00')
   implementation composeBom
   androidTestImplementation composeBom
   implementation 'androidx.compose.material3:material3'
@@ -86,18 +86,16 @@ Our sdk use a set of dependecies that they are required, this is a list:
 
   // GLIDE
   api 'com.github.bumptech.glide:glide:4.12.0'
-  annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-  
-  // LOGGING
-  implementation "org.slf4j:slf4j-simple:1.6.1"
   
   // IO
-  implementation 'org.simpleframework:simple-xml:2.7.1'
-  api 'io.jsonwebtoken:jjwt-api:0.10.7'
-  runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.7'
-  runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.7') {
+  api 'io.jsonwebtoken:jjwt-api:0.12.6'
+  runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+  runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.12.6') {
        exclude group: 'org.json', module: 'json'
   }
+
+  //ZIP
+  implementation group: 'org.zeroturnaround', name: 'zt-zip', version: '1.17'
   ```
 
 You have to put this list in your `app/build.gradle` 
@@ -121,7 +119,7 @@ plugins {
 ## ENMobileSDK (conventionally ENCore)
 #### [Core Tutorial and Samples](ENMobileSdk/readme.md)
 
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 
 The `core` module includes everything you need to get started with the library. It contains all core and:
@@ -142,12 +140,12 @@ The `ENDialog` contains a set of dialog type that you can use in your app and it
 
 ```gradle
 dependencies {
-  implementation 'com.euronovate.mobilesdk:core:1.3.16'
+  implementation 'com.euronovate.mobilesdk:core:1.3.17'
 }
 ```
 
 ## ENViewer
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 #### [Viewer Tutorial and Samples](ENViewer/readme.md)
 
@@ -162,12 +160,12 @@ The `viewer` module contains extensions to the core module, such as a document (
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.3.16"
+ 	implementation "com.euronovate.viewer:viewer:1.3.17"
 }
 ```
  
 ## ENDigitalSignage
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 #### [DigitalSignage Tutorial and Samples](ENDigitalSignage/readme.md)
 
@@ -177,12 +175,12 @@ The `digitalsignage` module contains a main activity `ENDigitalSignageActivity` 
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.digitalsignage:digitalsignage:1.3.16"
+  implementation "com.euronovate.digitalsignage:digitalsignage:1.3.17"
 }
 ```
 
 ## ENPdfMiddleware
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 #### [ENPdfMiddleware Tutorial and Samples](ENPdfMiddleware/readme.md)
 
@@ -196,12 +194,12 @@ The `pdfMiddleware` is an extension of the core and it is a brain of the process
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.16"
+    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:1.3.17"
 }
 ```
 
 ## ENPresenter
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 #### [ENPresenter Tutorial and Samples](ENPresenter/readme.md)
 
@@ -209,12 +207,12 @@ The `presenter` module contains only a templates used by `viewer` to render docu
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.presenter:presenter:1.3.16"
+    implementation "com.euronovate.presenter:presenter:1.3.17"
 }
 ```
 
 ## ENPubSub
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 #### [ENPubSub Tutorial and Samples](ENPubSub/readme.md)
 
 The `PubSub ` module allow to estabilish a connection with websocket in particual with these types of ws:
@@ -225,12 +223,12 @@ The `PubSub ` module allow to estabilish a connection with websocket in particua
 
 ```gradle
 dependencies {
-    implementation "com.euronovate.pubsub:pubsub:1.3.16"
+    implementation "com.euronovate.pubsub:pubsub:1.3.17"
 }
 ```
 
 ## ENSignatureBox
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 #### [SignatureBox Tutorial and Samples](ENSignatureBox/readme.md)
 
@@ -241,13 +239,13 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.3.16"
+	implementation "com.euronovate.signaturebox:signaturebox:1.3.17"
 }
 ```
 
 ## ENBioLibrary
 
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 
 #### [ENBioLibrary Tutorial and Samples](ENBioLibrary/readme.md)
@@ -256,12 +254,12 @@ The `BioLibrary` module allow to collect all biometric data while you are signin
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.bio:bio:1.3.16"
+  implementation "com.euronovate.bio:bio:1.3.17"
 }
 ```
 
 ## ENSoftServer
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 #### [ENSoftServer Tutorial and Samples](ENSoftServer/readme.md)
 
@@ -280,6 +278,6 @@ It also includes an API to retrieve information from dossiers:
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.3.16"
+  implementation "com.euronovate.softserver:softserver:1.3.17"
 }
 ```

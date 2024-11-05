@@ -10,6 +10,7 @@
     - [ENSignatureImageConfig](#ensignatureimageconfig)
     - [ENSignatureBoxType](#ensignatureboxtype)
     - [showFullScreen](#showfullscreen)
+    - [minBioPackagesToAllowConfirmationUsingStylus / minBioPackagesToAllowConfirmationUsingFinger](#minbiopackagestoallowconfirmationusingstylus--minbiopackagestoallowconfirmationusingfinger)
   - [ENSignatureBoxActions](#ensignatureboxactions)
   - [ENSignatureBoxTheme](#ensignatureboxtheme)
     - [ENDefaultSignatureBoxSimpleTheme](#endefaultsignatureboxsimpletheme)
@@ -19,7 +20,7 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.3.16/blue)
+![](https://badgen.net/badge/stable/1.3.17/blue)
 
 ![badge_version](imgSignatureBox.png)
 
@@ -28,7 +29,7 @@ The signature can be with or not biometricdata with `ENBio`
 
 ```gradle
 dependencies {
-	implementation "com.euronovate.signaturebox:signaturebox:1.3.16"
+	implementation "com.euronovate.signaturebox:signaturebox:1.3.17"
 }
 ```
 
@@ -57,7 +58,9 @@ This is a class used to configure ENSignatureBox Module.
     val signatureSourceType: ENSignatureSourceType,  
     val signatureImageConfig: ENSignatureImageConfig,  
     val signatureBoxType: ENSignatureBoxType? = ENSignatureBoxType.simple,  
-    val showFullScreen: Boolean = false  
+    val showFullScreen: Boolean = false,
+    var minBioPackagesToAllowConfirmationUsingStylus: Int = 0,
+    var minBioPackagesToAllowConfirmationUsingFinger: Int = 0,
 )
 ```
 
@@ -99,10 +102,16 @@ ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeig
 ![watermark reserved](signaturewaterkmarkreserverd.png)
 
 
-`signatureContentMode `. This paramter is used to **fit** or **fill** signatureField in pdf, we have options:
+`signatureContentMode`
 
-* `ignoreFieldRatio`,
 * `keepFieldRatio`
+* `ignoreFieldRatio`
+
+It defines the ratio used in SignatureBox: 
+- keep in SignatureBox the ratio width and height of the signature field
+- ignore it using a default ratio to show to the user a wider Signature Box where is easier to do the signature. 
+ 
+In the first case the SignatureBox could be smaller but the resulting signature image will fit perfectly into the signature field. In the last case the resulting signature image will be resized to fit into the signature field, and then centered, so the image could result smaller than in the first case.
 
 ### ENSignatureBoxType
 `signatureBoxType` is an enum that allows to select one of the different theme:
@@ -118,6 +127,8 @@ ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeig
 - `graphologist`: 
 ![graphologist](graphologist_theme.png)
 
+- `simpleRightConfirm`: the same as `simple` but with the confirm button on the right
+
 
 See paragraph [ENSignatureBoxTheme](#ENSignatureBoxTheme) about customization of each types
 
@@ -126,6 +137,10 @@ See paragraph [ENSignatureBoxTheme](#ENSignatureBoxTheme) about customization of
 this parameter has default value equal to false, you can set a true to render a signaturebox fullscreen like this:
 
 ![fullscreen_example](fullscreen_example.png)
+
+### minBioPackagesToAllowConfirmationUsingStylus / minBioPackagesToAllowConfirmationUsingFinger
+
+These two parameters, which are disabled by default (defaults to 0), allow to enable the confirm button after the specified number of collected biometric packages. There are two parameters, one for the stylus and one for the finger, because the sampling frequency of the digitizer is very different between stylus and finger, at least in Euronovate's test devices.
 
 
 
