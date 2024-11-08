@@ -60,10 +60,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import org.json.JSONObject
 
-/**
- * Created by Lorenzo Sogliani on 15/12/2018
- * Copyright (c) 2020 Euronovate. All rights reserved.
- */
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.OnClickListener, ENMobileInitializationCallback<String> {
     // Class private attributes **********************************************************************************************************************
     private lateinit var btnStart: Button
@@ -77,23 +73,34 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         initUI()
         initLibrary()
     }
-    private fun initLibrary(){
+
+    private fun initLibrary() {
         ENMobileSDK.Builder()
             .with(context = applicationContext)
             .with(settings = ENSettings.Builder().build())
-            .with(logger = ENLogger.Builder()
-                .with(ENLoggerConfig(true,ENLogger.VERBOSE))
-                .build())
+            .with(
+                logger = ENLogger.Builder()
+                    .with(ENLoggerConfig(true, ENLogger.VERBOSE))
+                    .build()
+            )
             .with(initializationCallback = this@MainActivity)
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url",
-                jwt= "your jwt"
-            ))
-            .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
-                networkConfig = ENNetworkConfig(skipSSL = true)
-            ))
-            .with(ENViewer.Builder()
-                .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
-                .build())
+            .with(
+                authConfig = ENAuthConfig(
+                    "your licenseKey", "your server Url",
+                    jwt = "your jwt"
+                )
+            )
+            .with(
+                ENMobileSdkConfig(
+                    certificateOwnerInfo = ENCertificateOwnerInfo(),
+                    networkConfig = ENNetworkConfig(skipSSL = true)
+                )
+            )
+            .with(
+                ENViewer.Builder()
+                    .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
+                    .build()
+            )
             .with(
                 ENPdfMiddleware.Builder().with(
                     ENPdfMiddlewareConfig(
@@ -102,32 +109,57 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     )
                 ).build()
             )
-            .with(ENSignatureBox.Builder()
-                .with(signatureBoxConfig = ENSignatureBoxConfig(
-                    signatureSourceType = ENSignatureSourceType.Any,
-                    signatureImageConfig = ENSignatureImageConfig(useAlpha = true,
-                        signatureContentMode = ENSignatureContentMode.keepFieldRatio,
-                        signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f))))
-                .build())
-            .with(pubSub = ENPubSub.Builder()
-                .with(ENPubSubConfig(type = ENPubSubType.webSocket,
-                    connectionParams = { return@ENPubSubConfig Pair("your wss url","") }))
-                .build())
+            .with(
+                ENSignatureBox.Builder()
+                    .with(
+                        signatureBoxConfig = ENSignatureBoxConfig(
+                            signatureSourceType = ENSignatureSourceType.Any,
+                            signatureImageConfig = ENSignatureImageConfig(
+                                useAlpha = true,
+                                signatureContentMode = ENSignatureContentMode.keepFieldRatio,
+                                signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f)
+                            )
+                        )
+                    )
+                    .build()
+            )
+            .with(
+                pubSub = ENPubSub.Builder()
+                    .with(
+                        ENPubSubConfig(type = ENPubSubType.webSocket,
+                            connectionParams = { return@ENPubSubConfig Pair("your wss url", "") })
+                    )
+                    .build()
+            )
             .with(ENBio.Builder().build())
-            .with(ENSoftServer.Builder()
-                .with(ENSoftServerConfig(baseUrl = "your softserver url", "your licenseCode softserver"))
-                .build())
+            .with(
+                ENSoftServer.Builder()
+                    .with(ENSoftServerConfig(baseUrl = "your softserver url", "your licenseCode softserver"))
+                    .build()
+            )
             .with(theme = ENDefaultTheme())
-            .with(mobileSdkConfig = ENMobileSdkConfig(languageConfig = ENLanguageConfig(selectorVisible = true,languageEnabled = arrayListOf(
-                ENLanguageType.en, ENLanguageType.el))
-            )).with(ENDigitalSignage.Builder()
-                    .with(digitalSignageConfig = ENDigitalSignageConfig(baseUrl = "your digital signage url",
-                        licenseCode = "your licenseKey digitalsignage"))
-                    .build())
+            .with(
+                mobileSdkConfig = ENMobileSdkConfig(
+                    languageConfig = ENLanguageConfig(
+                        selectorVisible = true, languageEnabled = arrayListOf(
+                            ENLanguageType.en, ENLanguageType.el
+                        )
+                    )
+                )
+            ).with(
+                ENDigitalSignage.Builder()
+                    .with(
+                        digitalSignageConfig = ENDigitalSignageConfig(
+                            baseUrl = "your digital signage url",
+                            licenseCode = "your licenseKey digitalsignage"
+                        )
+                    )
+                    .build()
+            )
             .build()
     }
 
-    private fun initUI(){
+    private fun initUI() {
         btnStart = findViewById(R.id.btnStart)
         btnStart.setOnClickListener(this)
         btnStart.isEnabled = initialized
@@ -136,32 +168,36 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnShareLastPdf.setOnClickListener(this)
         btnShareLastPdf.isEnabled = true
     }
+
     override fun onClick(v: View?) {
-        when(v!!.id){
-            R.id.btnStart ->{
-                if(initialized){
+        when (v!!.id) {
+            R.id.btnStart -> {
+                if (initialized) {
                     ENDigitalSignage.getInstance().start()
                     ENPubSub.getInstance().init()
-                    ENPubSub.getInstance().subscribe(ENPubSubChannel.startSign){
-                        try{
+                    ENPubSub.getInstance().subscribe(ENPubSubChannel.startSign) {
+                        try {
                             val signDocumentGuidDTO = Gson().fromJson((it as JSONObject).toString(), ENSignDocumentGuidDTO::class.java)
                             ENMobileSDK.emitEvent(ENEventType.signDocument, signDocumentGuidDTO.convertToEvent())
-                        }catch(ex: Exception){
+                        } catch (ex: Exception) {
                             runOnUiThread {
-                                showGenericErrorDialog(this,ex.message)
+                                showGenericErrorDialog(this, ex.message)
                             }
                         }
                     }
                 }
             }
-            R.id.btnShareLastPdf->{
+
+            R.id.btnShareLastPdf -> {
                 val lastPdf = ENFileUtils.getLastModified(cacheDir.absolutePath)
-                if(lastPdf != null && lastPdf.exists()){
+                if (lastPdf != null && lastPdf.exists()) {
                     val emailIntent = Intent(Intent.ACTION_SEND)
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Pdf")
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "")
-                    emailIntent.putExtra(Intent.EXTRA_STREAM,
-                        FileProvider.getUriForFile(this, "$packageName.provider", lastPdf))
+                    emailIntent.putExtra(
+                        Intent.EXTRA_STREAM,
+                        FileProvider.getUriForFile(this, "$packageName.provider", lastPdf)
+                    )
                     emailIntent.setTypeAndNormalize(ENFileUtils.getMimeType(lastPdf.absolutePath))
                     emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     startActivity(Intent.createChooser(emailIntent, getString(R.string.send_with)))
@@ -169,15 +205,18 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
             }
         }
     }
+
     override fun didGetResponse(response: ENMobileSDKResponse<String>?) {
         when (response) {
             is ENMobileSDKResponse.error -> {
                 //TODO
             }
+
             is ENMobileSDKResponse.success -> {
                 initialized = true
                 btnStart.isEnabled = initialized
             }
+
             else -> {}
         }
 

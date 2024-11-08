@@ -52,10 +52,6 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.Runnable
 import java.io.File
 
-/**
- * Created by Lorenzo Sogliani on 15/12/2018
- * Copyright (c) 2020 Euronovate. All rights reserved.
- */
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.OnClickListener {
     // Class private attributes **********************************************************************************************************************
     private lateinit var btnStartSimple: Button
@@ -70,51 +66,88 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         initLibrary()
         initUI()
     }
-    private fun initLibrary(){
-        ENLogger.logStartingApplication(context = this,activityName = "MainActivity", appName = getString(R.string.app_name), versionName = BuildConfig.VERSION_NAME, versionCode = "${BuildConfig.VERSION_CODE}", env = "DEBUG")
+
+    private fun initLibrary() {
+        ENLogger.logStartingApplication(
+            context = this,
+            activityName = "MainActivity",
+            appName = getString(R.string.app_name),
+            versionName = BuildConfig.VERSION_NAME,
+            versionCode = "${BuildConfig.VERSION_CODE}",
+            env = "DEBUG"
+        )
         ENMobileSDK.Builder()
             .with(context = applicationContext)
             .with(settings = ENSettings.Builder().build())
-            .with(logger = ENLogger.Builder()
-                .with(ENLoggerConfig(true,ENLogger.VERBOSE))
-                .build())
+            .with(
+                logger = ENLogger.Builder()
+                    .with(ENLoggerConfig(true, ENLogger.VERBOSE))
+                    .build()
+            )
             .with(initializationCallback = {
                 when (it) {
                     is ENMobileSDKResponse.error -> {
                         //TODO
                     }
+
                     is ENMobileSDKResponse.success -> {
                         sdkInitialized = true
                     }
+
                     else -> {}
                 }
             })
-            .with(authConfig = ENAuthConfig("your licenseKey", "your server Url", jwt = "your license jwt"
-            ))
-            .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
-                languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()))
-            .with(ENViewer.Builder()
-                .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder(), viewerType = ENViewerType.theme1,
-                    viewerBarType = ENViewerBarType.theme1))
-                .build())
-            .with(ENPdfMiddleware.Builder().with(
-                ENPdfMiddlewareConfig(
-                closeDocumentStatusOnConfirm = true,
-                abortDocumentStatusOnCancel = false
+            .with(
+                authConfig = ENAuthConfig(
+                    "your licenseKey", "your server Url", jwt = "your license jwt"
+                )
             )
-            ).build())
-            .with(ENSignatureBox.Builder()
-                .with(signatureBoxConfig = ENSignatureBoxConfig(
-                    signatureSourceType = ENSignatureSourceType.Any,
-                    signatureImageConfig = ENSignatureImageConfig(useAlpha = true,
-                        signatureContentMode = ENSignatureContentMode.keepFieldRatio,
-                        signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f))))
-                .build())
-            .with(ENBio.Builder()
-                .build())
+            .with(
+                ENMobileSdkConfig(
+                    certificateOwnerInfo = ENCertificateOwnerInfo(),
+                    languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()
+                )
+            )
+            .with(
+                ENViewer.Builder()
+                    .with(
+                        ENViewerConfig(
+                            signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder(), viewerType = ENViewerType.theme1,
+                            viewerBarType = ENViewerBarType.theme1
+                        )
+                    )
+                    .build()
+            )
+            .with(
+                ENPdfMiddleware.Builder().with(
+                    ENPdfMiddlewareConfig(
+                        closeDocumentStatusOnConfirm = true,
+                        abortDocumentStatusOnCancel = false
+                    )
+                ).build()
+            )
+            .with(
+                ENSignatureBox.Builder()
+                    .with(
+                        signatureBoxConfig = ENSignatureBoxConfig(
+                            signatureSourceType = ENSignatureSourceType.Any,
+                            signatureImageConfig = ENSignatureImageConfig(
+                                useAlpha = true,
+                                signatureContentMode = ENSignatureContentMode.keepFieldRatio,
+                                signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f)
+                            )
+                        )
+                    )
+                    .build()
+            )
+            .with(
+                ENBio.Builder()
+                    .build()
+            )
             .build()
     }
-    private fun initUI(){
+
+    private fun initUI() {
         btnStartSimple = findViewById(R.id.btnStartSimple)
         btnStartSimple.setOnClickListener(this)
 
@@ -127,105 +160,146 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnStartTheme1 = findViewById(R.id.btnStartTheme1)
         btnStartTheme1.setOnClickListener(this)
     }
-    private fun showProgressDialog(title: String? = getString(R.string.info), content: String? = getString(
-        R.string.please_wait
-    )): Dialog {
-        val dialogProgress = ENDialog.getInstance().dialog(activity = this, dialogType = ENDialogType.horizontalProgress,
-            dialogTextConfig = ENDialogTextConfig(title = title, content = content))
+
+    private fun showProgressDialog(
+        title: String? = getString(R.string.info), content: String? = getString(
+            R.string.please_wait
+        )
+    ): Dialog {
+        val dialogProgress = ENDialog.getInstance().dialog(
+            activity = this, dialogType = ENDialogType.horizontalProgress,
+            dialogTextConfig = ENDialogTextConfig(title = title, content = content)
+        )
         dialogProgress.show()
         return dialogProgress
     }
-    var progressDialog: Dialog?=null
+
+    var progressDialog: Dialog? = null
     override fun onClick(v: View?) {
-        when(v!!.id){
-            R.id.btnStartTheme1 ->{
-                startDocument(ENViewerBarType.theme1,ENViewerType.theme1)
+        when (v!!.id) {
+            R.id.btnStartTheme1 -> {
+                startDocument(ENViewerBarType.theme1, ENViewerType.theme1)
             }
-            R.id.btnStartSimple->{
-                startDocument(ENViewerBarType.simple,ENViewerType.simple)
+
+            R.id.btnStartSimple -> {
+                startDocument(ENViewerBarType.simple, ENViewerType.simple)
             }
-            R.id.btnShareLastPdf ->{
+
+            R.id.btnShareLastPdf -> {
                 val lastPdf = ENFileUtils.getLastModified(cacheDir.absolutePath)
-                if(lastPdf != null && lastPdf.exists()){
+                if (lastPdf != null && lastPdf.exists()) {
                     val emailIntent = Intent(Intent.ACTION_SEND)
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Pdf")
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "")
-                    emailIntent.putExtra(Intent.EXTRA_STREAM,
-                        FileProvider.getUriForFile(this, "$packageName.provider", lastPdf))
+                    emailIntent.putExtra(
+                        Intent.EXTRA_STREAM,
+                        FileProvider.getUriForFile(this, "$packageName.provider", lastPdf)
+                    )
                     emailIntent.setTypeAndNormalize(ENFileUtils.getMimeType(lastPdf.absolutePath))
                     emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     startActivity(Intent.createChooser(emailIntent, getString(R.string.send_with)))
                 }
             }
-            R.id.btnStartLastPdf ->{
+
+            R.id.btnStartLastPdf -> {
                 val lastPdf = ENFileUtils.getLastModified(cacheDir.absolutePath)
-                if(lastPdf != null && lastPdf.exists()){
+                if (lastPdf != null && lastPdf.exists()) {
                     ENContextManager.initBuilder(ENContextProvider(this@MainActivity))
                     ENLogger.Builder()
-                        .with(ENLoggerConfig(true,ENLogger.VERBOSE))
+                        .with(ENLoggerConfig(true, ENLogger.VERBOSE))
                         .build()
                     ENMobileSDK.emitEvent(ENEventType.viewDocument, ENSignDocument(documentType = ENDocumentSourceType.path(lastPdf.absolutePath)))
                 }
             }
         }
     }
-    var sdkInitialized: Boolean= false
-    private fun startDocument(viewerBarType: ENViewerBarType, viewerType: ENViewerType){
-        if(sdkInitialized){
+
+    var sdkInitialized: Boolean = false
+    private fun startDocument(viewerBarType: ENViewerBarType, viewerType: ENViewerType) {
+        if (sdkInitialized) {
             ENMobileSDK.free()
         }
         ENMobileSDK.Builder()
             .with(context = applicationContext)
             .with(settings = ENSettings.Builder().build())
-            .with(logger = ENLogger.Builder()
-                .with(ENLoggerConfig(true,ENLogger.VERBOSE))
-                .build())
+            .with(
+                logger = ENLogger.Builder()
+                    .with(ENLoggerConfig(true, ENLogger.VERBOSE))
+                    .build()
+            )
             .with(initializationCallback = {
                 when (it) {
                     is ENMobileSDKResponse.error -> {
                         //TODO
                     }
+
                     is ENMobileSDKResponse.success -> {
                         sdkInitialized = true
-                        progressDialog = showProgressDialog(title = getString(R.string.starting_signature),content = getString(
-                            R.string.please_wait
-                        ))
+                        progressDialog = showProgressDialog(
+                            title = getString(R.string.starting_signature), content = getString(
+                                R.string.please_wait
+                            )
+                        )
                         val pdfName = "Demo12_Verdi_PDFA1b.pdf"
-                        val pdfFile = File(getExternalFilesDir(null)!!,pdfName)
-                        ENFileUtils.copyAssetFileToInternalStorage(applicationContext.assets,getExternalFilesDir(null)!!,pdfName)
-                        ENMobileSDK.getInstance().openDocument(documentBase64 = ENBase64Utils.toBase64(ENFileUtils.getBytes(pdfFile.inputStream())!!),
-                            certPemBase64 = ENBase64Utils.toBase64(application.assets.open("encert.pem").readBytes()))
+                        val pdfFile = File(getExternalFilesDir(null)!!, pdfName)
+                        ENFileUtils.copyAssetFileToInternalStorage(applicationContext.assets, getExternalFilesDir(null)!!, pdfName)
+                        ENMobileSDK.getInstance().openDocument(
+                            documentBase64 = ENBase64Utils.toBase64(ENFileUtils.getBytes(pdfFile.inputStream())!!),
+                            certPemBase64 = ENBase64Utils.toBase64(application.assets.open("encert.pem").readBytes())
+                        )
                         Thread(Runnable {
                             runOnUiThread {
                                 progressDialog!!.dismiss()
                             }
                         }).start()
                     }
+
                     else -> {}
                 }
             })
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url", jwt = "your license jwt"))
-            .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
-                languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()))
-            .with(ENViewer.Builder()
-                .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder(), viewerType = viewerType,
-                    viewerBarType = viewerBarType))
-                .build())
-            .with(ENPdfMiddleware.Builder().with(
-                ENPdfMiddlewareConfig(
-                    closeDocumentStatusOnConfirm = true,
-                    abortDocumentStatusOnCancel = false
+            .with(
+                ENMobileSdkConfig(
+                    certificateOwnerInfo = ENCertificateOwnerInfo(),
+                    languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()
                 )
-            ).build())
-            .with(ENSignatureBox.Builder()
-                .with(signatureBoxConfig = ENSignatureBoxConfig(
-                    signatureSourceType = ENSignatureSourceType.Any,
-                    signatureImageConfig = ENSignatureImageConfig(useAlpha = true,
-                        signatureContentMode = ENSignatureContentMode.keepFieldRatio,
-                        signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f))))
-                .build())
-            .with(ENBio.Builder()
-                .build())
+            )
+            .with(
+                ENViewer.Builder()
+                    .with(
+                        ENViewerConfig(
+                            signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder(), viewerType = viewerType,
+                            viewerBarType = viewerBarType
+                        )
+                    )
+                    .build()
+            )
+            .with(
+                ENPdfMiddleware.Builder().with(
+                    ENPdfMiddlewareConfig(
+                        closeDocumentStatusOnConfirm = true,
+                        abortDocumentStatusOnCancel = false
+                    )
+                ).build()
+            )
+            .with(
+                ENSignatureBox.Builder()
+                    .with(
+                        signatureBoxConfig = ENSignatureBoxConfig(
+                            signatureSourceType = ENSignatureSourceType.Any,
+                            signatureImageConfig = ENSignatureImageConfig(
+                                useAlpha = true,
+                                signatureContentMode = ENSignatureContentMode.keepFieldRatio,
+                                signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f)
+                            )
+                        )
+                    )
+                    .build()
+            )
+            .with(
+                ENBio.Builder()
+                    .build()
+            )
             .build()
     }
 }

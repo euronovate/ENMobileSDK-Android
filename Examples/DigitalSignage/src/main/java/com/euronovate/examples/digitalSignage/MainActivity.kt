@@ -29,10 +29,6 @@ import com.euronovate.utils.preferences.with
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 
-/**
- * Created by Lorenzo Sogliani on 15/12/2018
- * Copyright (c) 2020 Euronovate. All rights reserved.
- */
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.OnClickListener, ENMobileInitializationCallback<String> {
     // Class private attributes **********************************************************************************************************************
     private lateinit var btnStart: Button

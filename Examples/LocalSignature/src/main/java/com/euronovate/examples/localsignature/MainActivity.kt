@@ -49,10 +49,6 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.Runnable
 import java.io.File
 
-/**
- * Created by Lorenzo Sogliani on 15/12/2018
- * Copyright (c) 2020 Euronovate. All rights reserved.
- */
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.OnClickListener, ENMobileInitializationCallback<String> {
     // Class private attributes **********************************************************************************************************************
     private lateinit var btnStart: Button
@@ -67,39 +63,59 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         initUI()
         initLibrary()
     }
-    private fun initLibrary(){
+
+    private fun initLibrary() {
         ENMobileSDK.Builder()
             .with(context = applicationContext)
             .with(settings = ENSettings.Builder().build())
-            .with(logger = ENLogger.Builder()
-                .with(ENLoggerConfig(true,ENLogger.VERBOSE))
-                .build())
+            .with(
+                logger = ENLogger.Builder()
+                    .with(ENLoggerConfig(true, ENLogger.VERBOSE))
+                    .build()
+            )
             .with(initializationCallback = this@MainActivity)
             .with(authConfig = ENAuthConfig("your licenseKey", "your server Url"))
-            .with(ENMobileSdkConfig(certificateOwnerInfo = ENCertificateOwnerInfo(),
-                languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()))
-            .with(ENViewer.Builder()
-                .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
-                .build())
-            .with(ENPdfMiddleware.Builder().with(
-                ENPdfMiddlewareConfig(
-                closeDocumentStatusOnConfirm = true,
-                abortDocumentStatusOnCancel = true
+            .with(
+                ENMobileSdkConfig(
+                    certificateOwnerInfo = ENCertificateOwnerInfo(),
+                    languageConfig = ENLanguageConfig(selectorVisible = true, languageEnabled = arrayListOf(ENLanguageType.en)), networkConfig = ENNetworkConfig()
+                )
             )
-            ).build())
-            .with(ENSignatureBox.Builder()
-                .with(signatureBoxConfig = ENSignatureBoxConfig(
-                    signatureSourceType = ENSignatureSourceType.Any,
-                    signatureImageConfig = ENSignatureImageConfig(useAlpha = true,
-                        signatureContentMode = ENSignatureContentMode.keepFieldRatio,
-                        signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f))))
-                .build())
-            .with(ENBio.Builder()
-                .build())
+            .with(
+                ENViewer.Builder()
+                    .with(ENViewerConfig(signFieldPlaceholder = ENSignFieldPlaceholder.defaultPlaceholder()))
+                    .build()
+            )
+            .with(
+                ENPdfMiddleware.Builder().with(
+                    ENPdfMiddlewareConfig(
+                        closeDocumentStatusOnConfirm = true,
+                        abortDocumentStatusOnCancel = true
+                    )
+                ).build()
+            )
+            .with(
+                ENSignatureBox.Builder()
+                    .with(
+                        signatureBoxConfig = ENSignatureBoxConfig(
+                            signatureSourceType = ENSignatureSourceType.Any,
+                            signatureImageConfig = ENSignatureImageConfig(
+                                useAlpha = true,
+                                signatureContentMode = ENSignatureContentMode.keepFieldRatio,
+                                signatureImageModeConfig = ENSignatureImageModeConfig.signatureSignerNameAndTimestamp(watermarkReservedHeight = 0.3f)
+                            )
+                        )
+                    )
+                    .build()
+            )
+            .with(
+                ENBio.Builder()
+                    .build()
+            )
             .build()
     }
 
-    private fun initUI(){
+    private fun initUI() {
         btnStart = findViewById(R.id.btnStart)
         btnStart.setOnClickListener(this)
         btnStart.isEnabled = initialized
@@ -112,23 +128,29 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
         btnShareLastPdf.setOnClickListener(this)
         btnShareLastPdf.isEnabled = true
     }
+
     private fun showProgressDialog(title: String? = getString(R.string.info), content: String? = getString(R.string.please_wait)): Dialog {
-        val dialogProgress = ENDialog.getInstance().dialog(activity = this, dialogType = ENDialogType.horizontalProgress,
-            dialogTextConfig = ENDialogTextConfig(title = title, content = content))
+        val dialogProgress = ENDialog.getInstance().dialog(
+            activity = this, dialogType = ENDialogType.horizontalProgress,
+            dialogTextConfig = ENDialogTextConfig(title = title, content = content)
+        )
         dialogProgress.show()
         return dialogProgress
     }
-    var progressDialog: Dialog?=null
+
+    var progressDialog: Dialog? = null
     override fun onClick(v: View?) {
-        when(v!!.id){
-            R.id.btnStart ->{
-                if(initialized){
-                    progressDialog = showProgressDialog(title = getString(R.string.starting_signature),content = getString(R.string.please_wait))
+        when (v!!.id) {
+            R.id.btnStart -> {
+                if (initialized) {
+                    progressDialog = showProgressDialog(title = getString(R.string.starting_signature), content = getString(R.string.please_wait))
                     val pdfName = "Demo12_Verdi_PDFA1b.pdf"
-                    val pdfFile = File(getExternalFilesDir(null)!!,pdfName)
-                    ENFileUtils.copyAssetFileToInternalStorage(applicationContext.assets,getExternalFilesDir(null)!!,pdfName)
-                    ENMobileSDK.getInstance().openDocument(documentBase64 = ENBase64Utils.toBase64(ENFileUtils.getBytes(pdfFile.inputStream())!!),
-                        certPemBase64 = ENBase64Utils.toBase64(application.assets.open("encert.pem").readBytes()))
+                    val pdfFile = File(getExternalFilesDir(null)!!, pdfName)
+                    ENFileUtils.copyAssetFileToInternalStorage(applicationContext.assets, getExternalFilesDir(null)!!, pdfName)
+                    ENMobileSDK.getInstance().openDocument(
+                        documentBase64 = ENBase64Utils.toBase64(ENFileUtils.getBytes(pdfFile.inputStream())!!),
+                        certPemBase64 = ENBase64Utils.toBase64(application.assets.open("encert.pem").readBytes())
+                    )
                     Thread(Runnable {
                         runOnUiThread {
                             progressDialog!!.dismiss()
@@ -136,37 +158,44 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope(), View.On
                     }).start()
                 }
             }
-            R.id.btnShareLastPdf->{
+
+            R.id.btnShareLastPdf -> {
                 val lastPdf = ENFileUtils.getLastModified(cacheDir.absolutePath)
-                if(lastPdf != null && lastPdf.exists()){
+                if (lastPdf != null && lastPdf.exists()) {
                     val emailIntent = Intent(Intent.ACTION_SEND)
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Pdf")
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "")
-                    emailIntent.putExtra(Intent.EXTRA_STREAM,
-                        FileProvider.getUriForFile(this, "$packageName.provider", lastPdf))
+                    emailIntent.putExtra(
+                        Intent.EXTRA_STREAM,
+                        FileProvider.getUriForFile(this, "$packageName.provider", lastPdf)
+                    )
                     emailIntent.setTypeAndNormalize(ENFileUtils.getMimeType(lastPdf.absolutePath))
                     emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     startActivity(Intent.createChooser(emailIntent, getString(R.string.send_with)))
                 }
             }
-            R.id.btnStartLastPdf->{
+
+            R.id.btnStartLastPdf -> {
                 val lastPdf = ENFileUtils.getLastModified(cacheDir.absolutePath)
-                if(lastPdf != null && lastPdf.exists()){
+                if (lastPdf != null && lastPdf.exists()) {
                     ENMobileSDK.emitEvent(ENEventType.viewDocument, ENSignDocument(documentType = ENDocumentSourceType.path(lastPdf.absolutePath)))
                 }
             }
         }
     }
+
     override fun didGetResponse(response: ENMobileSDKResponse<String>?) {
         when (response) {
             is ENMobileSDKResponse.error -> {
                 //TODO
             }
+
             is ENMobileSDKResponse.success -> {
                 initialized = true
                 btnStart.isEnabled = initialized
                 btnStartLastPdf.isEnabled = initialized
             }
+
             else -> {}
         }
     }

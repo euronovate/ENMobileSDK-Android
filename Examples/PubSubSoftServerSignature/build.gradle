@@ -1,18 +1,18 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    alias libs.plugins.androidApplication
+    alias libs.plugins.jetbrainsKotlinAndroid
+    alias libs.plugins.jetbrainsKotlinKapt
 }
 
 android {
-    compileSdk rootProject.ext.compileSdkVersion
+    compileSdk project.findProperty("compileSdk").toString().toInteger()
 
     defaultConfig {
         applicationId "com.euronovate.examples.pubsubsoftserversignature"
-        minSdk rootProject.ext.minSdkVersion
-        targetSdk rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        minSdk project.findProperty("minSdk").toString().toInteger()
+        targetSdk project.findProperty("targetSdk").toString().toInteger()
+        versionCode 1
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,7 +24,7 @@ android {
         }
     }
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '1.8'
     }
     packagingOptions {
         resources {
@@ -34,77 +34,70 @@ android {
     namespace 'com.euronovate.examples.pubsubsoftserversignature'
 }
 dependencies {
-    implementation deps.jetbrains.stdlib
-    implementation deps.jetbrains.coroutines_core
-    implementation deps.jetbrains.coroutines_android
-    implementation deps.kpermissions.kpermissions
-    implementation deps.kpermissions.kpermissions_coroutines
-    implementation deps.easypermissions
+    implementation(libs.jetbrains.kotlin.stdlib)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.jetbrains.kotlinx.coroutines.android)
+    implementation(libs.easypermissions.ktx)
 
-    implementation deps.androidx.core
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.constraintLayout
-    implementation deps.androidx.crypto
-    implementation deps.androidx.material
-    implementation deps.androidx.exifinterface
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.security.crypto)
+    implementation(libs.material)
+    implementation(libs.androidx.exifinterface)
 
-    implementation deps.gson
-    implementation deps.androidx.preferences
+    implementation(libs.gson)
+    implementation(libs.androidx.preference)
 
-    implementation deps.lifecycle.lifecycle_runtime
-    implementation deps.lifecycle.lifecycle_viewmodel
-    implementation deps.lifecycle.lifecycle_viewmodel_ktx
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     //Dagger - Hilt
-    implementation deps.hilt.android
-    kapt deps.hilt.android_compiler
-    implementation deps.hilt.navigation_compose
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     /**PROJECT IMPLEMENTATION **/
-    implementation "com.euronovate.viewer:viewer:$enmsdk_version"
-    implementation "com.euronovate.mobilesdk:core:$enmsdk_version"
-    implementation "com.euronovate.pdfmiddleware:pdfMiddleware:$enmsdk_version"
-    implementation "com.euronovate.libpdf:ENLibPdfAar:$enlibpdf"
-    implementation "com.euronovate.bio:bio:$enmsdk_version"
-    implementation "com.euronovate.signaturebox:signaturebox:$enmsdk_version"
-    implementation "com.euronovate.softserver:softserver:$enmsdk_version"
-    implementation "com.euronovate.presenter:presenter:$enmsdk_version"
-    implementation "com.euronovate.pubsub:pubsub:$enmsdk_version"
+    implementation libs.euronovate.viewer
+    implementation libs.euronovate.core
+    implementation libs.euronovate.pdfMiddleware
+    implementation libs.enlibpdfaar
+    implementation libs.euronovate.bio
+    implementation libs.euronovate.signaturebox
+    implementation libs.euronovate.softserver
+    implementation libs.euronovate.presenter
+    implementation libs.euronovate.pubsub
 
     //ROOM DB
-    implementation deps.room.runtime
-    kapt deps.room.compiler
-    implementation deps.room.ktx
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
     //GLIDE
-    implementation deps.glide.core
-    annotationProcessor deps.glide.annotationGlideProcessor
+    implementation(libs.glide)
 
     //Lifecycle UI
-    implementation deps.androidx.lifecycle.extensions
-    implementation deps.androidx.lifecycle.runtime
-    annotationProcessor deps.androidx.lifecycle.compiler
+    implementation(libs.androidx.lifecycle.extensions)
+    implementation(libs.androidx.lifecycle.runtime)
+    kapt(libs.androidx.lifecycle.compiler)
 
     // crypto
-    implementation deps.bouncycastle.bcprov
-    implementation deps.bouncycastle.bcpkix
+    implementation(libs.bcprov.jdk15on)
+    implementation(libs.bcpkix.jdk15on)
 
     //API okhttp
-    implementation deps.okhttp.okhttp
-    implementation deps.okhttp.logging_interceptor
-    implementation deps.conscrypt
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+    implementation(libs.conscrypt.android)
 
-    //LOGGING
-    implementation deps.slf4j
-    //IO
-    implementation deps.simple_xml
-
-    api deps.jsonwebtoken.jjwt_api
-    runtimeOnly deps.jsonwebtoken.jjwt_impl
-    runtimeOnly (deps.jsonwebtoken.org_json){
+    api(libs.jjwt.api)
+    runtimeOnly(libs.jjwt.impl)
+    runtimeOnly(libs.jjwt.orgjson) {
         exclude group: 'org.json', module: 'json'
     }
 
-    testImplementation deps.test.junit
-    androidTestImplementation deps.test.junit_ext
-    androidTestImplementation deps.test.expresso_core
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -1,6 +1,5 @@
 package com.euronovate.examples.softserversignature
 
-import android.app.Application
+import com.euronovate.utils.applicationcontext.ENApplication
 
-
-class MainApplication : Application() {}
+class MainApplication : ENApplication()
