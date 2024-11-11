@@ -20,6 +20,7 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://artifactory.internal.euronovate.com/artifactory/android-release-local")
         }
+        maven { url "https://jitpack.io" } // FOR DS
     }
 }
 

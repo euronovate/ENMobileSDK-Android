@@ -26,6 +26,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
+    }
     packagingOptions {
         resources {
             excludes += ['META-INF/DEPENDENCIES']
@@ -53,6 +59,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
+    // compose and material
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.material3)
+
     //Dagger - Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
@@ -61,6 +72,10 @@ dependencies {
     /**PROJECT IMPLEMENTATION **/
     implementation libs.euronovate.core
     implementation libs.euronovate.digitalsignage
+    implementation libs.euronovate.viewer
+    implementation libs.euronovate.pdfMiddleware
+    implementation libs.euronovate.presenter
+    implementation libs.enlibpdfaar
 
     //GLIDE
     implementation(libs.glide)
@@ -78,6 +93,9 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
     implementation(libs.conscrypt.android)
+
+    // FOR DS
+    implementation libs.xmltojson
 
     api(libs.jjwt.api)
     runtimeOnly(libs.jjwt.impl)

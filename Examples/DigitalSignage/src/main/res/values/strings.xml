@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DigitalSignage</string>
+
+    <string name="init_ds_local">Init local DS</string>
+    <string name="start_ds_local">Start local DS</string>
+
+    <string name="init_ds_remote">Init remote DS</string>
+    <string name="start_ds_remote">Start remote DS</string>
 </resources>
