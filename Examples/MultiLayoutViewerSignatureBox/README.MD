@@ -2,8 +2,6 @@
 
 #### [View Releases and Changelogs](https://github.com/euronovate/ENMobileSDK-Android)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
 ---
 ![Viewer image](resReadme/imgViewer.png)
 

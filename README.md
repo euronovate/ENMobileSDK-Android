@@ -4,8 +4,6 @@
 
 #### [View Changelogs](Changelogs/CHANGELOG.md)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
 ---
 ### THIS SOFTWARE REQUIRES A LICENSE TO WORK.
 FOR ANY INFORMATION ABOUT, CONTACT US TO [customer[dot]sales[at]euronovate[dot]com](mailto:customer.sales@euronovate.com)

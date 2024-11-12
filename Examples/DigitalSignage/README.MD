@@ -2,40 +2,33 @@
 
 #### [View Releases and Changelogs](https://github.com/euronovate/ENMobileSDK-Android)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
----
-![Viewer image](resReadme/imgViewer.png)
-
 # Setup
 
-Pull all project in your Android studio workspace, after open folder with android studio directly.
+Clone the repository and open the Example folder with android studio.
 
-You must have an internet connection valid.
+Sync and rebuild the project. The project is then setup with one application module for SDK feature.
 
-After you have to replace:
+In DigitalSignage module, in MainScreenViewModel, replace:
 
-*licenseKey & baseUrl ENDigitalSignage in MainActivity
+```kotlin
+private val SDK_ONLINE_LICENSE_KEY = "your-license-key"
+private val SDK_ONLINE_LICENSE_URL = "your-license-server-url"
+private val SDK_OFFLINE_LICENSE_JWT = "your-offline-license-jwt"
+
+private val DIGITAL_SIGNAGE_SERVER_URL = "your-digital-signage-server-url"
+private val DIGITAL_SIGNAGE_SERVER_LICENSE_KEY = "your-digital-signage-license-key"
+```
+
+with the values provided by Euronovate
 
 # Features
 
-In this demo project we use these modules:
+This demo uses:
 
--ENCore
--ENDigitalSignage
+- ENCore
+- ENDigitalSignage
+- ENViewer
 
-To start signature, you have to tap on button "open", after confirm or abort pdf you can share pdf with specific button
+a user can start a local digital signage or a remote one (given a valid digital signage server).
 
-## Sign Apk
-
-We have created a certificate base to sign apk but you can remove it or replace with your.
-
-Default credentials is:
-
-`alias: euronovate`
-
-`psw1: euronovate`
-
-`ps2: euronovate`
-
-You can find last apk in projectFolder/release (if you manually clear project, you will not find it and you have to rebuild)
+With a double tap on the screen an example of document can be showed, in read only mode, with the viewer.
