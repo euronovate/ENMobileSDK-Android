@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DossierWithFesOtpSignature</string>
+
+    <string name="init">Init SDK</string>
+    <string name="dossier_guid">Dossier guid</string>
+    <string name="dossier_find">Dossier find</string>
+    <string name="dossier_find_documents">Dossier find documents</string>
+    <string name="dossier_name">Dossier name:</string>
+    <string name="dossier_description">Dossier description:</string>
+    <string name="sign">Sign</string>
+</resources>
