@@ -1,4 +1,4 @@
-package com.euronovate.examples.localandremotesignature
+package com.euronovate.examples.multilayoutviewersignaturebox
 
 import android.app.Activity
 import androidx.compose.foundation.Image
@@ -26,6 +26,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -36,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -49,23 +52,33 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.euronovate.examples.localandremotesignature.theme.ENSoftGray
-import com.euronovate.examples.localandremotesignature.theme.LocalColors
+import com.euronovate.examples.multilayoutviewersignaturebox.theme.LocalColors
+import com.euronovate.signaturebox.model.enums.ENSignatureBoxType
+import com.euronovate.viewer.model.enums.ENViewerBarType
+import com.euronovate.viewer.model.enums.ENViewerType
 
 @Composable
 fun MainScreen(
     mainScreenViewModel: MainScreenViewModel = viewModel(),
 ) {
 
-    val keyboardController = LocalSoftwareKeyboardController.current
-    val keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done)
     val activity = LocalContext.current as Activity
 
     val isLoading by mainScreenViewModel.isLoading.collectAsStateWithLifecycle()
-
     val initializationState by mainScreenViewModel.initializationState.collectAsStateWithLifecycle()
+    val selectedViewerType by mainScreenViewModel.selectedViewerType.collectAsStateWithLifecycle()
+    val selectedSignatureBoxType by mainScreenViewModel.selectedSignatureBoxType.collectAsStateWithLifecycle()
 
-    var documentGuid by remember { mutableStateOf("") }
+    val viewerThemes = listOf(
+        Triple(stringResource(id = R.string.viewer_simple), ENViewerType.simple, ENViewerBarType.simple),
+        Triple(stringResource(id = R.string.viewer_theme1), ENViewerType.theme1, ENViewerBarType.theme1),
+    )
+
+    val signatureBoxThemes = listOf(
+        Pair(stringResource(id = R.string.signaturebox_simple), ENSignatureBoxType.simple),
+        Pair(stringResource(id = R.string.signaturebox_simplerightconfirm), ENSignatureBoxType.simpleRightConfirm),
+        Pair(stringResource(id = R.string.signaturebox_theme1), ENSignatureBoxType.theme1),
+    )
 
     BoxWithConstraints(
         modifier = Modifier
@@ -141,104 +154,99 @@ fun MainScreen(
 
                 if (initializationState == InitializationState.Initialized) {
 
-                    // open local document
-                    Button(
-                        modifier = Modifier
-                            .height(60.dp)
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp),
-                        onClick = {
-                            mainScreenViewModel.openDialogForLocalDocument(activity = activity)
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = LocalColors.current.secondaryContainer,
-                            disabledContainerColor = White.copy(0.1f)
-                        ),
-                        contentPadding = PaddingValues(horizontal = 3.dp),
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.open_local),
-                            color = LocalColors.current.onSecondaryContainer
-                        )
-                    }
+                    // viewer theme
+                    Text(
+                        text = stringResource(id = R.string.viewer_theme),
+                        color = LocalColors.current.secondary,
+                        style = MaterialTheme.typography.displayMedium,
+                        fontWeight = FontWeight.Bold,
+                    )
 
-                    // open remote document with SDK styled popup
-                    Button(
-                        modifier = Modifier
-                            .height(60.dp)
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp),
-                        onClick = {
-                            mainScreenViewModel.openDialogForRemoteDocument(activity = activity)
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = LocalColors.current.secondaryContainer,
-                            disabledContainerColor = White.copy(0.1f)
-                        ),
-                        contentPadding = PaddingValues(horizontal = 3.dp),
+                    Column(
+                        horizontalAlignment = Alignment.End
                     ) {
-                        Text(
-                            text = stringResource(id = R.string.open_remote_with_dialog),
-                            color = LocalColors.current.onSecondaryContainer
-                        )
-                    }
+                        viewerThemes.forEach { (label, type, barType) ->
 
-                    // open remote document with GUID only
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.Start),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .height(60.dp)
-                                .weight(1f),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            TextField(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .clip(RoundedCornerShape(16.dp))
-                                    .background(ENSoftGray.copy(alpha = 0.5f)),
-                                value = documentGuid,
-                                onValueChange = { documentGuid = it },
-                                placeholder = {
-                                    Text(
-                                        textAlign = TextAlign.Center,
-                                        modifier = Modifier.fillMaxWidth(),
-                                        text = "Document GUID"
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.CenterHorizontally),
+                            ) {
+
+                                Text(
+                                    text = label,
+                                    color = LocalColors.current.onPrimary,
+                                )
+
+                                RadioButton(
+                                    modifier = Modifier.scale(scale = 1.2f),
+                                    selected = type == selectedViewerType,
+                                    onClick = {
+                                        mainScreenViewModel.onViewerTypeSelected(type = Triple(label, type, barType))
+                                    },
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = LocalColors.current.secondary
                                     )
-                                },
-                                keyboardOptions = keyboardOptions,
-                                keyboardActions = KeyboardActions(
-                                    onDone = {
-                                        keyboardController?.hide()
-                                    }
-                                ),
-                                textStyle = TextStyle(textAlign = TextAlign.Center),
-                            )
+                                )
+                            }
                         }
+                    }
 
-                        Button(
-                            modifier = Modifier
-                                .height(60.dp)
-                                .width(250.dp),
-                            shape = RoundedCornerShape(16.dp),
-                            onClick = {
-                                mainScreenViewModel.openRemoteDocumentForSignature(activity = activity, documentGuid = documentGuid)
-                            },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = LocalColors.current.secondaryContainer,
-                                disabledContainerColor = White.copy(0.1f)
-                            ),
-                            contentPadding = PaddingValues(horizontal = 3.dp),
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.open_remote),
-                                color = LocalColors.current.onSecondaryContainer
-                            )
+                    // SignatureBox theme
+                    Text(
+                        text = stringResource(id = R.string.signaturebox_theme),
+                        color = LocalColors.current.secondary,
+                        style = MaterialTheme.typography.displayMedium,
+                        fontWeight = FontWeight.Bold,
+                    )
+
+                    Column(
+                        horizontalAlignment = Alignment.End
+                    ) {
+                        signatureBoxThemes.forEach { (label, type) ->
+
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.CenterHorizontally),
+                            ) {
+
+                                Text(
+                                    text = label,
+                                    color = LocalColors.current.onPrimary,
+                                )
+
+                                RadioButton(
+                                    modifier = Modifier.scale(scale = 1.2f),
+                                    selected = type == selectedSignatureBoxType,
+                                    onClick = {
+                                        mainScreenViewModel.onSignatureBoxTypeSelected(type = type)
+                                    },
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = LocalColors.current.secondary
+                                    )
+                                )
+                            }
                         }
+                    }
+
+                    // open document
+                    Button(
+                        modifier = Modifier
+                            .height(60.dp)
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp),
+                        onClick = {
+                            mainScreenViewModel.openDocument(activity = activity)
+                        },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = LocalColors.current.secondaryContainer,
+                            disabledContainerColor = White.copy(0.1f)
+                        ),
+                        contentPadding = PaddingValues(horizontal = 3.dp),
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.open_document),
+                            color = LocalColors.current.onSecondaryContainer
+                        )
                     }
                 }
             }

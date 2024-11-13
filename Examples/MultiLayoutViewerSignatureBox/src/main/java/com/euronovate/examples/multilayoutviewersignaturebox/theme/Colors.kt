@@ -1,4 +1,4 @@
-package com.euronovate.examples.localandremotesignature.theme
+package com.euronovate.examples.multilayoutviewersignaturebox.theme
 
 import androidx.compose.ui.graphics.Color
 

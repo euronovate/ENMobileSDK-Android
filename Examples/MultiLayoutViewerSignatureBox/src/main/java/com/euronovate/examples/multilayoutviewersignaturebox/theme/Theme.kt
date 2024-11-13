@@ -1,4 +1,4 @@
-package com.euronovate.examples.localandremotesignature.theme
+package com.euronovate.examples.multilayoutviewersignaturebox.theme
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme

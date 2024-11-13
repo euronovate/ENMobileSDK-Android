@@ -22,7 +22,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DemoViewerSignature"
+        android:theme="@style/Theme.DemoSdk"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"

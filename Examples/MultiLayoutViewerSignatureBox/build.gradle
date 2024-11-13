@@ -26,15 +26,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    packagingOptions {
-        resources {
-            excludes += ['META-INF/DEPENDENCIES']
-        }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
     namespace 'com.euronovate.examples.multilayoutviewersignaturebox'
-    buildFeatures {
-        buildConfig true
-    }
 }
 dependencies {
     implementation(libs.jetbrains.kotlin.stdlib)
@@ -56,21 +54,30 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
+    // compose and material
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.material3)
+
     //Dagger - Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
     /**PROJECT IMPLEMENTATION **/
-   // implementation 'com.google.guava:guava:27.0.1-android'
-
-    implementation libs.euronovate.viewer
     implementation libs.euronovate.core
+    implementation libs.euronovate.viewer
     implementation libs.euronovate.pdfMiddleware
-    implementation libs.enlibpdfaar
-    implementation libs.euronovate.bio
-    implementation libs.euronovate.signaturebox
     implementation libs.euronovate.presenter
+    implementation libs.euronovate.signaturebox
+    implementation libs.euronovate.bio
+    implementation libs.euronovate.softserver
+    implementation libs.enlibpdfaar
+
+    //ROOM DB
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
     //GLIDE
     implementation(libs.glide)
