@@ -4,11 +4,11 @@
 
 # Setup
 
-Clone the repository and open the Example folder with android studio.
+Clone the repository and open the Example folder with Android Studio.
 
-Sync and rebuild the project. The project is then setup with one application module for SDK feature.
+Sync and rebuild the project. The project is then set up with one application module for the SDK feature.
 
-In DossierWithFesOtpSignature module, in MainScreenViewModel, replace:
+Open DossierWithFesOtpSignature module, and in MainScreenViewModel replace:
 
 ```kotlin
 private val SDK_ONLINE_LICENSE_KEY = "your-license-key"
@@ -20,7 +20,13 @@ private val SOFTSERVER_URL = "your-softserver-url"
 private val SOFTSERVER_LICENSE = "your-softserver-license"
 ```
 
-with the values provided by Euronovate
+with the values provided by Euronovate.
+
+To try the SDK a license is mandatory:
+- online license: set the LICENSE_KEY / LICENSE_URL
+- offline license: set the LICENSE_JWT
+
+To try the Dossier API and OTP signature a working SoftServer is required
 
 # Features
 
@@ -32,6 +38,6 @@ This demo uses:
 - ENBio
 - ENSoftServer
 
-Given a valid Dossier GUID the API of the Dossier can be tried.
-
-Given a Dossier with at least one document also an OTP FES Signature flow on SoftServer can be tried.
+a user can try:
+- the Dossier API given a working SoftServer with a valid dossier.
+- the OTP FES Signature given a Dossier with at least one document.

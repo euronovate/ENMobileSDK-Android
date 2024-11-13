@@ -4,11 +4,11 @@
 
 # Setup
 
-Clone the repository and open the Example folder with android studio.
+Clone the repository and open the Example folder with Android Studio.
 
-Sync and rebuild the project. The project is then setup with one application module for SDK feature.
+Sync and rebuild the project. The project is then set up with one application module for the SDK feature.
 
-In DigitalSignage module, in MainScreenViewModel, replace:
+Open DigitalSignage module, and in MainScreenViewModel replace:
 
 ```kotlin
 private val SDK_ONLINE_LICENSE_KEY = "your-license-key"
@@ -19,7 +19,11 @@ private val DIGITAL_SIGNAGE_SERVER_URL = "your-digital-signage-server-url"
 private val DIGITAL_SIGNAGE_SERVER_LICENSE_KEY = "your-digital-signage-license-key"
 ```
 
-with the values provided by Euronovate
+with the values provided by Euronovate.
+
+To try the SDK a license is mandatory:
+- online license: set the LICENSE_KEY / LICENSE_URL
+- offline license: set the LICENSE_JWT
 
 # Features
 
@@ -29,6 +33,8 @@ This demo uses:
 - ENDigitalSignage
 - ENViewer
 
-a user can start a local digital signage or a remote one (given a valid digital signage server).
+a user can start:
+- local digital signage that is setup with images taken from app assets
+- remote digital signage: a working digital signage server is required, and its URL and LICENSE must be set up in the parameters above.
 
-With a double tap on the screen an example of document can be showed, in read only mode, with the viewer.
+By double-tapping on the screen, an example document can be shown in read-only mode with the viewer.
