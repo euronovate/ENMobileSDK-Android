@@ -25,8 +25,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Examples"
-include ':LocalSignature'
-include ':SoftServerSignature'
+include ':LocalAndRemoteSignature'
 include ':PubSubSoftServerSignature'
 include ':DigitalSignage'
 include ':DsPubSubSoftServerSignature'
