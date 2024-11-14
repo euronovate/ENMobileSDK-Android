@@ -2,37 +2,33 @@
 
 #### [View Releases and Changelogs](https://github.com/euronovate/ENMobileSDK-Android)
 
----
-![Viewer image](resReadme/imgViewer.png)
-
 # Setup
 
-Pull all project in your Android studio workspace, after open folder with android studio directly.
+Clone the repository and open the Example folder with Android Studio.
 
-You must have an internet connection valid.
+Sync and rebuild the project. The project is then set up with one application module for the SDK feature.
 
-After you have to replace licenseKey & baseUrl ENAuth in MainActivity
+Open MultiLayoutViewerSignatureBox module, and in MainScreenViewModel replace:
+
+```kotlin
+private val SDK_ONLINE_LICENSE_KEY = "your-license-key"
+private val SDK_ONLINE_LICENSE_URL = "your-license-server-url"
+private val SDK_OFFLINE_LICENSE_JWT = "your-offline-license-jwt"
+```
+
+with the values provided by Euronovate.
+
+To try the SDK a license is mandatory:
+- online license: set the LICENSE_KEY / LICENSE_URL
+- offline license: set the LICENSE_JWT
 
 # Features
 
-In this demo project we use these modules:
+This demo uses:
 
--Viewer
--SignatureBox
--BioLibrary
+- ENCore
+- ENViewer
+- ENSignatureBox
+- ENBio
 
-To start signature, you have to tap on button "open", after confirm or abort pdf you can share pdf with specific button
-
-## Sign Apk
-
-We have created a certificate base to sign apk but you can remove it or replace with your.
-
-Default credentials is:
-
-`alias: euronovate`
-
-`psw1: euronovate`
-
-`ps2: euronovate`
-
-You can find last apk in projectFolder/release (if you manually clear project, you will not find it and you have to rebuild)
+a user can choose between multiple types of viewer and signature box, and then open a document to take a look at the layout selected
