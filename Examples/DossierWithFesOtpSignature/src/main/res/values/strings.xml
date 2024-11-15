@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DossierWithFesOtpSignature</string>
+    <string name="app_name">Dossier and Fes Otp</string>
 
     <string name="init">Init SDK</string>
     <string name="dossier_guid">Dossier guid</string>

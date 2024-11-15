@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DigitalSignage</string>
+    <string name="app_name">Digital Signage</string>
 
     <string name="init_ds_local">Init local DS</string>
     <string name="start_ds_local">Start local DS</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MultiLayoutViewerSignatureBox</string>
+    <string name="app_name">Multi Layout</string>
 
     <string name="init">Init SDK</string>
     <string name="viewer_theme">Viewer theme</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LocalAndRemoteSignature</string>
+    <string name="app_name">Local and Remote Signature</string>
 
     <string name="init">Init SDK</string>
     <string name="info">Info</string>

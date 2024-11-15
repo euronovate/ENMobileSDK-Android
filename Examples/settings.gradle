@@ -25,9 +25,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Examples"
-include ':LocalAndRemoteSignature'
-include ':PubSubSoftServerSignature'
 include ':DigitalSignage'
-include ':DsPubSubSoftServerSignature'
-include ':MultiLayoutViewerSignatureBox'
+include ':DigitalSignagePubSubRemoteSignature'
 include ':DossierWithFesOtpSignature'
+include ':LocalAndRemoteSignature'
+include ':MultiLayoutViewerSignatureBox'
