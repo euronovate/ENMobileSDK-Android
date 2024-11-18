@@ -2,40 +2,39 @@
 
 #### [View Releases and Changelogs](https://github.com/euronovate/ENMobileSDK-Android)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
----
-![Viewer image](resReadme/imgViewer.png)
-
 # Setup
 
-Pull all project in your Android studio workspace, after open folder with android studio directly.
+Clone the repository and open the Example folder with Android Studio.
 
-You must have an internet connection valid.
+Sync and rebuild the project. The project is then set up with one application module for the SDK feature.
 
-After you have to replace:
+Open DigitalSignage module, and in MainScreenViewModel replace:
 
-*licenseKey & baseUrl ENDigitalSignage in MainActivity
+```kotlin
+private val SDK_ONLINE_LICENSE_KEY = "your-license-key"
+private val SDK_ONLINE_LICENSE_URL = "your-license-server-url"
+private val SDK_OFFLINE_LICENSE_JWT = "your-offline-license-jwt"
+
+private val DIGITAL_SIGNAGE_SERVER_URL = "your-digital-signage-server-url"
+private val DIGITAL_SIGNAGE_SERVER_LICENSE_KEY = "your-digital-signage-license-key"
+```
+
+with the values provided by Euronovate.
+
+To try the SDK a license is mandatory:
+- online license: set the LICENSE_KEY / LICENSE_URL
+- offline license: set the LICENSE_JWT
 
 # Features
 
-In this demo project we use these modules:
+This demo uses:
 
--ENCore
--ENDigitalSignage
+- ENCore
+- ENDigitalSignage
+- ENViewer
 
-To start signature, you have to tap on button "open", after confirm or abort pdf you can share pdf with specific button
+a user can start:
+- local digital signage: with images taken from app assets
+- remote digital signage: a working digital signage server is required, and its URL and LICENSE must be set up in the parameters above.
 
-## Sign Apk
-
-We have created a certificate base to sign apk but you can remove it or replace with your.
-
-Default credentials is:
-
-`alias: euronovate`
-
-`psw1: euronovate`
-
-`ps2: euronovate`
-
-You can find last apk in projectFolder/release (if you manually clear project, you will not find it and you have to rebuild)
+By double-tapping on the digital signage screen, an example document can be shown in read-only mode with the viewer.

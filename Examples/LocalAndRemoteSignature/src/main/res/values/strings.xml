@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Local and Remote Signature</string>
+
+    <string name="init">Init SDK</string>
+    <string name="info">Info</string>
+    <string name="ok">OK</string>
+    <string name="open_local">Sign local document</string>
+    <string name="local_document_signed">Document signed</string>
+    <string name="open_remote_with_dialog">Sign remote with dialog</string>
+    <string name="open_remote">Sign remote</string>
+    <string name="open_remote_guid">Document GUID</string>
+    <string name="remote_document_signed">Document signed on SoftServer. To review the document download it from SoftServer console</string>
+</resources>

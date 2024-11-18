@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Digital Signage Pub Sub and Remote Signature</string>
+
+    <string name="init">Init SDK</string>
+    <string name="start">Start DS and PubSub</string>
+</resources>

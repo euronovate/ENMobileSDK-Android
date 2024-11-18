@@ -1,0 +1,92 @@
+[versions]
+agp = "8.7.2"
+bcprovJdk15on = "1.61"
+bcpkixJdk15on = "1.61"
+conscryptAndroid = "2.2.1"
+enlibpdfaar = "2.3.2"
+euronovate-sdk = "1.3.18"
+coreKtx = "1.9.0"
+appcompat = "1.4.0"
+espressoCore = "3.4.0"
+exifinterface = "1.3.2"
+glide = "4.12.0"
+gson = "2.8.7"
+hiltAndroid = "2.52"
+hiltAndroidCompiler = "2.52"
+hiltNavigationCompose = "1.0.0"
+jjwtApi = "0.12.6"
+junit = "4.13.2"
+junitVersion = "1.1.3"
+kotlin = "1.9.25"
+constraintlayout = "2.1.3"
+lifecycleExtensions = "2.2.0"
+lifecycleRuntime = "2.0.0"
+lifecycleRuntimeKtx = "2.5.1"
+lifecycleViewmodel = "2.5.1"
+material = "1.4.0"
+okhttp = "4.9.2"
+preference = "1.1.1"
+roomRuntime = "2.4.1"
+securityCrypto = "1.1.0-alpha03"
+kotlinxCoroutinesAndroid = "1.9.0"
+kotlinxCoroutinesCore = "1.9.0"
+easypermissionsKtx = "1.0.0"
+composeBom = "2024.10.00"
+xmltojson = "1.5.3"
+
+[libraries]
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+androidx-exifinterface = { module = "androidx.exifinterface:exifinterface", version.ref = "exifinterface" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+androidx-lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleRuntime" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "lifecycleRuntime" }
+androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycleViewmodel" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-preference = { module = "androidx.preference:preference", version.ref = "preference" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+bcpkix-jdk15on = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bcpkixJdk15on" }
+bcprov-jdk15on = { module = "org.bouncycastle:bcprov-jdk15on", version.ref = "bcprovJdk15on" }
+conscrypt-android = { module = "org.conscrypt:conscrypt-android", version.ref = "conscryptAndroid" }
+enlibpdfaar = { module = "com.euronovate.libpdf:ENLibPdfAar", version.ref = "enlibpdfaar" }
+euronovate-digitalsignage = { module = "com.euronovate.digitalsignage:digitalsignage", version.ref = "euronovate-sdk" }
+euronovate-core = { module = "com.euronovate.mobilesdk:core", version.ref = "euronovate-sdk" }
+euronovate-viewer = { module = "com.euronovate.viewer:viewer", version.ref = "euronovate-sdk" }
+euronovate-pdfMiddleware = { module = "com.euronovate.pdfmiddleware:pdfMiddleware", version.ref = "euronovate-sdk" }
+euronovate-bio = { module = "com.euronovate.bio:bio", version.ref = "euronovate-sdk" }
+euronovate-signaturebox = { module = "com.euronovate.signaturebox:signaturebox", version.ref = "euronovate-sdk" }
+euronovate-softserver = { module = "com.euronovate.softserver:softserver", version.ref = "euronovate-sdk" }
+euronovate-presenter = { module = "com.euronovate.presenter:presenter", version.ref = "euronovate-sdk" }
+euronovate-pubsub = { module = "com.euronovate.pubsub:pubsub", version.ref = "euronovate-sdk" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+jetbrains-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
+jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwtApi" }
+jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwtApi" }
+jjwt-orgjson = { module = "io.jsonwebtoken:jjwt-orgjson", version.ref = "jjwtApi" }
+junit = { module = "junit:junit", version.ref = "junit" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+easypermissions-ktx = { module = "com.vmadalin:easypermissions-ktx", version.ref = "easypermissionsKtx" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+xmltojson = { module = "com.github.smart-fun:XmlToJson", version.ref = "xmltojson" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrainsKotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }

@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">MultiLayoutViewerSignatureBox</string>
+    <string name="app_name">Multi Layout</string>
+
+    <string name="init">Init SDK</string>
+    <string name="viewer_theme">Viewer theme</string>
+    <string name="viewer_simple">Simple</string>
+    <string name="viewer_theme1">Theme 1</string>
+    <string name="signaturebox_theme">SignatureBox theme</string>
+    <string name="signaturebox_simple">Simple</string>
+    <string name="signaturebox_theme1">Theme 1</string>
+    <string name="signaturebox_simplerightconfirm">Simple right confirm</string>
+    <string name="open_document">Open document</string>
 </resources>

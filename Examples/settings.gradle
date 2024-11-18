@@ -1,17 +1,32 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
         maven {
-            url "https://artifactory.internal.euronovate.com/artifactory/android-release-local"
+            url = uri("https://artifactory.internal.euronovate.com/artifactory/android-release-local")
         }
+        maven { url "https://jitpack.io" } // FOR DS
     }
 }
+
 rootProject.name = "Examples"
-include ':LocalSignature'
-include ':SoftServerSignature'
-include ':PubSubSoftServerSignature'
 include ':DigitalSignage'
-include ':DsPubSubSoftServerSignature'
+include ':DigitalSignagePubSubRemoteSignature'
+include ':DossierWithFesOtpSignature'
+include ':LocalAndRemoteSignature'
 include ':MultiLayoutViewerSignatureBox'
