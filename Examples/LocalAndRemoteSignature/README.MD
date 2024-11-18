@@ -27,6 +27,7 @@ To try the SDK a license is mandatory:
 - offline license: set the LICENSE_JWT
 
 To try the local signature no further parameters are required, there is an example document and a development certificate for biometric data packed with the app.
+
 To try the remote signature a working SoftServer is required
 
 # Features

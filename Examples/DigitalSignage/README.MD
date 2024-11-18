@@ -34,7 +34,7 @@ This demo uses:
 - ENViewer
 
 a user can start:
-- local digital signage that is setup with images taken from app assets
+- local digital signage: with images taken from app assets
 - remote digital signage: a working digital signage server is required, and its URL and LICENSE must be set up in the parameters above.
 
-By double-tapping on the screen, an example document can be shown in read-only mode with the viewer.
+By double-tapping on the digital signage screen, an example document can be shown in read-only mode with the viewer.

@@ -26,7 +26,7 @@ To try the SDK a license is mandatory:
 - online license: set the LICENSE_KEY / LICENSE_URL
 - offline license: set the LICENSE_JWT
 
-To try the Dossier API and OTP signature a working SoftServer is required
+To try the Dossier API and OTP signature a working SoftServer is required. SoftServer must implement the OTP logic.
 
 # Features
 
