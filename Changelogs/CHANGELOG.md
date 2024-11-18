@@ -1,5 +1,8 @@
 # Changelog
 
+## v 1.3.18
+- ENPresenter: updated presentation layer to 1.5.24
+
 ## v 1.3.17
 
 - fix & update compilation tools: AGP 8, Java 1.8 (from Java 11), Kotlin 1.9.25
