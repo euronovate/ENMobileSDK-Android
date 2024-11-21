@@ -17,7 +17,7 @@
 
 
 ## Gradle Dependency
-![](https://badgen.net/badge/stable/1.3.18/blue)
+![](https://badgen.net/badge/stable/1.3.19/blue)
 
 The `SoftServer` module contains the APIs used to interact with documents:
 
@@ -34,7 +34,7 @@ It also includes an API to retrieve information from dossiers:
 
 ```gradle
 dependencies {
-  implementation "com.euronovate.softserver:softserver:1.3.18"
+  implementation "com.euronovate.softserver:softserver:1.3.19"
 }
 ```
 

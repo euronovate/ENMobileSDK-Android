@@ -1,5 +1,8 @@
 # Changelog
 
+## v 1.3.19
+- fix a crash in ENDialog component
+
 ## v 1.3.18
 - ENPresenter: updated presentation layer to 1.5.24
 
