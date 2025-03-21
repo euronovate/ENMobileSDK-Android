@@ -1,5 +1,8 @@
 # Changelog
 
+## v 1.3.20
+- add result parameter to OtpResult
+
 ## v 1.3.19
 - fix a crash in ENDialog component
 

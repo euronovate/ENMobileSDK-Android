@@ -24,13 +24,13 @@
 
 ## Gradle Dependency
 
-![](https://badgen.net/badge/stable/1.3.19/blue)
+![](https://badgen.net/badge/stable/1.3.20/blue)
 
 The `viewer` module contains extensions to the core module, such as a document (pdf) rendering and all actions handling on acrofields
 
 ```gradle
 dependencies {
- 	implementation "com.euronovate.viewer:viewer:1.3.19"
+ 	implementation "com.euronovate.viewer:viewer:1.3.20"
 }
 ```
 
