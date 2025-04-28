@@ -54,8 +54,6 @@ import com.euronovate.utils.preferences.ENSettings
 import com.euronovate.utils.preferences.with
 import com.euronovate.utils.util.ENBase64Utils
 import com.euronovate.viewer.ENViewer
-import com.euronovate.viewer.extension.openDocument
-import com.euronovate.viewer.extension.openRemoteDocument
 import com.euronovate.viewer.extension.with
 import com.euronovate.viewer.model.ENViewerConfig
 import com.euronovate.viewer.model.enums.ENSignFieldPlaceholder
@@ -130,7 +128,7 @@ class MainScreenViewModel : ViewModel() {
                             ENLanguageType.it,
                         )
                     ),
-                    defaultSignatureMode = SignatureMode.Graphometric,
+                    defaultSignatureMode = SignatureMode.GraphometricFea,
                 )
             )
             .with(theme = ENDefaultTheme())

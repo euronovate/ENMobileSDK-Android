@@ -10,8 +10,6 @@ import com.euronovate.logger.ENLogger
 import com.euronovate.logger.extension.with
 import com.euronovate.logger.model.ENLanguageConfig
 import com.euronovate.logger.model.ENLanguageType
-import com.euronovate.logger.model.ENLogServerConfig
-import com.euronovate.logger.model.ENLogServerConfigType
 import com.euronovate.logger.model.ENLoggerConfig
 import com.euronovate.mobilesdk.ENMobileSDK
 import com.euronovate.mobilesdk.extensions.emitEvent
@@ -110,7 +108,7 @@ class MainScreenViewModel : ViewModel() {
                             ENLanguageType.it,
                         )
                     ),
-                    defaultSignatureMode = SignatureMode.Graphometric,
+                    defaultSignatureMode = SignatureMode.GraphometricFea,
                 )
             )
             .with(theme = ENDefaultTheme())

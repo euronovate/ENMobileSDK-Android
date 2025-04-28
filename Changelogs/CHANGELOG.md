@@ -1,5 +1,9 @@
 # Changelog
 
+## v 1.3.21
+- remove DocumentSignatureType introduced in 1.3.11
+- refactor SignatureMode now used for both default signature mode and ENSignDocument
+
 ## v 1.3.20
 - add result parameter to OtpResult
 
